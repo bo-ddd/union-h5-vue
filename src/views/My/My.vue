@@ -69,14 +69,45 @@
           </div>
         </div>
         <div class="status_main">
-          <div>
-            <van-icon name="credit-pay" />
+          <div v-for="item in 5" :key="item">
+            <van-icon name="credit-pay" size="25" />
             <p>待付款</p>
           </div>
         </div>
-        <div class="status_footer">
-
+        <div class="status_footer ft-10 gary">
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div>查看电子发票</div>
         </div>
+      </div>
+      <div class="wallet">
+        <div class="wallet_main">
+          <div v-for="item in 5" :key="item">
+            <span class="ft-15">1228</span><span>京豆{{ item }}</span>
+          </div>
+        </div>
+        <div class="wallet_footer ft-10 gary">
+          <div>签到领京豆</div>
+          <div>下单立省</div>
+          <div>积分还白条</div>
+          <div>秒批额度</div>
+        </div>
+      </div>
+      <div class="game">
+        <div><van-icon name="fire" size="25"/><span>东东农场</span></div>
+        <div><van-icon name="fire" size="25"/><span>签到领豆</span></div>
+        <div><van-icon name="fire" size="25"/><span>东东萌宠</span></div>
+        <div><van-icon name="fire" size="25"/><span>宠汪汪</span></div>
+        <div><van-icon name="fire" size="25"/><span>东东爱消除</span></div>
+      </div>
+      <div class="serve">
+        <div><van-icon name="fire" size="25"/><span>客户服务</span></div>
+        <div><van-icon name="fire" size="25"/><span>寄件服务</span></div>
+        <div><van-icon name="fire" size="25"/><span>问医生</span></div>
+        <div><van-icon name="fire" size="25"/><span>闲置换钱</span></div>
+        <div><van-icon name="fire" size="25"/><span>新品试用</span></div>
       </div>
     </section>
   </div>
@@ -95,11 +126,18 @@ export default {
 .ft-10 {
   font-size: 10px;
 }
+.ft-15 {
+  font-size: 15px;
+  font-weight: bold;
+}
 .ft-cr {
   color: #5a4016;
 }
+.gary {
+  color: #9d9d9d;
+}
 ::v-deep .van-grid-item__content {
-  padding: 16px 0!important;
+  padding: 16px 0 !important;
 }
 .bottom_gray {
   font-size: 9px;
@@ -110,7 +148,7 @@ export default {
 .home {
   background-color: #f1f1f1;
   padding: 12px;
-  overflow-y:scroll;
+  overflow-y: scroll;
   & > nav {
     display: flex;
     justify-content: flex-end;
@@ -141,7 +179,7 @@ export default {
   & > .mian {
     width: 350px;
     & > div {
-      padding: 10px;
+      padding: 0 10px;
       margin-top: 8px;
       background-color: #ffffff;
       border-radius: 5px;
@@ -172,9 +210,9 @@ export default {
       height: 125px;
       & > .status_top {
         height: 40px;
-        line-height: 40px;
         display: flex;
         justify-content: space-around;
+        align-items: center;
         border-bottom: 1px solid #f3f3f3;
         font-size: 12px;
         font-weight: bold;
@@ -186,8 +224,56 @@ export default {
           }
         }
       }
+      & > .status_main {
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        height: 60px;
+        & > div {
+          margin-top: 15px;
+          display: flex;
+          flex-flow: column;
+        }
+      }
+      & > .status_footer {
+        display: flex;
+        justify-content: space-between;
+      }
     }
- }
+    & > .wallet {
+      height: 85px;
+      & > .wallet_main {
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        & > div {
+          margin-top: 20px;
+          display: flex;
+          flex-flow: column;
+        }
+      }
+      & > .wallet_footer {
+        margin-top: 6px;
+        display: flex;
+        & > div {
+          margin-right: 14px;
+        }
+      }
+    }
+    & > .game,.serve{
+      height: 80px;
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      & > div{
+        display: flex;
+        flex-flow: column;
+        & > span{
+          margin-top: 8px;
+        }
+      }
+    }
+  }
 }
 </style>
 
