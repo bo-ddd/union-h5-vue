@@ -69,51 +69,14 @@
           </div>
         </div>
         <div class="status_main">
-          <van-grid :column-num="5" icon-size="25" :border="false">
-            <van-grid-item icon="credit-pay" text="待付款" />
-            <van-grid-item icon="photo-o" text="文字" />
-            <van-grid-item icon="photo-o" text="文字" />
-            <van-grid-item icon="photo-o" text="文字" />
-            <van-grid-item icon="photo-o" text="我的订单" />
-          </van-grid>
+          <div>
+            <van-icon name="credit-pay" />
+            <p>待付款</p>
+          </div>
         </div>
-      </div>
-      <div class="wallet">
-        <van-grid :column-num="5" icon-size="25" :border="false">
-          <van-grid-item icon="photo-o" text="文字" />
-          <van-grid-item icon="photo-o" text="文字" />
-          <van-grid-item icon="photo-o" text="文字" />
-          <van-grid-item icon="photo-o" text="文字" />
-          <van-grid-item icon="photo-o" text="钱包" />
-        </van-grid>
-      </div>
-      <div class="game">
-        <van-grid
-          :column-num="5"
-          class="game_grid"
-          icon-size="25"
-          :border="false"
-        >
-          <van-grid-item icon="photo-o" text="文字" />
-          <van-grid-item icon="photo-o" text="文字" />
-          <van-grid-item icon="photo-o" text="文字" />
-          <van-grid-item icon="photo-o" text="文字" />
-          <van-grid-item icon="photo-o" text="文字" />
-        </van-grid>
-      </div>
-      <div class="game">
-        <van-grid
-          :column-num="5"
-          class="game_grid"
-          icon-size="25"
-          :border="false"
-        >
-          <van-grid-item icon="photo-o" text="文字" />
-          <van-grid-item icon="photo-o" text="文字" />
-          <van-grid-item icon="photo-o" text="文字" />
-          <van-grid-item icon="photo-o" text="文字" />
-          <van-grid-item icon="photo-o" text="文字" />
-        </van-grid>
+        <div class="status_footer">
+
+        </div>
       </div>
     </section>
   </div>
@@ -134,6 +97,9 @@ export default {
 }
 .ft-cr {
   color: #5a4016;
+}
+::v-deep .van-grid-item__content {
+  padding: 16px 0!important;
 }
 .bottom_gray {
   font-size: 9px;
@@ -221,7 +187,7 @@ export default {
         }
       }
     }
-  }
+ }
 }
 </style>
 
