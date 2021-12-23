@@ -30,7 +30,7 @@ export default {
   & .nav {
     background: rgb(238, 238, 238);
     padding: 7px 0px;
-    position: absolute;
+    position: fixed;
     bottom: 0;
 
     & ::v-deep .van-tabbar-item--active {
