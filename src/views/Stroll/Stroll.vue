@@ -36,6 +36,9 @@
         <div class="ad-wrap">
 
         </div>
+        <div class="add-btn">
+
+        </div>
         <div class="commodity-wrap" ref="adwrap">
             <div class="commodity-content">
                 <div class="commodity">
@@ -172,6 +175,19 @@ export default {
       margin-top: 10px;
       background: #f8f8f8;
       overflow: hidden;
+      & .add-btn{
+        position: absolute;
+        z-index: 5;
+        width: 60px;
+        height: 60px;
+        background-size: 100% 100%;
+        right: 25px;
+        background-color: #fff;
+        overflow: hidden;
+        border-radius: 50%;
+        bottom: 80px;
+        background-image: url(../../assets/add_icon.png);
+      }
       & .tabls-out{
           & .span-out{
               & span{
@@ -197,6 +213,7 @@ export default {
           & .commodity{
               display: inline-block;
             & .show-wrap{
+              position: relative;
               margin: 4px;
               width: 168px;
               border-radius: 5%;
@@ -242,4 +259,6 @@ p{
     margin: 0;
     padding:0;
 }
+
+
 </style>
