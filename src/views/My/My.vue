@@ -3,9 +3,11 @@
     <van-sticky class="wrap">
       <nav>
         <div>
-          <van-icon name="user-circle-o" size="20" />
-          <van-icon name="setting-o" size="20" />
-          <van-icon name="chat-o" size="20" />
+          <van-icon name="user-circle-o" size="20" /><van-icon
+            name="setting-o"
+            size="20"
+          />
+          <van-icon name="chat-o" badge="9" size="20" />
         </div>
       </nav>
     </van-sticky>
@@ -70,7 +72,7 @@
         </div>
         <div class="status_main">
           <div v-for="statu in statuData" :key="statu.text">
-            <van-badge :content="statu.num" v-if="statu.num != 0" />
+            <van-badge :content="statu.num"  v-if="statu.num != 0"/>
             <van-icon :name="statu.icon" size="25" />
             <p>{{ statu.text }}</p>
           </div>
@@ -105,20 +107,14 @@
           <div>秒批额度</div>
         </div>
       </div>
-      <div class="game" ref="game">
-        <div>
-          <div v-for="game in gameData" :key="game.text">
-            <van-icon :name="game.icon" size="25" /><span>{{ game.text }}</span>
-          </div>
+      <div class="game">
+        <div v-for="game in gameData" :key="game.text">
+          <van-icon :name="game.icon" size="25" /><span>{{ game.text }}</span>
         </div>
       </div>
-      <div class="serve" ref="serve">
-        <div>
-          <div v-for="serve in recommendData" :key="serve.text">
-            <van-icon :name="serve.icon" size="25" /><span>{{
-              serve.text
-            }}</span>
-          </div>
+      <div class="serve">
+        <div v-for="serve in recommendData" :key="serve.text">
+          <van-icon :name="serve.icon" size="25" /><span>{{ serve.text }}</span>
         </div>
       </div>
       <div class="recommend">
@@ -137,6 +133,7 @@
 
 <script>
 // @ is an alias to /src
+
 export default {
   data() {
     return {
@@ -145,27 +142,27 @@ export default {
         {
           icon: "credit-pay",
           text: "待付款",
-          num: 0,
+          num:0,
         },
         {
           icon: "logistics",
           text: "待收货",
-          num: 1,
+          num:1
         },
         {
           icon: "edit",
           text: "待评价",
-          num: 2,
+          num:2
         },
         {
           icon: "after-sale",
           text: "退换/售后",
-          num: 3,
+          num:3
         },
         {
           icon: "records",
           text: "我的订单",
-          num: 4,
+          num:4
         },
       ],
       walletData: [
@@ -358,13 +355,13 @@ nav {
         display: flex;
         justify-content: space-around;
         align-items: center;
-        height: 65px;
+        height: 65px; 
         & > div {
           margin-top: 16.5px;
           display: flex;
           flex-flow: column;
           position: relative;
-          & > ::v-deep .van-badge {
+          & > ::v-deep .van-badge{
             position: absolute;
             top: -5px;
             right: 2px;
@@ -398,17 +395,15 @@ nav {
     }
     & > .game,
     .serve {
+      height: 80px;
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
       & > div {
-        height: 80px;
         display: flex;
-        justify-content: space-around;
-        align-items: center;
-        & > div {
-          display: flex;
-          flex-flow: column;
-          & > span {
-            margin-top: 8px;
-          }
+        flex-flow: column;
+        & > span {
+          margin-top: 8px;
         }
       }
     }
