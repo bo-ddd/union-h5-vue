@@ -1,14 +1,16 @@
 <template>
   <div class="home">
-    <nav>
-      <div>
-        <van-icon name="user-circle-o" size="20" /><van-icon
-          name="setting-o"
-          size="20"
-        />
-        <van-icon name="chat-o" badge="9" size="20" />
-      </div>
-    </nav>
+    <van-sticky class="wrap">
+      <nav>
+        <div>
+          <van-icon name="user-circle-o" size="20" /><van-icon
+            name="setting-o"
+            size="20"
+          />
+          <van-icon name="chat-o" badge="9" size="20" />
+        </div>
+      </nav>
+    </van-sticky>
     <div class="avator">
       <div class="avator_img">
         <van-image
@@ -69,9 +71,11 @@
           </div>
         </div>
         <div class="status_main">
-          <div v-for="item in 5" :key="item">
-            <van-icon name="credit-pay" size="25" />
-            <p>待付款</p>
+          <div v-for="statu in statuData" :key="statu.text">
+            <van-badge :content="0" max="9">
+              <van-icon :name="statu.icon" size="25" />
+            </van-badge>
+            <p>{{ statu.text }}</p>
           </div>
         </div>
         <div class="status_footer ft-10 gary">
@@ -84,8 +88,13 @@
       </div>
       <div class="wallet">
         <div class="wallet_main">
-          <div v-for="item in 5" :key="item">
-            <span class="ft-15">1228</span><span>京豆{{ item }}</span>
+          <div v-for="wallet in walletData" :key="wallet.text" class="main_left">
+            <span class="ft-15">{{ wallet.num }}</span>
+            <span>{{ wallet.text }}</span>
+          </div>
+          <div>
+            <van-icon name="pending-payment" size="25" />
+            <span>我的钱包</span>
           </div>
         </div>
         <div class="wallet_footer ft-10 gary">
@@ -96,18 +105,24 @@
         </div>
       </div>
       <div class="game">
-        <div><van-icon name="fire" size="25"/><span>东东农场</span></div>
-        <div><van-icon name="fire" size="25"/><span>签到领豆</span></div>
-        <div><van-icon name="fire" size="25"/><span>东东萌宠</span></div>
-        <div><van-icon name="fire" size="25"/><span>宠汪汪</span></div>
-        <div><van-icon name="fire" size="25"/><span>东东爱消除</span></div>
+        <div v-for="game in gameData" :key="game.text">
+          <van-icon :name="game.icon" size="25" /><span>{{ game.text }}</span>
+        </div>
       </div>
       <div class="serve">
-        <div><van-icon name="fire" size="25"/><span>客户服务</span></div>
-        <div><van-icon name="fire" size="25"/><span>寄件服务</span></div>
-        <div><van-icon name="fire" size="25"/><span>问医生</span></div>
-        <div><van-icon name="fire" size="25"/><span>闲置换钱</span></div>
-        <div><van-icon name="fire" size="25"/><span>新品试用</span></div>
+        <div v-for="serve in recommendData" :key="serve.text">
+          <van-icon :name="serve.icon" size="25" /><span>{{ serve.text }}</span>
+        </div>
+      </div>
+      <div class="recommend">
+        <div class="recommend_top">
+          <div><span>快乐网民GO ></span></div>
+          <div>
+            <van-tag round type="primary"
+              ><van-icon name="replay" />标签</van-tag
+            >
+          </div>
+        </div>
       </div>
     </section>
   </div>
@@ -118,8 +133,104 @@
 
 export default {
   data() {
-    return {};
+    return {
+      loading:true,
+      statuData: [
+        {
+          icon: "credit-pay",
+          text: "待付款",
+        },
+        {
+          icon: "logistics",
+          text: "待收货",
+        },
+        {
+          icon: "edit",
+          text: "待评价",
+        },
+        {
+          icon: "after-sale",
+          text: "退换/售后",
+        },
+        {
+          icon: "records",
+          text: "我的订单",
+        },
+      ],
+      walletData: [
+        {
+          num: "1128",
+          text: "京豆",
+        },
+        {
+          num: "1",
+          text: "优惠券",
+        },
+        {
+          num: "1128",
+          text: "白条",
+        },
+        {
+          num: "0.00",
+          text: "京东金条",
+        },
+      ],
+      gameData: [
+        {
+          icon: "hot-o",
+          text: "东东农场",
+        },
+        {
+          icon: "hot-o",
+          text: "签到领豆",
+        },
+        {
+          icon: "hot-o",
+          text: "东东萌宠",
+        },
+        {
+          icon: "hot-o",
+          text: "宠汪汪",
+        },
+        {
+          icon: "hot-o",
+          text: "东东爱消除",
+        },
+      ],
+      recommendData: [
+        {
+          icon: "balance-o",
+          text: "客户服务",
+        },
+        {
+          icon: "balance-o",
+          text: "寄件服务",
+        },
+        {
+          icon: "balance-o",
+          text: "问医生",
+        },
+        {
+          icon: "balance-o",
+          text: "闲置换钱",
+        },
+        {
+          icon: "balance-o",
+          text: "新品试用",
+        },
+      ],
+    };
   },
+  methods:{
+    fn(){
+      setTimeout(()=>{
+        this.loading = false;
+      },3000)
+    }
+  },
+ created(){
+   this.fn();
+ }
 };
 </script>
 <style lang="less" scoped>
@@ -136,8 +247,11 @@ export default {
 .gary {
   color: #9d9d9d;
 }
-::v-deep .van-grid-item__content {
-  padding: 16px 0 !important;
+::v-deep .van-tag {
+  padding: 0 5px;
+}
+::v-deep .van-icon-replay {
+  margin-right: 5px;
 }
 .bottom_gray {
   font-size: 9px;
@@ -145,20 +259,23 @@ export default {
   color: #848484;
   margin-top: 5px;
 }
+::v-deep .van-sticky--fixed {
+  top: 6px;
+  right: 12px;
+}
+nav {
+  display: flex;
+  justify-content: flex-end;
+  & > div {
+    width: 95px;
+    display: flex;
+    justify-content: space-between;
+  }
+}
 .home {
   background-color: #f1f1f1;
   padding: 12px;
-  overflow-y: scroll;
-  & > nav {
-    display: flex;
-    justify-content: flex-end;
-
-    & > div {
-      width: 95px;
-      display: flex;
-      justify-content: space-between;
-    }
-  }
+  height: 100vh;
   & > .avator {
     display: flex;
     & > .userinfo {
@@ -178,6 +295,7 @@ export default {
   }
   & > .mian {
     width: 350px;
+    height: calc(100vh - 50px);
     & > div {
       padding: 0 10px;
       margin-top: 8px;
@@ -228,9 +346,9 @@ export default {
         display: flex;
         justify-content: space-around;
         align-items: center;
-        height: 60px;
+        height: 65px;
         & > div {
-          margin-top: 15px;
+          margin-top: 16.5px;
           display: flex;
           flex-flow: column;
         }
@@ -254,22 +372,32 @@ export default {
       }
       & > .wallet_footer {
         margin-top: 6px;
+        width: 242px;
         display: flex;
-        & > div {
-          margin-right: 14px;
-        }
+        justify-content: space-between;
       }
     }
-    & > .game,.serve{
+    & > .game,
+    .serve {
       height: 80px;
       display: flex;
       justify-content: space-around;
       align-items: center;
-      & > div{
+      & > div {
         display: flex;
         flex-flow: column;
-        & > span{
+        & > span {
           margin-top: 8px;
+        }
+      }
+    }
+    & > .recommend {
+      height: 65px;
+      & > .recommend_top {
+        display: flex;
+        justify-content: space-between;
+        & > div {
+          margin-top: 10px;
         }
       }
     }
