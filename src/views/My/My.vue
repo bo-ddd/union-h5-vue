@@ -3,11 +3,9 @@
     <van-sticky class="wrap">
       <nav>
         <div>
-          <van-icon name="user-circle-o" size="20" /><van-icon
-            name="setting-o"
-            size="20"
-          />
-          <van-icon name="chat-o" badge="9" size="20" />
+          <van-icon name="user-circle-o" size="20" />
+          <van-icon name="setting-o" size="20" />
+          <van-icon name="chat-o" size="20" />
         </div>
       </nav>
     </van-sticky>
@@ -72,9 +70,8 @@
         </div>
         <div class="status_main">
           <div v-for="statu in statuData" :key="statu.text">
-            <van-badge :content="0" max="9">
-              <van-icon :name="statu.icon" size="25" />
-            </van-badge>
+            <van-badge :content="statu.num" v-if="statu.num != 0" />
+            <van-icon :name="statu.icon" size="25" />
             <p>{{ statu.text }}</p>
           </div>
         </div>
@@ -88,7 +85,11 @@
       </div>
       <div class="wallet">
         <div class="wallet_main">
-          <div v-for="wallet in walletData" :key="wallet.text" class="main_left">
+          <div
+            v-for="wallet in walletData"
+            :key="wallet.text"
+            class="main_left"
+          >
             <span class="ft-15">{{ wallet.num }}</span>
             <span>{{ wallet.text }}</span>
           </div>
@@ -104,14 +105,20 @@
           <div>秒批额度</div>
         </div>
       </div>
-      <div class="game">
-        <div v-for="game in gameData" :key="game.text">
-          <van-icon :name="game.icon" size="25" /><span>{{ game.text }}</span>
+      <div class="game" ref="game">
+        <div>
+          <div v-for="game in gameData" :key="game.text">
+            <van-icon :name="game.icon" size="25" /><span>{{ game.text }}</span>
+          </div>
         </div>
       </div>
-      <div class="serve">
-        <div v-for="serve in recommendData" :key="serve.text">
-          <van-icon :name="serve.icon" size="25" /><span>{{ serve.text }}</span>
+      <div class="serve" ref="serve">
+        <div>
+          <div v-for="serve in recommendData" :key="serve.text">
+            <van-icon :name="serve.icon" size="25" /><span>{{
+              serve.text
+            }}</span>
+          </div>
         </div>
       </div>
       <div class="recommend">
@@ -130,31 +137,35 @@
 
 <script>
 // @ is an alias to /src
-
 export default {
   data() {
     return {
-      loading:true,
+      loading: true,
       statuData: [
         {
           icon: "credit-pay",
           text: "待付款",
+          num: 0,
         },
         {
           icon: "logistics",
           text: "待收货",
+          num: 1,
         },
         {
           icon: "edit",
           text: "待评价",
+          num: 2,
         },
         {
           icon: "after-sale",
           text: "退换/售后",
+          num: 3,
         },
         {
           icon: "records",
           text: "我的订单",
+          num: 4,
         },
       ],
       walletData: [
@@ -221,16 +232,16 @@ export default {
       ],
     };
   },
-  methods:{
-    fn(){
-      setTimeout(()=>{
+  methods: {
+    fn() {
+      setTimeout(() => {
         this.loading = false;
-      },3000)
-    }
+      }, 3000);
+    },
   },
- created(){
-   this.fn();
- }
+  created() {
+    this.fn();
+  },
 };
 </script>
 <style lang="less" scoped>
@@ -275,7 +286,9 @@ nav {
 .home {
   background-color: #f1f1f1;
   padding: 12px;
-  height: 100vh;
+  text-align: center;
+  height: 90vh;
+  overflow-y: auto;
   & > .avator {
     display: flex;
     & > .userinfo {
@@ -295,7 +308,6 @@ nav {
   }
   & > .mian {
     width: 350px;
-    height: calc(100vh - 50px);
     & > div {
       padding: 0 10px;
       margin-top: 8px;
@@ -351,6 +363,13 @@ nav {
           margin-top: 16.5px;
           display: flex;
           flex-flow: column;
+          position: relative;
+          & > ::v-deep .van-badge {
+            position: absolute;
+            top: -5px;
+            right: 2px;
+            z-index: 1;
+          }
         }
       }
       & > .status_footer {
@@ -379,15 +398,17 @@ nav {
     }
     & > .game,
     .serve {
-      height: 80px;
-      display: flex;
-      justify-content: space-around;
-      align-items: center;
       & > div {
+        height: 80px;
         display: flex;
-        flex-flow: column;
-        & > span {
-          margin-top: 8px;
+        justify-content: space-around;
+        align-items: center;
+        & > div {
+          display: flex;
+          flex-flow: column;
+          & > span {
+            margin-top: 8px;
+          }
         }
       }
     }
