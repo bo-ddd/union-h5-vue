@@ -1,6 +1,6 @@
 <template>
   <div class="box">
-      HomePage
+    homepage
   </div>
 </template>
 
