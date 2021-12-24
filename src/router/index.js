@@ -23,33 +23,32 @@ export const routes = [{
             icon: 'search'
         },
         children: [{
-            path: '/home',
-            name: 'HomePage',
-            meta: {
-                title: '实时数据'
+                path: '/home',
+                name: 'HomePage',
+                meta: {
+                    title: '实时数据'
+                },
+                children: [{
+                    path: '/home',
+                    name: 'HomePage',
+                    meta: {
+                        title: '实时数据'
+                    },
+                    component: () =>
+                        import ( /* webpackChunkName: "homepage" */ '../views/Home/HomePage')
+                }]
             },
-            component: () =>
-                import ( /* webpackChunkName: "homepage" */ '../views/Home/HomePage')
-        }]
-    },
-    //新品页路由 
-    {
-        path: '/newproducts',
-        name: 'NewProducts',
-        component: Layout,
-        meta: {
-            title: '新品',
-            icon: 'el-icon-data-line'
-        },
-        children: [{
-            path: '/newproducts',
-            name: 'NewProducts',
-            meta: {
-                title: '实时数据'
-            },
-            component: () =>
-                import ( /* webpackChunkName: "newproducts" */ '../views/NewProducts/NewProducts')
-        }]
+            //新品页路由 
+            {
+                path: '/newproducts',
+                name: 'NewProducts',
+                meta: {
+                    title: '实时数据'
+                },
+                component: () =>
+                    import ( /* webpackChunkName: "newproducts" */ '../views/NewProducts/NewProducts')
+            }
+        ]
 
     },
 
@@ -111,11 +110,14 @@ export const routes = [{
             },
             component: () =>
                 import ( /* webpackChunkName: "my" */ '../views/My/My')
-        }]
-
+        }, {
+            path: '/payment',
+            name: 'Payment',
+            component: () =>
+                import ( /*webpackChunkName: "payMent "*/ '../views/My/Payment.vue')
+        }, ]
     },
 ]
-
 const router = new VueRouter({
     mode: 'history',
     base: process.env.BASE_URL,

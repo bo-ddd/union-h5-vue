@@ -3,9 +3,12 @@
     <van-sticky class="wrap">
       <nav>
         <div>
-          <van-icon name="user-circle-o" size="20" />
-          <van-icon name="setting-o" size="20" />
-          <van-icon name="chat-o" size="20" />
+          <van-icon name="user-circle-o" size="20" /><van-icon
+            name="setting-o"
+            size="20"
+            @click="toSetting"
+          />
+          <van-icon name="chat-o" badge="9" size="20" />
         </div>
       </nav>
     </van-sticky>
@@ -69,7 +72,11 @@
           </div>
         </div>
         <div class="status_main">
-          <div v-for="statu in statuData" :key="statu.text">
+          <div
+            v-for="statu in statuData"
+            :key="statu.text"
+            @click="toLink(statu.path)"
+          >
             <van-badge :content="statu.num" v-if="statu.num != 0" />
             <van-icon :name="statu.icon" size="25" />
             <p>{{ statu.text }}</p>
@@ -105,20 +112,14 @@
           <div>秒批额度</div>
         </div>
       </div>
-      <div class="game" ref="game">
-        <div>
-          <div v-for="game in gameData" :key="game.text">
-            <van-icon :name="game.icon" size="25" /><span>{{ game.text }}</span>
-          </div>
+      <div class="game">
+        <div v-for="game in gameData" :key="game.text">
+          <van-icon :name="game.icon" size="25" /><span>{{ game.text }}</span>
         </div>
       </div>
-      <div class="serve" ref="serve">
-        <div>
-          <div v-for="serve in recommendData" :key="serve.text">
-            <van-icon :name="serve.icon" size="25" /><span>{{
-              serve.text
-            }}</span>
-          </div>
+      <div class="serve">
+        <div v-for="serve in recommendData" :key="serve.text">
+          <van-icon :name="serve.icon" size="25" /><span>{{ serve.text }}</span>
         </div>
       </div>
       <div class="recommend">
@@ -137,15 +138,16 @@
 
 <script>
 // @ is an alias to /src
+
 export default {
   data() {
     return {
-      loading: true,
       statuData: [
         {
           icon: "credit-pay",
           text: "待付款",
           num: 0,
+          path: "Payment",
         },
         {
           icon: "logistics",
@@ -233,14 +235,12 @@ export default {
     };
   },
   methods: {
-    fn() {
-      setTimeout(() => {
-        this.loading = false;
-      }, 3000);
+    toLink(name) {
+      this.$router.push({ name: name });
     },
-  },
-  created() {
-    this.fn();
+    toSetting() {
+      this.$router.push({ name: "Setting" });
+    },
   },
 };
 </script>
@@ -398,17 +398,15 @@ nav {
     }
     & > .game,
     .serve {
+      height: 80px;
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
       & > div {
-        height: 80px;
         display: flex;
-        justify-content: space-around;
-        align-items: center;
-        & > div {
-          display: flex;
-          flex-flow: column;
-          & > span {
-            margin-top: 8px;
-          }
+        flex-flow: column;
+        & > span {
+          margin-top: 8px;
         }
       }
     }
