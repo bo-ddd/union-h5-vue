@@ -22,21 +22,19 @@
         <van-icon name="chat-o" />
       </template>
     </van-nav-bar>
-    <van-tabbar v-model="active">
-  <van-tabbar-item icon="home-o">标签</van-tabbar-item>
-  <van-tabbar-item icon="search">标签</van-tabbar-item>
-  <van-tabbar-item icon="friends-o">标签</van-tabbar-item>
-  <van-tabbar-item icon="setting-o">标签</van-tabbar-item>
-</van-tabbar>
+    <selected></selected>
   </div>
 </template>
-
 <script>
+import selected from "@/components/Selected.vue";
 export default {
+  components: {
+    selected: selected,
+  },
   data() {
     return {
       search: "",
-      active:1,
+      active: 1,
       statuData: [
         {
           icon: "credit-pay",
@@ -73,8 +71,8 @@ export default {
     },
     back() {
       this.$router.push({
-        name:'My'
-      })
+        name: "My",
+      });
     },
     goMessage() {
       console.log("tomsg");
