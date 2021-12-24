@@ -14,7 +14,7 @@
       </van-swipe>
       <van-tabs v-model="active" animated>
         <van-tab v-for="item in title" :key="item.id" :title="item.content">
-          <selected />
+          <selected></selected>
         </van-tab>
       </van-tabs>
     </div>
@@ -22,7 +22,7 @@
 </template>
 
 <script>
-import selected from "../../components/Selected.vue";
+import selected from "@/components/Selected.vue";
 
 export default {
   components: {
@@ -48,8 +48,7 @@ export default {
     dd(){
       if(this.$refs.content.scrollTop < 200){
         this.$refs.title.style.opacity = 0.5;
-      }
-      if(this.$refs.content.scrollTop > 200){
+      }else{
         this.$refs.title.style.opacity = 1;
       }
     }
