@@ -22,7 +22,7 @@
 </template>
 
 <script>
-import selected from "../components/Selected.vue";
+import selected from "@/components/Selected.vue";
 
 export default {
   components: {

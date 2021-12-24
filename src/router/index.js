@@ -26,96 +26,60 @@ export const routes = [{
                 path: '/home',
                 name: 'HomePage',
                 meta: {
-                    title: '实时数据'
+                    title: '实时数据',
+                    icon: 'search'
                 },
-                children: [{
-                    path: '/home',
-                    name: 'HomePage',
-                    meta: {
-                        title: '实时数据'
-                    },
-                    component: () =>
-                        import ( /* webpackChunkName: "homepage" */ '../views/Home/HomePage')
-                }]
+                component: () =>
+                    import ( /* webpackChunkName: "homepage" */ '../views/Home/HomePage')
             },
-            //新品页路由 
             {
                 path: '/newproducts',
                 name: 'NewProducts',
                 meta: {
-                    title: '实时数据'
+                    title: '实时数据',
+                    icon: 'search'
                 },
                 component: () =>
-                    import ( /* webpackChunkName: "newproducts" */ '../views/NewProducts/NewProducts')
-            }
+                    import ( /* webpackChunkName: "newproducts" */ '../views/Home/NewProducts')
+            },
+            {
+                path: '/stroll',
+                name: 'Stroll',
+                meta: {
+                    title: '',
+                    icon: 'search'
+                },
+                component: () =>
+                    import ( /* webpackChunkName: "stroll" */ '../views/Home/Stroll')
+            },
+            {
+                path: '/shoppingcart',
+                name: 'ShoppingCart',
+                meta: {
+                    title: '实时数据',
+                    icon: 'search'
+                },
+                component: () =>
+                    import ( /* webpackChunkName: "shoppingcart" */ '../views/Home/ShoppingCart')
+            },
+            {
+                path: '/my',
+                name: 'My',
+                meta: {
+                    title: '实时数据',
+                    icon: 'search'
+                },
+                component: () =>
+                    import ( /* webpackChunkName: "my" */ '../views/Home/My')
+            },
         ]
 
     },
-
-    // 逛逛页路由
     {
-        path: '/stroll',
-        name: 'Stroll',
-        component: Layout,
-        meta: {
-            icon: 'el-icon-data-line'
-        },
-        children: [{
-            path: '/stroll',
-            name: 'Stroll',
-            meta: {
-                title: '实时数据'
-            },
-            component: () =>
-                import ( /* webpackChunkName: "stroll" */ '../views/Stroll/Stroll')
-        }]
-
-    },
-
-    // 购物车页面路由
-    {
-        path: '/shoppingcart',
-        name: 'ShoppingCart',
-        component: Layout,
-        meta: {
-            title: '购物车',
-            icon: 'el-icon-data-line'
-        },
-        children: [{
-            path: '/shoppingcart',
-            name: 'ShoppingCart',
-            meta: {
-                title: '实时数据'
-            },
-            component: () =>
-                import ( /* webpackChunkName: "shoppingcart" */ '../views/ShoppingCart/ShoppingCart')
-        }]
-
-    },
-
-    // 我的页面路由
-    {
-        path: '/my',
-        name: 'My',
-        component: Layout,
-        meta: {
-            title: '我的',
-            icon: 'el-icon-data-line'
-        },
-        children: [{
-            path: '/my',
-            name: 'My',
-            meta: {
-                title: '实时数据'
-            },
-            component: () =>
-                import ( /* webpackChunkName: "my" */ '../views/My/My')
-        }, {
-            path: '/payment',
-            name: 'Payment',
-            component: () =>
-                import ( /*webpackChunkName: "payMent "*/ '../views/My/Payment.vue')
-        }, ]
+        path: '/payment',
+        name: 'Payment',
+        component: () =>
+            import ( /*webpackChunkName: "payMent "*/ '../views/Payment.vue')
     },
 ]
 const router = new VueRouter({
