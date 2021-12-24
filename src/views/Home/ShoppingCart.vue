@@ -97,7 +97,6 @@ export default {
       refreshing: false,
       checkedAll: true,
       ab: true,
-      selectType :  0  // 0 : 全选  1：sub;
     };
   },
   created() {
@@ -109,8 +108,11 @@ export default {
     total: function () {
       var total = 0;
       this.list.forEach((el) => {
-        total = Number(total) + Number(el.price);
+        if(el.check){
+          total = Number(total) + Number(el.price)*el.count;
+        }
       });
+
       total += "00";
       return Number(total);
     },
@@ -157,12 +159,10 @@ export default {
       this.list[item.index].count = this.list[item.index].count - 1;
     },
     onchange() {
-      console.log('全选')
       // // 全选按钮被选中时，选中所有的子按钮
       this.list.forEach(item => item.check = this.checkedAll)
     },
     chage() {
-      console.log("sub select")
       this.checkedAll = this.list.some(item=> !item.check) ? false : true;
     },
   },
