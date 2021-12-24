@@ -81,6 +81,11 @@ export const routes = [{
         component: () =>
             import ( /*webpackChunkName: "payMent "*/ '../views/Payment.vue')
     },
+    {
+        path:'setting',
+        name:'Setting',
+        component:()=> import(/*webpackChunkName:"Setting" */ '@/views/Setting.vue')
+    }
 ]
 const router = new VueRouter({
     mode: 'history',

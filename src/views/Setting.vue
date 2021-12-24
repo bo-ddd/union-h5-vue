@@ -134,7 +134,7 @@ export default {
 
 <style scoped lang="less">
 .wrap {
-  height: 90vh;
+  height: 100vh;
   background-color: #f2f2f2;
   overflow-y: auto;
 }
