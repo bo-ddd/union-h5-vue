@@ -12,7 +12,6 @@ export const routes = [{
             title: '',
         },
     },
-
     // 首页路由 
     {
         path: '/home',
@@ -66,11 +65,10 @@ export const routes = [{
                 path: '/my',
                 name: 'My',
                 meta: {
-                    title: '实时数据',
+                    title: '我的',
                     icon: 'search'
                 },
-                component: () =>
-                    import ( /* webpackChunkName: "my" */ '../views/Home/My')
+                component: () => import ( /* webpackChunkName: "my" */ '../views/Home/My'),
             },
         ]
 
@@ -78,8 +76,7 @@ export const routes = [{
     {
         path: '/payment',
         name: 'Payment',
-        component: () =>
-            import ( /*webpackChunkName: "payMent "*/ '../views/Payment.vue')
+        component: () => import ( /*webpackChunkName: "payMent "*/ '../views/Payment.vue'),
     },
     {
         path:'setting',
