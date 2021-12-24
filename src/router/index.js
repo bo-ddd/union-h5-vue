@@ -28,6 +28,16 @@ export const routes = [{
             meta: {
                 title: '实时数据'
             },
+            children:[{
+                path:"/home/first",
+                name:'first',
+                meta:{
+                    title:'首页'
+                },
+                component: () =>
+                import ( /* webpackChunkName: "backList" */ '../views/Home/first.vue')
+
+            }],
             component: () =>
                 import ( /* webpackChunkName: "homepage" */ '../views/Home/HomePage')
         }]
