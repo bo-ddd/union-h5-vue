@@ -6,6 +6,7 @@
           <van-icon name="user-circle-o" size="20" /><van-icon
             name="setting-o"
             size="20"
+            @click="toSetting"
           />
           <van-icon name="chat-o" badge="9" size="20" />
         </div>
@@ -71,8 +72,12 @@
           </div>
         </div>
         <div class="status_main">
-          <div v-for="statu in statuData" :key="statu.text">
-            <van-badge :content="statu.num"  v-if="statu.num != 0"/>
+          <div
+            v-for="statu in statuData"
+            :key="statu.text"
+            @click="toLink(statu.path)"
+          >
+            <van-badge :content="statu.num" v-if="statu.num != 0" />
             <van-icon :name="statu.icon" size="25" />
             <p>{{ statu.text }}</p>
           </div>
@@ -137,32 +142,32 @@
 export default {
   data() {
     return {
-      loading: true,
       statuData: [
         {
           icon: "credit-pay",
           text: "待付款",
-          num:0,
+          num: 0,
+          path: "Payment",
         },
         {
           icon: "logistics",
           text: "待收货",
-          num:1
+          num: 1,
         },
         {
           icon: "edit",
           text: "待评价",
-          num:2
+          num: 2,
         },
         {
           icon: "after-sale",
           text: "退换/售后",
-          num:3
+          num: 3,
         },
         {
           icon: "records",
           text: "我的订单",
-          num:4
+          num: 4,
         },
       ],
       walletData: [
@@ -230,14 +235,12 @@ export default {
     };
   },
   methods: {
-    fn() {
-      setTimeout(() => {
-        this.loading = false;
-      }, 3000);
+    toLink(name) {
+      this.$router.push({ name: name });
     },
-  },
-  created() {
-    this.fn();
+    toSetting() {
+      this.$router.push({ name: "Setting" });
+    },
   },
 };
 </script>
@@ -355,13 +358,13 @@ nav {
         display: flex;
         justify-content: space-around;
         align-items: center;
-        height: 65px; 
+        height: 65px;
         & > div {
           margin-top: 16.5px;
           display: flex;
           flex-flow: column;
           position: relative;
-          & > ::v-deep .van-badge{
+          & > ::v-deep .van-badge {
             position: absolute;
             top: -5px;
             right: 2px;
