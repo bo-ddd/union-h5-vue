@@ -1,7 +1,7 @@
 <template>
   <div class="home">
       <van-tabbar v-model="active" class="nav">
-         <van-tabbar-item  v-for="(link, index) in routes" :key="index" replace :to="link.path" icon="home-o">
+         <van-tabbar-item  v-for="(link, index) in routes[0].children" :key="index" replace :to="link.path" icon="home-o">
            {{ link.meta.title }}</van-tabbar-item>
       </van-tabbar>
   </div>
@@ -22,6 +22,9 @@ export default {
   computed: {
         ...mapGetters(['routes'])
     },
+    created(){
+      console.log(this.routes[0].children);
+    }
 };
 </script>
 
