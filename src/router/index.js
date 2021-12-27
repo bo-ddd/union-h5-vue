@@ -65,6 +65,15 @@ export const routes = [{
                     component: () =>
                     import ( /* webpackChunkName: "backList" */ '../views/third.vue')
     
+                },{
+                    path:"/home/fifth",
+                    name:'fifth',
+                    meta:{
+                        title:'数码'
+                    },
+                    component: () =>
+                    import ( /* webpackChunkName: "backList" */ '../views/fifth.vue')
+    
                 }],
             },
             {
