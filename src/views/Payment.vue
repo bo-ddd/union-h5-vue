@@ -22,21 +22,37 @@
         <van-icon name="chat-o" />
       </template>
     </van-nav-bar>
-    <van-tabbar v-model="active">
-  <van-tabbar-item icon="home-o">标签</van-tabbar-item>
-  <van-tabbar-item icon="search">标签</van-tabbar-item>
-  <van-tabbar-item icon="friends-o">标签</van-tabbar-item>
-  <van-tabbar-item icon="setting-o">标签</van-tabbar-item>
-</van-tabbar>
+    <van-tabs>
+      <van-tab v-for="item in statuData" :title="item.text" :key="item.num">
+        <div class="product_info">
+          <van-card
+            num="2"
+            price="2.00"
+            desc="描述信息"
+            title="商品标题"
+            thumb="https://img01.yzcdn.cn/vant/ipad.jpeg"
+          >
+            <template #tags>
+              <van-tag plain type="danger">标签</van-tag>
+              <van-tag plain type="danger">标签</van-tag>
+            </template>
+            <template #footer>
+              <van-button size="mini">按钮</van-button>
+              <van-button size="mini">按钮</van-button>
+            </template>
+          </van-card>
+        </div>
+      </van-tab>
+    </van-tabs>
   </div>
 </template>
-
 <script>
+import { mapGetters } from "vuex";
 export default {
   data() {
     return {
       search: "",
-      active:1,
+      active: 1,
       statuData: [
         {
           icon: "credit-pay",
@@ -67,14 +83,17 @@ export default {
       ],
     };
   },
+  computed: {
+    ...mapGetters(["routes"]),
+  },
   methods: {
     onSearch() {
       console.log("search");
     },
     back() {
       this.$router.push({
-        name:'My'
-      })
+        name: "My",
+      });
     },
     goMessage() {
       console.log("tomsg");
@@ -84,4 +103,7 @@ export default {
 </script>
 
 <style scoped lang="less">
+.product_info{
+  margin-top: 20px;
+}
 </style>

@@ -13,16 +13,7 @@
     </div>
     <div class="banner-out" ref="wrap">
         <div class="banner-content">
-            <div class="banner">
-                <van-image width="136px" height="76px" src="https://img01.yzcdn.cn/vant/cat.jpeg"/>
-            </div>
-            <div class="banner">
-                <van-image width="136px" height="76px" src="https://img01.yzcdn.cn/vant/cat.jpeg"/>
-            </div>
-            <div class="banner">
-                <van-image width="136px" height="76px" src="https://img01.yzcdn.cn/vant/cat.jpeg"/>
-            </div>
-            <div class="banner">
+            <div class="banner" v-for="item in 5" :key="item">
                 <van-image width="136px" height="76px" src="https://img01.yzcdn.cn/vant/cat.jpeg"/>
             </div>
         </div>

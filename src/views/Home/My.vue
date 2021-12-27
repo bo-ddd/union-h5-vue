@@ -31,7 +31,11 @@
     </div>
     <section class="mian">
       <div class="plus">
-        <div class="plus_one ft-10">购物十倍返京豆</div>
+        <div class="plus_one ft-10">
+          <img src="@/assets/images/title-1.png" alt="" class="title_img" />
+          <span></span>
+          <span>购物十倍返京豆</span>
+        </div>
         <div>
           <van-image
             src="https://img01.yzcdn.cn/vant/cat.jpeg"
@@ -320,8 +324,19 @@ nav {
       justify-content: space-between;
       background-color: #fefbea;
       align-items: center;
+      position: relative;
+      & > .plus_one{
+        margin-top: 12px;
+      }
       & > .ft-10 {
         color: #a18048;
+        & > .title_img {
+          width: 120px;
+          height: 23px;
+          position: absolute;
+          top: 0;
+          left: -2px;
+        }
       }
       & > div {
         display: flex;
