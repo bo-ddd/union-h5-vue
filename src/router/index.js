@@ -25,12 +25,48 @@ export const routes = [{
         children: [{
                 path: '/home',
                 name: 'HomePage',
+                component:() =>import ( /* webpackChunkName: "homepage" */ '../views/Home/HomePage'),
                 meta: {
-                    title: '实时数据',
+                    title: '首页',
                     icon: 'search'
                 },
-                component: () =>
-                    import ( /* webpackChunkName: "homepage" */ '../views/Home/HomePage')
+                children:[{
+                    path:"/home/first",
+                    name:'first',
+                    meta:{
+                        title:'首页'
+                    },
+                    component: () =>
+                    import ( /* webpackChunkName: "backList" */ '../views/first.vue')
+    
+                },{
+                    path:"/home/second",
+                    name:'second',
+                    meta:{
+                        title:'手机'
+                    },
+                    component: () =>
+                    import ( /* webpackChunkName: "backList" */ '../views/second.vue')
+    
+                },{
+                    path:"/home/fouth",
+                    name:'fouth',
+                    meta:{
+                        title:'生活'
+                    },
+                    component: () =>
+                    import ( /* webpackChunkName: "backList" */ '../views/fouth.vue')
+    
+                },{
+                    path:"/home/third",
+                    name:'third',
+                    meta:{
+                        title:'箱包'
+                    },
+                    component: () =>
+                    import ( /* webpackChunkName: "backList" */ '../views/third.vue')
+    
+                }],
             },
             {
                 path: '/newproducts',

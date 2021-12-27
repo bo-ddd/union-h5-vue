@@ -20,7 +20,7 @@
       </div>
       <nav class="nav">
         <nav class="nav-left" :router ="true">
-          <span  v-for="item in routes[0].children[0].children" :key='item.meta.title' replace :to="item.path">{{item.meta.title}}</span>
+           <span v-for="(item, index) in  routes[0].children[0].children" :key="index" replace @click="nav(item.path)">{{item.meta.title}} </span>
         </nav>
           <!-- <van-tabbar  class="nav-left">
          <van-tabbar-item  v-for="(link, index) in  routes[0].children[0].children" :key="index" replace :to="link.path">
@@ -44,9 +44,17 @@ export default {
     };
   },
   created(){
-    console.log(this.item)
+
   },
-    computed: {
+  methods:{
+    nav(path){
+      if(this.$route.path == path) return;
+      this.$router.push({
+        path
+      })
+    }
+  },
+  computed: {
     ...mapGetters(["routes"]),
     
   },
@@ -94,6 +102,9 @@ export default {
         &>span{
           margin-right: 15px;
         }
+        &>span:hover{
+          font-size: 22px;
+        }
       }
       & .nav-right{
         width: 20%;
@@ -102,5 +113,13 @@ export default {
       }
     }
   }
+}
+::v-deep .van-tabbar--fixed{
+  position: relative;
+  left: 0;
+  bottom: 0;
+}
+::v-deep .van-hairline--top-bottom::after{
+  border:none
 }
 </style>
