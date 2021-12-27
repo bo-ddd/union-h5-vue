@@ -23,7 +23,7 @@ export default {
         ...mapGetters(['routes'])
     },
     created(){
-      console.log(this.routes[0].children);
+      
     }
 };
 </script>
