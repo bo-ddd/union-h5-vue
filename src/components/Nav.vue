@@ -1,30 +1,39 @@
 <template>
   <div class="home">
-      <van-tabbar v-model="active" class="nav">
-         <van-tabbar-item  v-for="(link, index) in routes[0].children" :key="index" replace :to="link.path" icon="home-o">
-           {{ link.meta.title }}</van-tabbar-item>
-      </van-tabbar>
+    <van-tabbar v-model="defaultActive" class="nav">
+      <van-tabbar-item
+        v-for="(link, index) in routes[0].children"
+        :key="index"
+        replace
+        :to="link.path"
+        icon="home-o"
+        :name="link.name"
+      >
+        {{ link.meta.title }}</van-tabbar-item
+      >
+    </van-tabbar>
   </div>
 </template>
 
 <script>
-import {
-    mapGetters,
-} from 'vuex';
-
+import { mapGetters } from "vuex";
 export default {
-    name:'Nav',
+  name: "Nav",
   data() {
-    return {
-      active: 0,
-    };
+    return {};
   },
   computed: {
-        ...mapGetters(['routes'])
+    ...mapGetters(["routes"]),
+    defaultActive: {
+      get: function () {
+        return this.$route.name;
+      },
+      set: function () {
+        return this.$route.name;
+      },
     },
-    created(){
-      
-    }
+  },
+  created() {},
 };
 </script>
 

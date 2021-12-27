@@ -29,7 +29,53 @@ export const routes = [{
             icon: 'search'
         },
         component: () =>
-            import( /* webpackChunkName: "homepage" */ '../views/Home/HomePage')
+            import( /* webpackChunkName: "homepage" */ '../views/Home/HomePage'),
+        children: [{
+            path: "/home/first",
+            name: 'first',
+            meta: {
+                title: '首页'
+            },
+            component: () =>
+                import( /* webpackChunkName: "backList" */ '../views/first.vue')
+
+        }, {
+            path: "/home/second",
+            name: 'second',
+            meta: {
+                title: '手机'
+            },
+            component: () =>
+                import( /* webpackChunkName: "backList" */ '../views/second.vue')
+
+        }, {
+            path: "/home/fouth",
+            name: 'fouth',
+            meta: {
+                title: '生活'
+            },
+            component: () =>
+                import( /* webpackChunkName: "backList" */ '../views/fouth.vue')
+
+        }, {
+            path: "/home/third",
+            name: 'third',
+            meta: {
+                title: '箱包'
+            },
+            component: () =>
+                import( /* webpackChunkName: "backList" */ '../views/third.vue')
+
+        }, {
+            path: "/home/fifth",
+            name: 'fifth',
+            meta: {
+                title: '数码'
+            },
+            component: () =>
+                import( /* webpackChunkName: "backList" */ '../views/fifth.vue')
+
+        }],
     },
     {
         path: '/newproducts',
@@ -84,7 +130,7 @@ export const routes = [{
             icon: "credit-pay",
             title: '待付款'
         },
-        component:()=> import (/* webpackChunkName :'Obligation' */ '../views/Payment/Obligation.vue')
+        component: () => import(/* webpackChunkName :'Obligation' */ '../views/Payment/Obligation.vue')
     },
     {
         path: '/payment/waitreceiving',
@@ -93,7 +139,7 @@ export const routes = [{
             icon: "logistics",
             title: '待收货'
         },
-        component:()=> import (/* webpackChunkName :'Waitreceiving' */ '../views/Payment/Waitreceiving.vue')
+        component: () => import(/* webpackChunkName :'Waitreceiving' */ '../views/Payment/Waitreceiving.vue')
     },
     {
         path: '/payment/remainevaluated',
@@ -102,7 +148,7 @@ export const routes = [{
             icon: "edit",
             title: '待评价'
         },
-        component:()=> import (/* webpackChunkName :'Remainevaluated' */ '../views/Payment/Remainevaluated.vue')
+        component: () => import(/* webpackChunkName :'Remainevaluated' */ '../views/Payment/Remainevaluated.vue')
     },
     {
         path: '/payment/aftersale',
@@ -111,7 +157,7 @@ export const routes = [{
             icon: "after-sale",
             title: '退换/售后'
         },
-        component:()=> import (/* webpackChunkName :'Aftersale' */ '../views/Payment/Aftersale.vue')
+        component: () => import(/* webpackChunkName :'Aftersale' */ '../views/Payment/Aftersale.vue')
 
     },
     {
@@ -121,7 +167,7 @@ export const routes = [{
             icon: "records",
             title: '我的订单'
         },
-        component:()=> import (/* webpackChunkName :'Myorder' */ '../views/Payment/Myorder.vue')
+        component: () => import(/* webpackChunkName :'Myorder' */ '../views/Payment/Myorder.vue')
     }]
 },
 {
