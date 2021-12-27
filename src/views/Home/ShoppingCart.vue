@@ -123,7 +123,6 @@ export default {
           this.list = [];
           this.refreshing = false;
         }
-
         for (let i = 0; i < 10; i++) {
           this.list.push({
             title: "摄像头",

@@ -163,4 +163,7 @@ export default {
   border-radius: 5px;
   overflow: hidden;
 }
+.logout{
+  margin: 20px;
+}
 </style>
