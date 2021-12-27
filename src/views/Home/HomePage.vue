@@ -36,18 +36,7 @@
           <span>分类</span>
         </nav>
       </nav>
-      <section class="banner">
-        <section class="carousel">
-          <van-swipe class="my-swipe" :autoplay="30000" indicator-color="white">
-            <van-swipe-item>
-              <img src="../../assets/images/jd.png" alt="" srcset="">
-            </van-swipe-item>
-            <van-swipe-item>2</van-swipe-item>
-            <van-swipe-item>3</van-swipe-item>
-            <van-swipe-item>4</van-swipe-item>
-          </van-swipe>
-        </section>
-      </section>
+    
     </header>
     <section class="content">
       <router-view></router-view>
@@ -89,16 +78,16 @@ export default {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 10px 15px;
+      padding: 5px 15px 0 15px;
       & .logo {
-        width: 40px;
-        height: 40px;
+        width: 35px;
+        height: 35px;
         & > img {
           width: 100%;
         }
       }
       & .header_right {
-        font-size: 35px;
+        font-size: 30px;
         color: #fff;
         & > .van-icon {
           margin-right: 10px;
@@ -119,13 +108,13 @@ export default {
         height: 100%;
         background-color: #fb4633;
         line-height: 30px;
-        font-size: 20px;
+        font-size: 18px;
         color: #fff;
         & > span {
           margin-right: 8px;
         }
         & > span:hover {
-          font-size: 22px;
+          font-size: 20px;
         }
       }
       & .nav-right {
@@ -143,32 +132,11 @@ export default {
           font-size: 30px;
         }
         & > span {
-          font-size: 20px;
+          font-size: 18px;
         }
       }
     }
-    & .banner {
-      height: 200px;
-      background-color: aqua;
-      display: flex;
-      justify-content: center;
-      & .carousel{
-        width: 340px;
-        height: 120px;
-        border-radius: 15px;
-        & .my-swipe .van-swipe-item {
-          color: #fff;
-          font-size: 20px;
-          line-height: 150px;
-          text-align: center;
-          background-color: #39a9ed;
-          &>img{
-            width: 340px;
-            height: 120px;
-          }
-        }
-      }
-    }
+   
   }
 }
 ::v-deep .van-tabbar--fixed {
