@@ -22,7 +22,7 @@
           </template>
         </van-cell>
       </div>
-      <van-cell value="内容" is-link inset>
+      <van-cell value="内容" is-link inset value-class="ft-12">
         <!-- 使用 title 插槽来自定义标题 -->
         <template #title>
           <span>地址管理</span>
@@ -30,7 +30,7 @@
       </van-cell>
     </div>
     <div class="main">
-      <van-cell is-link v-for="(data, index) in cellData" :key="index" inset>
+      <van-cell is-link v-for="(data, index) in cellData" :key="index" inset value-class="ft-12">
         <template>
           <span>{{ data.text }}</span>
         </template>
@@ -40,7 +40,7 @@
       </van-cell>
     </div>
     <div class="footer">
-      <van-cell is-link v-for="(data, index) in footerData" :key="index" inset>
+      <van-cell is-link v-for="(data, index) in footerData" :key="index" inset value-class="ft-12">
         <template>
           <span>{{ data.text }}</span>
         </template>
@@ -133,6 +133,9 @@ export default {
 </script>
 
 <style scoped lang="less">
+.ft-12{
+  font-size: 12px;
+}
 .wrap {
   height: 100vh;
   background-color: #f2f2f2;
