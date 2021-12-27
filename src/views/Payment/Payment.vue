@@ -22,59 +22,54 @@
         <van-icon name="chat-o" />
       </template>
     </van-nav-bar>
-    <van-tabbar v-model="active">
-  <van-tabbar-item icon="home-o">标签</van-tabbar-item>
-  <van-tabbar-item icon="search">标签</van-tabbar-item>
-  <van-tabbar-item icon="friends-o">标签</van-tabbar-item>
-  <van-tabbar-item icon="setting-o">标签</van-tabbar-item>
-</van-tabbar>
+    <van-tabs v-model="defaultTag">
+      <van-tab
+        v-for="item in routes[1].children"
+        :title="item.meta.title"
+        :key="item.path"
+        :name="item.name"
+        :to="item.path"
+      >
+        <router-view />
+      </van-tab>
+    </van-tabs>
   </div>
 </template>
-
 <script>
+import { mapGetters } from "vuex";
 export default {
   data() {
     return {
+      value: 2,
       search: "",
-      active:1,
-      statuData: [
-        {
-          icon: "credit-pay",
-          text: "待付款",
-          num: 0,
-          path: "Payment",
-        },
-        {
-          icon: "logistics",
-          text: "待收货",
-          num: 1,
-        },
-        {
-          icon: "edit",
-          text: "待评价",
-          num: 2,
-        },
-        {
-          icon: "after-sale",
-          text: "退换/售后",
-          num: 3,
-        },
-        {
-          icon: "records",
-          text: "我的订单",
-          num: 4,
-        },
-      ],
+      active: 1,
     };
   },
+  computed: {
+    ...mapGetters(["routes"]),
+    defaultTag: {
+      get: function () {
+        return this.$route.name;
+      },
+      set: function () {
+        return this.$route.name;
+      },
+    },
+  },
+  created(){
+  },
   methods: {
+    onSubmit() {},
     onSearch() {
       console.log("search");
     },
+    removeProduct() {
+      console.log();
+    },
     back() {
       this.$router.push({
-        name:'My'
-      })
+        name: "My",
+      });
     },
     goMessage() {
       console.log("tomsg");
@@ -84,4 +79,21 @@ export default {
 </script>
 
 <style scoped lang="less">
+.product_info {
+  margin-top: 20px;
+}
+.check {
+  position: absolute;
+  top: 40%;
+  left: 5px;
+  z-index: 1;
+}
+.goods-card {
+  margin: 0;
+  background-color: white;
+}
+
+.delete-button {
+  height: 100%;
+}
 </style>

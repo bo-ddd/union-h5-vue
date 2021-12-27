@@ -3,7 +3,7 @@
     <header class="header">
       <div class="header_header">
         <div class="logo">
-          <img src="../../assets/images/jd.png" alt="" srcset="">
+          <img src="../../assets/images/jd.png" alt="" srcset="" />
         </div>
         <div class="header_right">
           <van-icon name="hot-sale" />
@@ -19,15 +19,35 @@
         />
       </div>
       <nav class="nav">
-        <nav class="nav-left" :router ="true">
-          <span  v-for="item in routes[0].children[0].children" :key='item.meta.title' replace :to="item.path">{{item.meta.title}}</span>
+        <nav class="nav-left" >
+          <span
+            v-for="(item, index) in routes[0].children[0].children"
+            :key="index"
+            @click="nav(item.path)"
+            >{{ item.meta.title }}
+          </span>
         </nav>
-          <!-- <van-tabbar  class="nav-left">
+        <!-- <van-tabbar  class="nav-left">
          <van-tabbar-item  v-for="(link, index) in  routes[0].children[0].children" :key="index" replace :to="link.path">
            {{ link.meta.title }}</van-tabbar-item>
       </van-tabbar> -->
-        <nav class="nav-right"></nav>
+        <nav class="nav-right" @click="toSetting">
+          <van-icon name="bars" />
+          <span>分类</span>
+        </nav>
       </nav>
+      <section class="banner">
+        <section class="carousel">
+          <van-swipe class="my-swipe" :autoplay="30000" indicator-color="white">
+            <van-swipe-item>
+              <img src="../../assets/images/jd.png" alt="" srcset="">
+            </van-swipe-item>
+            <van-swipe-item>2</van-swipe-item>
+            <van-swipe-item>3</van-swipe-item>
+            <van-swipe-item>4</van-swipe-item>
+          </van-swipe>
+        </section>
+      </section>
     </header>
     <section class="content">
       <router-view></router-view>
@@ -43,12 +63,20 @@ export default {
       value: "",
     };
   },
-  created(){
-    console.log(this.item)
+  created() {},
+  methods: {
+    nav(path) {
+      if (this.$route.path == path) return;
+      this.$router.push({
+        path,
+      });
+    },
+    toSetting() {
+      this.$router.push({ name: "Setting" });
+    },
   },
-    computed: {
+  computed: {
     ...mapGetters(["routes"]),
-    
   },
 };
 </script>
@@ -56,16 +84,16 @@ export default {
 <style lang="less" scoped>
 .box {
   & .header {
-    padding: 15px;
     background-color: #fb4633;
     & .header_header {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      & .logo{
-        width: 45px;
-        height: 45px;
-        &>img{
+      padding: 10px 15px;
+      & .logo {
+        width: 40px;
+        height: 40px;
+        & > img {
           width: 100%;
         }
       }
@@ -77,30 +105,78 @@ export default {
         }
       }
     }
-    & .van-search{
-      padding: 5px 0;
+    & .van-search {
+      padding: 5px 15px;
     }
-    & .nav{
+    & .nav {
       width: 100%;
-      height: 40px;
+      height: 30px;
       display: flex;
-      & .nav-left{
+      padding: 0 15px;
+      box-sizing: border-box;
+      & .nav-left {
         width: 80%;
         height: 100%;
         background-color: #fb4633;
-        line-height: 40px;
+        line-height: 30px;
         font-size: 20px;
         color: #fff;
-        &>span{
-          margin-right: 15px;
+        & > span {
+          margin-right: 8px;
+        }
+        & > span:hover {
+          font-size: 22px;
         }
       }
-      & .nav-right{
+      & .nav-right {
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        flex-wrap: wrap;
+        justify-content: center;
         width: 20%;
         height: 100%;
         background-color: #fb4633;
+        color: #fff;
+        line-height: 40px;
+        & > .van-icon {
+          font-size: 30px;
+        }
+        & > span {
+          font-size: 20px;
+        }
+      }
+    }
+    & .banner {
+      height: 200px;
+      background-color: aqua;
+      display: flex;
+      justify-content: center;
+      & .carousel{
+        width: 340px;
+        height: 120px;
+        border-radius: 15px;
+        & .my-swipe .van-swipe-item {
+          color: #fff;
+          font-size: 20px;
+          line-height: 150px;
+          text-align: center;
+          background-color: #39a9ed;
+          &>img{
+            width: 340px;
+            height: 120px;
+          }
+        }
       }
     }
   }
+}
+::v-deep .van-tabbar--fixed {
+  position: relative;
+  left: 0;
+  bottom: 0;
+}
+::v-deep .van-hairline--top-bottom::after {
+  border: none;
 }
 </style>

@@ -31,7 +31,11 @@
     </div>
     <section class="mian">
       <div class="plus">
-        <div class="plus_one ft-10">购物十倍返京豆</div>
+        <div class="plus_one ft-10">
+          <img src="@/assets/images/title-1.png" alt="" class="title_img" />
+          <span></span>
+          <span>购物十倍返京豆</span>
+        </div>
         <div>
           <van-image
             src="https://img01.yzcdn.cn/vant/cat.jpeg"
@@ -73,13 +77,13 @@
         </div>
         <div class="status_main">
           <div
-            v-for="statu in statuData"
+            v-for="statu in routes[1].children"
             :key="statu.text"
-            @click="toLink(statu.path)"
+            @click="toLink(statu.name)"
           >
-            <van-badge :content="statu.num" v-if="statu.num != 0" />
-            <van-icon :name="statu.icon" size="25" />
-            <p>{{ statu.text }}</p>
+            <van-badge :content="statu.num" v-if="statu.num" />
+            <van-icon :name="statu.meta.icon" size="25" />
+            <p>{{ statu.meta.title }}</p>
           </div>
         </div>
         <div class="status_footer ft-10 gary">
@@ -138,7 +142,7 @@
 
 <script>
 // @ is an alias to /src
-
+import { mapGetters } from "vuex";
 export default {
   data() {
     return {
@@ -234,6 +238,12 @@ export default {
       ],
     };
   },
+  computed: {
+    ...mapGetters(["routes"])
+  },
+  created(){
+   console.log(this.routes[1].children);
+  },
   methods: {
     toLink(name) {
       this.$router.push({ name: name });
@@ -320,8 +330,19 @@ nav {
       justify-content: space-between;
       background-color: #fefbea;
       align-items: center;
+      position: relative;
+      & > .plus_one {
+        margin-top: 12px;
+      }
       & > .ft-10 {
         color: #a18048;
+        & > .title_img {
+          width: 120px;
+          height: 23px;
+          position: absolute;
+          top: 0;
+          left: -2px;
+        }
       }
       & > div {
         display: flex;
