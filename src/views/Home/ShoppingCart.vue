@@ -40,11 +40,7 @@
               :key="item.id"
               style="margin-rop: 10px"
             >
-              <van-checkbox
-                class="check"
-                @change="chage"
-                v-model="item.check"
-              >
+              <van-checkbox class="check" @change="chage" v-model="item.check">
               </van-checkbox>
               <van-card
                 :price="item.price"
@@ -66,6 +62,7 @@
                   text="删除"
                   type="danger"
                   class="delete-button"
+                  @click="del(item)"
                 />
               </template>
             </van-swipe-cell>
@@ -74,7 +71,9 @@
       </div>
       <div>
         <van-submit-bar :price="total" button-text="提交订单">
-          <van-checkbox v-model="checkedAll" @click="onchange">全选</van-checkbox>
+          <van-checkbox v-model="checkedAll" @click="onchange"
+            >全选</van-checkbox
+          >
           <template #tip>
             你的收货地址不支持同城送, <span>修改地址</span>
           </template>
@@ -108,8 +107,8 @@ export default {
     total: function () {
       var total = 0;
       this.list.forEach((el) => {
-        if(el.check){
-          total = Number(total) + Number(el.price)*el.count;
+        if (el.check) {
+          total = Number(total) + Number(el.price) * Number(el.count);
         }
       });
 
@@ -153,6 +152,7 @@ export default {
       this.onLoad();
     },
     onplus(item) {
+      console.log(item);
       this.list[item.index].count = this.list[item.index].count + 1;
     },
     onminus(item) {
@@ -160,10 +160,17 @@ export default {
     },
     onchange() {
       // // 全选按钮被选中时，选中所有的子按钮
-      this.list.forEach(item => item.check = this.checkedAll)
+      this.list.forEach((item) => (item.check = this.checkedAll));
     },
     chage() {
-      this.checkedAll = this.list.some(item=> !item.check) ? false : true;
+      this.checkedAll = this.list.some((item) => !item.check) ? false : true;
+    },
+    del(item) {
+      this.list.splice(item.index, 1);
+      this.list.forEach((e, index) => {
+        e.index = index;
+      });
+      console.log(this.list);
     },
   },
 };
