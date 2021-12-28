@@ -24,8 +24,8 @@
         </template>
         <template #left>
           <div class="title-left">
-            <van-icon name="like-o" @click="follow">关注</van-icon>
-            <van-icon ref="isfollowRef" display = "none">已关注</van-icon>
+            <van-icon name="like-o" v-if="flag" @click="follow">关注</van-icon>
+            <span v-else @click="follow">已关注</span>
           </div>
         </template>
       </van-nav-bar>
@@ -238,15 +238,8 @@ export default {
     };
   },
   methods: {
-    follow(e){
+    follow(){
       this.flag = !this.flag;
-      if(this.flag){
-        e.target.style.display = "none";
-        this.$refs.isfollowRef.style.display = "block";
-      }else{
-        e.target.style.display = "block";
-        this.$refs.isfollowRef.style.display = "none";
-      }
     },
     onSelect(action) {
       Toast(action.text);
@@ -304,6 +297,8 @@ export default {
       padding: 5px 0;
       background: #f574f5;
       border-radius: 16px;
+      font-size: 10px;
+      color: #646566;
     }
     & .title-middle {
       background: black;
