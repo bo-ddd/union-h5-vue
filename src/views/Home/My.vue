@@ -294,7 +294,7 @@ nav {
   }
 }
 .home {
-  background-color: #f1f1f1;
+  background-image: linear-gradient(#eca641, #f1f1f1 30%);
   padding: 12px;
   text-align: center;
   height: 90vh;
