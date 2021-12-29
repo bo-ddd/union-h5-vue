@@ -241,9 +241,6 @@ export default {
   computed: {
     ...mapGetters(["routes"]),
   },
-  created() {
-    console.log(this.routes[1].children);
-  },
   methods: {
     toLink(name) {
       this.$router.push({ name: name });
