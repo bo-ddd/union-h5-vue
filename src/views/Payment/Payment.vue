@@ -52,12 +52,11 @@ export default {
         return this.$route.name;
       },
       set: function () {
-        return this.$route.name;
+        this.$route.name;
       },
     },
   },
-  created(){
-  },
+  created() {},
   methods: {
     onSubmit() {},
     onSearch() {
@@ -79,7 +78,7 @@ export default {
 </script>
  
 <style scoped lang="less">
-::-webkit-scrollbar{
+::-webkit-scrollbar {
   width: 0;
 }
 .product_info {
