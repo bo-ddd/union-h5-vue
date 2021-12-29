@@ -19,12 +19,12 @@
       </section>
     </section>
     <section>
-      <van-grid :column-num="5">
+      <van-grid :column-num="5" :border="false">
         <van-grid-item
-          v-for="value in 10"
-          :key="value"
-          icon="photo-o"
-          text="文字"
+          v-for="(value,index) in values"
+          :key="index"
+          :icon= value.icon
+          :text= "value.text"
         />
       </van-grid>
     </section>
@@ -34,10 +34,46 @@
 export default{
     data(){
         return{
-            value:{
+            values:[{
                 icon:'photo-o',
                 text:'手机'
-            }
+            },
+            {
+                icon:'gift-card',
+                text:'电脑'
+            },
+            {
+                icon:'photo-o',
+                text:'平板'
+            },
+            {
+                icon:'graphic',
+                text:'手机'
+            },
+            {
+                icon:'photo-o',
+                text:'手机'
+            },
+            {
+                icon:'photo-o',
+                text:'手机'
+            },
+            {
+                icon:'photo-o',
+                text:'手机'
+            },
+            {
+                icon:'photo-o',
+                text:'手机'
+            },
+            {
+                icon:'photo-o',
+                text:'手机'
+            },
+            {
+                icon:'photo-o',
+                text:'手机'
+            }],
         }
     }
 }
@@ -65,6 +101,7 @@ export default{
   }
   ::v-deep .van-grid-item__content{
       padding: 5px;
+      
   }
 }
 </style>

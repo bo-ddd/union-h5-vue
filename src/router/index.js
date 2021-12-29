@@ -22,10 +22,10 @@ export const routes = [{
         icon: 'search'
     },
     children: [{
-        path: '/home',
+        path: '/home/first',
         name: 'HomePage',
         meta: {
-            title: '实时数据',
+            title: '首页',
             icon: 'search'
         },
         component: () =>
