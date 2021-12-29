@@ -29,7 +29,7 @@ export const routes = [{
             icon: 'search'
         },
         component: () =>
-            import( /* webpackChunkName: "homepage" */ '../views/Home/HomePage'),
+            import( /* webpackChunkName: "homepage" */ '../views/Home/HomePage/HomePage.vue'),
         children: [{
             path: "/home/first",
             name: 'first',
@@ -37,7 +37,7 @@ export const routes = [{
                 title: '首页'
             },
             component: () =>
-                import( /* webpackChunkName: "backList" */ '../views/first.vue')
+                import( /* webpackChunkName: "backList" */ '../views/Home/HomePage/first.vue')
 
         }, {
             path: "/home/second",
@@ -46,25 +46,25 @@ export const routes = [{
                 title: '手机'
             },
             component: () =>
-                import( /* webpackChunkName: "backList" */ '../views/second.vue')
-
-        }, {
-            path: "/home/fouth",
-            name: 'fouth',
-            meta: {
-                title: '生活'
-            },
-            component: () =>
-                import( /* webpackChunkName: "backList" */ '../views/fouth.vue')
+                import( /* webpackChunkName: "backList" */ '../views/Home/HomePage/second.vue')
 
         }, {
             path: "/home/third",
             name: 'third',
             meta: {
+                title: '生活'
+            },
+            component: () =>
+                import( /* webpackChunkName: "backList" */ '../views/Home/HomePage/third.vue')
+
+        }, {
+            path: "/home/fouth",
+            name: 'fouth',
+            meta: {
                 title: '箱包'
             },
             component: () =>
-                import( /* webpackChunkName: "backList" */ '../views/third.vue')
+                import( /* webpackChunkName: "backList" */ '../views/Home/HomePage/fouth.vue')
 
         }, {
             path: "/home/fifth",
@@ -73,7 +73,7 @@ export const routes = [{
                 title: '数码'
             },
             component: () =>
-                import( /* webpackChunkName: "backList" */ '../views/fifth.vue')
+                import( /* webpackChunkName: "backList" */ '../views/Home/HomePage/fifth.vue')
 
         }],
     },
@@ -85,7 +85,7 @@ export const routes = [{
             icon: 'search'
         },
         component: () =>
-            import( /* webpackChunkName: "newproducts" */ '../views/Home/NewProducts')
+            import( /* webpackChunkName: "newproducts" */ '../views/Home/NewProducts'),
     },
     {
         path: '/stroll',
