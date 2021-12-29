@@ -22,14 +22,14 @@ export const routes = [{
         icon: 'search'
     },
     children: [{
-        path: '/home',
+        path: '/home/first',
         name: 'HomePage',
         meta: {
-            title: '实时数据',
+            title: '首页',
             icon: 'search'
         },
         component: () =>
-            import( /* webpackChunkName: "homepage" */ '../views/Home/HomePage'),
+            import( /* webpackChunkName: "homepage" */ '../views/Home/HomePage/HomePage.vue'),
         children: [{
             path: "/home/first",
             name: 'first',
@@ -37,7 +37,7 @@ export const routes = [{
                 title: '首页'
             },
             component: () =>
-                import( /* webpackChunkName: "backList" */ '../views/first.vue')
+                import( /* webpackChunkName: "backList" */ '../views/Home/HomePage/first.vue')
 
         }, {
             path: "/home/second",
@@ -46,25 +46,25 @@ export const routes = [{
                 title: '手机'
             },
             component: () =>
-                import( /* webpackChunkName: "backList" */ '../views/second.vue')
-
-        }, {
-            path: "/home/fouth",
-            name: 'fouth',
-            meta: {
-                title: '生活'
-            },
-            component: () =>
-                import( /* webpackChunkName: "backList" */ '../views/fouth.vue')
+                import( /* webpackChunkName: "backList" */ '../views/Home/HomePage/second.vue')
 
         }, {
             path: "/home/third",
             name: 'third',
             meta: {
+                title: '生活'
+            },
+            component: () =>
+                import( /* webpackChunkName: "backList" */ '../views/Home/HomePage/third.vue')
+
+        }, {
+            path: "/home/fouth",
+            name: 'fouth',
+            meta: {
                 title: '箱包'
             },
             component: () =>
-                import( /* webpackChunkName: "backList" */ '../views/third.vue')
+                import( /* webpackChunkName: "backList" */ '../views/Home/HomePage/fouth.vue')
 
         }, {
             path: "/home/fifth",
@@ -73,7 +73,7 @@ export const routes = [{
                 title: '数码'
             },
             component: () =>
-                import( /* webpackChunkName: "backList" */ '../views/fifth.vue')
+                import( /* webpackChunkName: "backList" */ '../views/Home/HomePage/fifth.vue')
 
         }],
     },
@@ -185,7 +185,139 @@ export const routes = [{
     path: 'setting',
     name: 'Setting',
     component: () => import(/*webpackChunkName:"Setting" */ '@/views/Setting.vue')
-}
+},
+//分类
+{
+    path: '/classifHome',
+    name: 'ClassifHome',
+    meta:{
+        title:"分类"
+    },
+    children:[
+        {
+            path:'/classifHome/recommendedClassif',
+            name:'RecommendedClassif',
+            meta:{
+                title:'推荐分类'
+            },
+            component: () => import(/*webpackChunkName:"recommendedClassif" */ '@/views/Classif/RecommendedClassif.vue')   
+        },
+        {
+            path:'/classifHome/supermarket',
+            name:'Supermarket',
+            meta:{
+                title:'京东超市'
+            },
+            component: () => import(/*webpackChunkName:"supermarket" */ '@/views/Classif/Supermarket.vue')   
+        },
+        {
+            path:'/classifHome/furnitureHome',
+            name:'FurnitureHome',
+            meta:{
+                title:'家具家装'
+            },
+            component: () => import(/*webpackChunkName:"furnitureHome" */ '@/views/Classif/FurnitureHome.vue')   
+        },
+        {
+            path:'/classifHome/jDInternational',
+            name:'JDInternational',
+            meta:{
+                title:'京东国际'
+            },
+            component: () => import(/*webpackChunkName:"jDInternational" */ '@/views/Classif/JDInternational.vue')   
+        },
+        {
+            path:'/classifHome/computerOffice',
+            name:'ComputerOffice',
+            meta:{
+                title:'电脑办公'
+            },
+            component: () => import(/*webpackChunkName:"computerOffice" */ '@/views/Classif/ComputerOffice.vue')   
+        },
+        {
+            path:'/classifHome/footwear',
+            name:'Footwear',
+            meta:{
+                title:'鞋靴'
+            },
+            component: () => import(/*webpackChunkName:"footwear" */ '@/views/Classif/Footwear.vue')   
+        },
+        {
+            path:'/classifHome/watchJewelry',
+            name:'WatchJewelry',
+            meta:{
+                title:'钟表珠宝'
+            },
+            component: () => import(/*webpackChunkName:"watchJewelry" */ '@/views/Classif/WatchJewelry.vue')   
+        },
+        {
+            path:'/classifHome/foodWine',
+            name:'FoodWine',
+            meta:{
+                title:'食品酒饮'
+            },
+            component: () => import(/*webpackChunkName:"foodWine" */ '@/views/Classif/FoodWine.vue')   
+        },
+        {
+            path:'/classifHome/careCleaning',
+            name:'CareCleaning',
+            meta:{
+                title:'个护清洁'
+            },
+            component: () => import(/*webpackChunkName:"careCleaning" */ '@/views/Classif/CareCleaning.vue')   
+        },
+        {
+            path:'/classifHome/menWear',
+            name:'MenWear',
+            meta:{
+                title:'男装'
+            },
+            component: () => import(/*webpackChunkName:"menWear" */ '@/views/Classif/MenWear.vue')   
+        },
+        {
+            path:'/classifHome/appliances',
+            name:'Appliances',
+            meta:{
+                title:'家电'
+            },
+            component: () => import(/*webpackChunkName:"appliances" */ '@/views/Classif/Appliances.vue')   
+        },
+        {
+            path:'/classifHome/householdKitchenware',
+            name:'HouseholdKitchenware',
+            meta:{
+                title:'家居厨具'
+            },
+            component: () => import(/*webpackChunkName:"householdKitchenware" */ '@/views/Classif/HouseholdKitchenware.vue')   
+        },
+        {
+            path:'/classifHome/phone',
+            name:'Phone',
+            meta:{
+                title:'手机'
+            },
+            component: () => import(/*webpackChunkName:"phone" */ '@/views/Classif/Phone.vue')   
+        },
+        {
+            path:'/classifHome/underwearAccessories',
+            name:'UnderwearAccessories',
+            meta:{
+                title:'内衣配饰'
+            },
+            component: () => import(/*webpackChunkName:"underwearAccessories" */ '@/views/Classif/UnderwearAccessories.vue')   
+        },
+        {
+            path:'/classifHome/mBclothes',
+            name:'MBclothes',
+            meta:{
+                title:'母婴童装'
+            },
+            component: () => import(/*webpackChunkName:"mBclothes" */ '@/views/Classif/MBclothes.vue')   
+        },
+    ],
+    component: () => import(/*webpackChunkName:"ClassifHome" */ '@/views/Classif/ClassifHome.vue') 
+},
+
 ]
 const router = new VueRouter({
     mode: 'history',

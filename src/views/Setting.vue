@@ -17,13 +17,12 @@
               width="70"
               height="70"
               round
-              src="https://img01.yzcdn.cn/vant/cat.jpeg"
+              :src="require('../assets/images/9.png')"
             />
           </template>
         </van-cell>
       </div>
       <van-cell value="内容" is-link inset value-class="ft-12">
-        <!-- 使用 title 插槽来自定义标题 -->
         <template #title>
           <span>地址管理</span>
         </template>
