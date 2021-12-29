@@ -3,7 +3,7 @@
     <header class="header">
       <div class="header_header">
         <div class="logo">
-          <img src="../../assets/images/jd.png" alt="" srcset="" />
+          <img src="../../../assets/images/jd.png" alt="" srcset="" />
         </div>
         <div class="header_right">
           <van-icon name="hot-sale" />
@@ -111,7 +111,7 @@ export default {
         font-size: 18px;
         color: #fff;
         & > span {
-          margin-right: 8px;
+          margin-right: 10px;
         }
         & > span:hover {
           font-size: 20px;

@@ -4,16 +4,16 @@
       <section class="carousel">
         <van-swipe class="my-swipe" :autoplay="3000" indicator-color="white">
           <van-swipe-item>
-            <img src="../assets/images/img1.png" alt="" />
+            <img src="../../../assets/images/img1.png" alt="" />
           </van-swipe-item>
           <van-swipe-item>
-            <img src="../assets/images/img2.png" alt=""
+            <img src="../../../assets/images/img2.png" alt=""
           /></van-swipe-item>
           <van-swipe-item>
-            <img src="../assets/images/img3.png" alt=""
+            <img src="../../../assets/images/img3.png" alt=""
           /></van-swipe-item>
           <van-swipe-item>
-            <img src="../assets/images/img4.png" alt=""
+            <img src="../../../assets/images/img4.png" alt=""
           /></van-swipe-item>
         </van-swipe>
       </section>
