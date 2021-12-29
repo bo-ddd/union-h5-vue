@@ -19,7 +19,7 @@
         />
       </div>
       <nav class="nav">
-        <nav class="nav-left" >
+        <nav class="nav-left">
           <span
             v-for="(item, index) in routes[0].children[0].children"
             :key="index"
