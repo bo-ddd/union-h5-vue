@@ -72,12 +72,14 @@ export default {
       background-color: #f9f9f9;
     }
     & .icon-left {
-     margin-top: 30px;
+     margin-top: 18px;
      margin-left: 20px;
+     font-size: 30px;
     }
     & .icon-right {
-     margin-top: 30px;
+     margin-top: 18px;
      margin-right: 15px;
+     font-size: 30px;
     }
   }
   & .main{
@@ -110,4 +112,10 @@ export default {
   border-radius: 30px;
   margin-top: 15px;
     }  
+  .van-cell{
+    line-height: 0;
+  }
+  ::v-deep .van-icon-search:before {
+    margin-top: 8px;
+  }
 </style>
