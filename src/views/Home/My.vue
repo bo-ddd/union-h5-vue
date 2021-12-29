@@ -18,7 +18,7 @@
           round
           width="50px"
           height="50px"
-          src="https://img01.yzcdn.cn/vant/cat.jpeg"
+          :src="require('../../assets/images/9.png')"
         />
       </div>
       <div class="userinfo">
@@ -83,7 +83,7 @@
           >
             <van-badge :content="statu.num" v-if="statu.num" />
             <van-icon :name="statu.meta.icon" size="25" />
-            <p>{{ statu.meta.title }}</p>
+            <span>{{ statu.meta.title }}</span>
           </div>
         </div>
         <div class="status_footer ft-10 gary">

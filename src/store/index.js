@@ -3,8 +3,6 @@ import Vuex from 'vuex'
 import { routes } from '@/router'
 
 Vue.use(Vuex)
-
-
 let getRoutes = function() {
     let defined = ['/', '/registration', '/login'];
     let arr = routes;

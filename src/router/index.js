@@ -85,7 +85,7 @@ export const routes = [{
             icon: 'search'
         },
         component: () =>
-            import( /* webpackChunkName: "newproducts" */ '../views/Home/NewProducts')
+            import( /* webpackChunkName: "newproducts" */ '../views/Home/NewProducts'),
     },
     {
         path: '/stroll',
