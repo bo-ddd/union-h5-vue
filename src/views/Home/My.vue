@@ -239,10 +239,10 @@ export default {
     };
   },
   computed: {
-    ...mapGetters(["routes"])
+    ...mapGetters(["routes"]),
   },
-  created(){
-   console.log(this.routes[1].children);
+  created() {
+    console.log(this.routes[1].children);
   },
   methods: {
     toLink(name) {
@@ -255,6 +255,9 @@ export default {
 };
 </script>
 <style lang="less" scoped>
+::-webkit-scrollbar {
+  width: 0;
+}
 .ft-10 {
   font-size: 10px;
 }
@@ -294,7 +297,7 @@ nav {
   }
 }
 .home {
-  background-color: #f1f1f1;
+  background-image: linear-gradient(#eca641, #f1f1f1 30%);
   padding: 12px;
   text-align: center;
   height: 90vh;
@@ -340,8 +343,8 @@ nav {
           width: 120px;
           height: 23px;
           position: absolute;
-          top: 0;
-          left: -2px;
+          top: -1px;
+          left: -3px;
         }
       }
       & > div {
