@@ -18,8 +18,8 @@
         </template>
         <template #title>
           <div class="title-middle">
-            <span class="select" @click="select" ref="se">精选</span
-            ><span class="trend" @click="trend" ref="tr">趋势</span>
+            <span class="select" @click="select" ref="se">精选</span>
+            <span class="trend" @click="trend" ref="tr">趋势</span>
           </div>
         </template>
         <template #left>
@@ -30,46 +30,41 @@
         </template>
       </van-nav-bar>
     </div>
-    <div @scroll="dd" ref="content" class="content">
+    <div @scroll="changeOpacity" ref="content" class="content">
       <van-swipe class="my-swipe" :autoplay="3000" indicator-color="white">
-        <van-swipe-item>1</van-swipe-item>
-        <van-swipe-item>2</van-swipe-item>
-        <van-swipe-item>3</van-swipe-item>
-        <van-swipe-item>4</van-swipe-item>
-        <van-swipe-item>5</van-swipe-item>
+        <van-swipe-item><img :src="Url[0].url" alt=""></van-swipe-item>
+        <van-swipe-item><img :src="Url[1].url" alt=""></van-swipe-item>
+        <van-swipe-item><img :src="Url[2].url" alt=""></van-swipe-item>
+        <van-swipe-item><img :src="Url[3].url" alt=""></van-swipe-item>
+        <van-swipe-item><img :src="Url[4].url" alt=""></van-swipe-item>
       </van-swipe>
-      <van-tabs v-model="active" animated>
-        <selected :title="tabtitle" :commodity="commodity"></selected>
+      <van-tabs>
+        <van-tab v-for="item in this.routes[0].children[1].children" :title="item.meta.title" :key="item.id" :to="item.path">
+          <router-view></router-view>
+        </van-tab>
       </van-tabs>
     </div>
   </div>
 </template>
 
 <script>
-import selected from "@/components/Selected.vue";
+import { mapGetters } from 'vuex';
 import { Toast } from 'vant';
 
 export default {
-  components: {
-    selected,
-  },
   data() {
     return {
+      Url:[
+        {id:1, url:require("@/assets/images/nav1.jpg")},
+        {id:2, url:require("@/assets/images/nav2.jpg")},
+        {id:3, url:require("@/assets/images/nav3.jpg")},
+        {id:4, url:require("@/assets/images/nav4.jpg")},
+        {id:5, url:require("@/assets/images/nav5.jpg")},
+      ],
       flag:false,
       showPopover: false,
       // 通过 actions 属性来定义菜单选项
       actions: [{ text: '消息', icon: 'chat-o' }, { text: '分享', icon: 'share-o' }, { text: '功能反馈', icon: 'edit' }],
-      tabtitle: [
-        { id: 1, content: "精选" },
-        { id: 2, content: "完美礼遇" },
-        { id: 3, content: "好礼首发" },
-        { id: 4, content: "手机" },
-        { id: 5, content: "分类" },
-        { id: 6, content: "分类" },
-        { id: 7, content: "分类" },
-        { id: 8, content: "分类" },
-        { id: 9, content: "分类" },
-      ],
       active: 0,
       commodity: [
         {
@@ -237,20 +232,33 @@ export default {
       ],
     };
   },
+  created(){
+      console.log(this.routes[0].children[1].children);
+  },
+  computed:{
+    ...mapGetters(['routes']),
+  },
   methods: {
+    // 
+    togle(){
+      console.log(1);
+    },
+    // 关注切换
     follow(){
       this.flag = !this.flag;
     },
     onSelect(action) {
       Toast(action.text);
     },
-    dd() {
+    // 头部的透明度
+    changeOpacity() {
       if (this.$refs.content.scrollTop < 200) {
         this.$refs.title.style.opacity = 0.5;
       } else {
         this.$refs.title.style.opacity = 1;
       }
     },
+    // 头部标题切换
     select() {
       this.$refs.se.style.backgroundColor = "white";
       this.$refs.se.style.color = "black";
@@ -271,13 +279,6 @@ export default {
 </script>
 
 <style lang="less" scoped>
-.my-swipe .van-swipe-item {
-  color: #fff;
-  font-size: 20px;
-  line-height: 230px;
-  text-align: center;
-  background-color: #39a9ed;
-}
 .title {
   position: fixed;
   top: 0;
@@ -333,5 +334,13 @@ export default {
   position: absolute;
     left: 246px;
     top: 35px;
+}
+.van-swipe{
+  border-radius:0 0 20px 20px;
+  overflow: hidden;
+}
+.van-swipe img{
+  width: 100%;
+  height: 35vh;
 }
 </style>
