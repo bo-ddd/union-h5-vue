@@ -88,13 +88,13 @@ export const routes = [{
             import( /* webpackChunkName: "newproducts" */ '../views/Home/NewProducts/NewProducts'),
         children:[
             {path:"/newproducts/select",name:"Select",meta:{title:"精选"},component:()=>import(/*webpackChunkName:"Select" */ '@/views/Home/NewProducts/Select.vue')},
-            {path:"/newproducts/phone",name:"Phone",meta:{title:"手机"},component:()=>import(/*webpackChunkName:"Phone" */ '@/views/Home/NewProducts/Phone.vue')},
+            {path:"/newproducts/iphone",name:"Iphone",meta:{title:"手机"},component:()=>import(/*webpackChunkName:"Iphone" */ '@/views/Home/NewProducts/Iphone.vue')},
             {path:"/newproducts/computer",name:"Computer",meta:{title:"电脑数码"},component:()=>import(/*webpackChunkName:"Computer" */ '@/views/Home/NewProducts/Computer.vue')},
             {path:"/newproducts/play",name:"Play",meta:{title:"潮玩"},component:()=>import(/*webpackChunkName:"Play" */ '@/views/Home/NewProducts/Play.vue')},
             {path:"/newproducts/electrical",name:"Electrical",meta:{title:"家电"},component:()=>import(/*webpackChunkName:"Electrical" */ '@/views/Home/NewProducts/Electrical.vue')},
             {path:"/newproducts/beauty",name:"Beauty",meta:{title:"美妆"},component:()=>import(/*webpackChunkName:"Beauty" */ '@/views/Home/NewProducts/Beauty.vue')},
             {path:"/newproducts/clothes",name:"Clothes",meta:{title:"服饰"},component:()=>import(/*webpackChunkName:"Clothes" */ '@/views/Home/NewProducts/Clothes.vue')},
-            {path:"/newproducts/supermarket",name:"Supermarket",meta:{title:"超市"},component:()=>import(/*webpackChunkName:"Supermarket" */ '@/views/Home/NewProducts/Supermarket.vue')},
+            {path:"/newproducts/supermk",name:"Supermk",meta:{title:"超市"},component:()=>import(/*webpackChunkName:"Supermk" */ '@/views/Home/NewProducts/Supermk.vue')},
             {path:"/newproducts/outdoorsports",name:"Outdoorsports",meta:{title:"运动户外"},component:()=>import(/*webpackChunkName:"Outdoorsports" */ '@/views/Home/NewProducts/Outdoorsports.vue')},
         ]
     },
