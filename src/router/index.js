@@ -75,6 +75,56 @@ export const routes = [{
             component: () =>
                 import( /* webpackChunkName: "backList" */ '../views/Home/HomePage/fifth.vue')
 
+        },
+        {
+            path: "/home/fifth",
+            name: 'fifth',
+            meta: {
+                title: '数码'
+            },
+            component: () =>
+                import( /* webpackChunkName: "backList" */ '../views/Home/HomePage/fifth.vue')
+
+        },
+        {
+            path: "/home/fifth",
+            name: 'fifth',
+            meta: {
+                title: '数码'
+            },
+            component: () =>
+                import( /* webpackChunkName: "backList" */ '../views/Home/HomePage/fifth.vue')
+
+        },
+        {
+            path: "/home/fifth",
+            name: 'fifth',
+            meta: {
+                title: '数码'
+            },
+            component: () =>
+                import( /* webpackChunkName: "backList" */ '../views/Home/HomePage/fifth.vue')
+
+        },
+        {
+            path: "/home/fifth",
+            name: 'fifth',
+            meta: {
+                title: '数码'
+            },
+            component: () =>
+                import( /* webpackChunkName: "backList" */ '../views/Home/HomePage/fifth.vue')
+
+        },
+        {
+            path: "/home/fifth",
+            name: 'fifth',
+            meta: {
+                title: '数码'
+            },
+            component: () =>
+                import( /* webpackChunkName: "backList" */ '../views/Home/HomePage/fifth.vue')
+
         }],
     },
     {
