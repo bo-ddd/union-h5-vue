@@ -20,17 +20,17 @@
       </div>
       <nav class="nav">
         <nav class="nav-left">
-          <span
+          <van-tabs animated background="#fb4633" line-width="0">
+              <van-tab
             v-for="(item, index) in routes[0].children[0].children"
             :key="index"
+            :title="item.meta.title"
             @click="nav(item.path)"
             >{{ item.meta.title }}
-          </span>
+          </van-tab>
+            </van-tabs>
+        
         </nav>
-        <!-- <van-tabbar  class="nav-left">
-         <van-tabbar-item  v-for="(link, index) in  routes[0].children[0].children" :key="index" replace :to="link.path">
-           {{ link.meta.title }}</van-tabbar-item>
-      </van-tabbar> -->
         <nav class="nav-right" @click="toSetting">
           <van-icon name="bars" />
           <span>分类</span>
@@ -61,7 +61,7 @@ export default {
       });
     },
     toSetting() {
-      this.$router.push({ name: "RecommendedClassif" });
+      this.$router.push({ name: "ClassifHome" });
     },
   },
   computed: {
@@ -97,7 +97,6 @@ export default {
     }
       & .van-search {
       padding: 5px 15px;
-    
     }
     & .nav {
       width: 375px;
@@ -112,11 +111,9 @@ export default {
         line-height: 30px;
         font-size: 18px;
         color: #fff;
-        & > span {
-          margin-right: 10px;
-        }
-        & > span:hover {
-          font-size: 20px;
+        & ::v-deep .van-tab{
+           color: #fff;
+           font-size: 18px;
         }
       }
       & .nav-right {
@@ -149,4 +146,9 @@ export default {
 ::v-deep .van-hairline--top-bottom::after {
   border: none;
 }
+::v-deep .van-tabs--line .van-tabs__wrap{
+  height: 30px;
+  color: #fff;
+}
+
 </style>

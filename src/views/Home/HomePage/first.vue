@@ -31,7 +31,7 @@
     <section class="main">
       <section class="main-top"></section>
       <section class="main-middle">
-        <section class="top">
+        <section class="top" @click="toSelected">
           <section class="top_header">
             <h2>排行榜</h2>
             <h4>大家都在买</h4>
@@ -82,16 +82,16 @@ export default {
           text: "服装",
         },
         {
-          icon: require("../../../assets/images/JD-1.png"),
-          text: "手机",
+          icon: require("../../../assets/images/fruit.png"),
+          text: "水果",
         },
         {
           icon: require("../../../assets/images/JD-1.png"),
           text: "手机",
         },
         {
-          icon: require("../../../assets/images/JD-1.png"),
-          text: "手机",
+          icon: require("../../../assets/images/water.png"),
+          text: "生活",
         },
         {
           icon: require("../../../assets/images/JD-1.png"),
@@ -112,7 +112,11 @@ export default {
       ],
     };
   },
-  methods: {},
+  methods: {
+    toSelected(){
+      this.$router.push({name:"Selected"})
+    }
+  },
 };
 </script>
 <style lang="less" scoped>
@@ -144,6 +148,7 @@ h4 {
   & .main {
     background-color: #fff;
     border-radius: 5px;
+    margin-top: 10px;
     & .main-top {
       height: 120px;
       background-color: #fff;
@@ -168,6 +173,7 @@ h4 {
           & > .img-o {
             float: left;
             margin-top: 10px;
+            margin-right: 20px;
             width: 40%;
             height: 70px;
             display: flex;
