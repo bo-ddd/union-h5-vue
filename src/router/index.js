@@ -187,6 +187,11 @@ export const routes = [{
     name: 'Setting',
     component: () => import(/*webpackChunkName:"Setting" */ '@/views/Setting.vue')
 },
+{
+    path: 'selected',
+    name: 'selected',
+    component: () => import(/*webpackChunkName:"Selected" */ '@/views/RankList/Selected.vue')
+},
 //分类
 {
     path: '/classifHome',
