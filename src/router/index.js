@@ -132,6 +132,11 @@ export const routes = [{
 
 },
 {
+    path:'/wallet',
+    name:'Wallet',
+    component:()=>import (/*webpackChunkName:'Wallet' */ '../views/wallet')
+},
+{
     path: '/payment',
     name: 'Payment',
     component: () => import( /*webpackChunkName: "payMent "*/ '../views/Payment/Payment.vue'),
