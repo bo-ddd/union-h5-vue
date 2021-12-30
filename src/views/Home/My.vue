@@ -38,7 +38,7 @@
         </div>
         <div>
           <van-image
-            src="https://img01.yzcdn.cn/vant/cat.jpeg"
+            :src="loadImg('haier')"
             width="35px"
             height="35px"
             radius="10px"
@@ -51,7 +51,7 @@
         </div>
         <div>
           <van-image
-            src="https://img01.yzcdn.cn/vant/cat.jpeg"
+            :src="loadImg('select')"
             width="35px"
             height="35px"
             radius="10px"
