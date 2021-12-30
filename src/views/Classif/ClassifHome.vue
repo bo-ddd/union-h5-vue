@@ -18,9 +18,7 @@
   <van-sidebar-item class="child-classif"  v-for="(link, index) in list" :key="index" :to="link.path" :title="link.meta.title" />
 </van-sidebar>
       <div class="contet">
-        
           <router-view></router-view>
-        
       </div>
     </div>
   </div>

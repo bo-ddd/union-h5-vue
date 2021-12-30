@@ -318,7 +318,31 @@ export const routes = [{
     ],
     component: () => import(/*webpackChunkName:"ClassifHome" */ '@/views/Classif/ClassifHome.vue') 
 },
+//排行榜
+{
+    path:'/rankHome',
+    name:'RankHome',
+    children:[
+        {
+            path:'/rankHome/selected',
+            name:'Selected',
+            meta:{
+                title:'精选'
+            },
+            component: () => import(/*webpackChunkName:"selected" */ '@/views/RankList/Selected.vue') 
+        },
+        {
+            path:'/rankHome/jinbang',
+            name:'Jinbang',
+            meta:{
+                title:'金榜'
+            },
+            component: () => import(/*webpackChunkName:"jinbang" */ '@/views/RankList/Jinbang.vue') 
+        },
 
+    ],
+    component: () => import(/*webpackChunkName:"rankHome" */ '@/views/RankList/RankHome.vue') 
+}
 ]
 const router = new VueRouter({
     mode: 'history',
