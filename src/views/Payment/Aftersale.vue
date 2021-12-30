@@ -18,7 +18,10 @@
             @search="onSearch"
           >
             <template #action>
-              <div @click="onSearch">筛选</div>
+              <div @click="onSearch" class="search_right">
+                <van-icon name="filter-o" />
+                 <span class="ft-12">筛选</span>
+              </div>
             </template>
           </van-search>
         </div>
@@ -28,7 +31,8 @@
               <van-icon name="shop-o" />
               <span>康恩贝官方旗舰店</span>
             </div>
-            <van-card
+            <div class="item_main">
+              <van-card
               desc="描述信息"
               title="商品标题"
               thumb="https://img01.yzcdn.cn/vant/ipad.jpeg"
@@ -52,12 +56,13 @@
                 >
               </template>
             </van-card>
+            </div>
           </div>
         </div>
       </van-tab>
-      <van-tab title="标签 2">内容 2</van-tab>
-      <van-tab title="标签 3">内容 3</van-tab>
-      <van-tab title="标签 4">内容 4</van-tab>
+      <van-tab title="处理中">处理中</van-tab>
+      <van-tab title="售后评价">售后评价</van-tab>
+      <van-tab title="申请记录">申请记录</van-tab>
     </van-tabs>
   </div>
 </template>
@@ -89,6 +94,10 @@ export default {
 }
 ::v-deep .van-card__price-integer {
   font-size: 12px;
+}
+.ft-12{
+  font-size: 12px;
+  margin: 0;
 }
 .wrap {
   height: 86vh;
