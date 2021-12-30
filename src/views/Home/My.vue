@@ -106,7 +106,7 @@
           </div>
           <div>
             <van-icon name="pending-payment" size="25" />
-            <span>我的钱包</span>
+            <span @click="toWallet">我的钱包</span>
           </div>
         </div>
         <div class="wallet_footer ft-10 gary">
@@ -259,6 +259,11 @@ export default {
     ...mapGetters(["routes"]),
   },
   methods: {
+    toWallet(){
+     this.$router.push({
+       name:'Wallet',
+     })
+    },
     toLink(name) {
       this.$router.push({ name: name });
     },
