@@ -61,7 +61,7 @@ export default {
       });
     },
     toSetting() {
-      this.$router.push({ name: "RecommendedClassif" });
+      this.$router.push({ name: "ClassifHome" });
     },
   },
   computed: {

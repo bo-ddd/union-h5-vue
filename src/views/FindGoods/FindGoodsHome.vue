@@ -19,7 +19,7 @@
      color="#e5726c" title-inactive-color="#eeffff" title-active-color="white"
      line-width="16px"
      >
-  <van-tab v-for="(item,index) in list" :title="item.meta.title" :key="index" :to="item.path"></van-tab>
+  <van-tab v-for="(item,index) in list" :title="item.title" :key="index"></van-tab>
   </van-tabs>
     </div>
 
@@ -27,13 +27,12 @@
               <img src="@/assets/findGoodsimg/xiaomi.png" alt="">
          </div>
     <div class="main">
-         <router-view></router-view>
+    
     </div>
   </div>
 </template>
 
 <script>
-import { mapGetters } from "vuex";
 export default {
       data() {
     return {
@@ -50,12 +49,6 @@ export default {
         name: "first",
       });
     },
-  },
-  computed: {
-    ...mapGetters(["routes"]),
-  },
-  created() {
-    this.list = this.routes[5].children;
   },
 };
 </script>
