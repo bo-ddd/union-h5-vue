@@ -118,17 +118,34 @@
       </div>
       <div class="game">
         <div v-for="game in gameData" :key="game.text">
-          <van-icon :name="game.icon" size="25" /><span>{{ game.text }}</span>
+          <van-image
+            width="25"
+            height="25"
+            :src="require('../../assets/images/' + game.icon + '.png')"
+          /><span>{{ game.text }}</span>
         </div>
       </div>
       <div class="serve">
         <div v-for="serve in recommendData" :key="serve.text">
-          <van-icon :name="serve.icon" size="25" /><span>{{ serve.text }}</span>
+          <van-image
+            width="25"
+            height="25"
+            :src="require('../../assets/images/' + serve.icon + '.png')"
+          />
+          <span>{{ serve.text }}</span>
         </div>
       </div>
       <div class="recommend">
         <div class="recommend_top">
-          <div><span>快乐网民GO ></span></div>
+          <div>
+            <van-image
+              width="280"
+              height="45"
+              :src="require('../../assets/images/playtop.png')"
+              class="title_img"
+            />
+            <span>快乐网民GO ></span>
+          </div>
           <div>
             <van-tag round type="primary"
               ><van-icon name="replay" />标签</van-tag
@@ -194,45 +211,45 @@ export default {
       ],
       gameData: [
         {
-          icon: "hot-o",
+          icon: "ma",
           text: "东东农场",
         },
         {
-          icon: "hot-o",
+          icon: "red",
           text: "签到领豆",
         },
         {
-          icon: "hot-o",
+          icon: "pig",
           text: "东东萌宠",
         },
         {
-          icon: "hot-o",
+          icon: "pig2",
           text: "宠汪汪",
         },
         {
-          icon: "hot-o",
+          icon: "star",
           text: "东东爱消除",
         },
       ],
       recommendData: [
         {
-          icon: "balance-o",
+          icon: "blue",
           text: "客户服务",
         },
         {
-          icon: "balance-o",
+          icon: "cat",
           text: "寄件服务",
         },
         {
-          icon: "balance-o",
+          icon: "doctor",
           text: "问医生",
         },
         {
-          icon: "balance-o",
+          icon: "receive",
           text: "闲置换钱",
         },
         {
-          icon: "balance-o",
+          icon: "try",
           text: "新品试用",
         },
       ],
@@ -400,14 +417,19 @@ nav {
     }
     & > .wallet {
       height: 85px;
+      display: flex;
+      flex-flow: column;
+      justify-content: center;
       & > .wallet_main {
         display: flex;
         justify-content: space-around;
-        align-items: center;
         & > div {
-          margin-top: 20px;
           display: flex;
           flex-flow: column;
+          & > .ft-15{
+            display: inline-block;
+            line-height: 25px;
+          }
         }
       }
       & > .wallet_footer {
@@ -426,6 +448,7 @@ nav {
       & > div {
         display: flex;
         flex-flow: column;
+        align-items: center;
         & > span {
           margin-top: 8px;
         }
@@ -433,11 +456,17 @@ nav {
     }
     & > .recommend {
       height: 65px;
+      position: relative;
       & > .recommend_top {
         display: flex;
         justify-content: space-between;
         & > div {
           margin-top: 10px;
+          & > .title_img{
+            position: absolute;
+            top: -6px;
+            left: -7px;
+          }
         }
       }
     }
