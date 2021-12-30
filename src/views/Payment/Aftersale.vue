@@ -1,6 +1,6 @@
 <template>
   <div>
-      aftersale
+      <van-empty description="描述文字" />
   </div>
 </template>
 
