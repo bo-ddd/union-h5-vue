@@ -137,7 +137,15 @@
       </div>
       <div class="recommend">
         <div class="recommend_top">
-          <div><span>快乐网民GO ></span></div>
+          <div>
+            <van-image
+              width="280"
+              height="45"
+              :src="require('../../assets/images/playtop.png')"
+              class="title_img"
+            />
+            <span>快乐网民GO ></span>
+          </div>
           <div>
             <van-tag round type="primary"
               ><van-icon name="replay" />标签</van-tag
@@ -409,14 +417,19 @@ nav {
     }
     & > .wallet {
       height: 85px;
+      display: flex;
+      flex-flow: column;
+      justify-content: center;
       & > .wallet_main {
         display: flex;
         justify-content: space-around;
-        align-items: center;
         & > div {
-          margin-top: 20px;
           display: flex;
           flex-flow: column;
+          & > .ft-15{
+            display: inline-block;
+            line-height: 25px;
+          }
         }
       }
       & > .wallet_footer {
@@ -443,11 +456,17 @@ nav {
     }
     & > .recommend {
       height: 65px;
+      position: relative;
       & > .recommend_top {
         display: flex;
         justify-content: space-between;
         & > div {
           margin-top: 10px;
+          & > .title_img{
+            position: absolute;
+            top: -6px;
+            left: -7px;
+          }
         }
       }
     }
