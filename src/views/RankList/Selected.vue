@@ -16,10 +16,11 @@
       </div>
       <div class="label">
         <van-tabs>
-          <van-tab v-for="index in 8" :title="'标签 ' + index" :key='index'>
+          <van-tab v-for="index in  children" :title="index" :key='index'>
             内容 {{ index }}
           </van-tab>
         </van-tabs>
+        <div class="">分类</div>
       </div>
     </div>
   </div>
@@ -29,6 +30,12 @@
 export default {
     data(){
       return{
+        children:[
+          '精选','新潮进化论','手机','时尚','美食',
+          '超市','居家','母婴','电脑','运动','进口',
+          '美妆','家电','洗护','健康','数码','宠物',
+          '图书','汽车','园艺','旅行'
+        ]
       }
     }
 }
