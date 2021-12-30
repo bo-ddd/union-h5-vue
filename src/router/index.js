@@ -78,12 +78,13 @@ export const routes = [{
         }],
     },
     {
-        path: '/newproducts',
+        path: '/newproducts/select',
         name: 'NewProducts',
         meta: {
             title: '实时数据',
             icon: 'search'
         },
+        // redirect:"/newproducts/select",
         component: () =>
             import( /* webpackChunkName: "newproducts" */ '../views/Home/NewProducts/NewProducts'),
         children:[
@@ -341,6 +342,102 @@ export const routes = [{
 
     ],
     component: () => import(/*webpackChunkName:"rankHome" */ '@/views/RankList/RankHome.vue') 
+},
+//发现好货
+{
+    path:'/findGoodsHome',
+    name:'FindGoodsHome',
+    children:[
+        {
+            path:'/findGoodsHome/publicPraise',
+            name:' PublicPraise',
+            meta:{
+                title:'口碑'
+            },
+            component: () => import(/*webpackChunkName:" publicPraise" */ '@/views/FindGoods/PublicPraise.vue') 
+        },
+        {
+            path:'/findGoodsHome/recommend',
+            name:' Recommend',
+            meta:{
+                title:'推荐'
+            },
+            component: () => import(/*webpackChunkName:" recommend" */ '@/views/FindGoods/Recommend.vue') 
+        },
+        {
+            path:'/findGoodsHome/activity',
+            name:' Activity',
+            meta:{
+                title:'活动'
+            },
+            component: () => import(/*webpackChunkName:" activity" */ '@/views/FindGoods/Activity.vue') 
+        },
+        {
+            path:'/findGoodsHome/fashionMuseum',
+            name:' FashionMuseum',
+            meta:{
+                title:'时尚馆'
+            },
+            component: () => import(/*webpackChunkName:" fashionMuseum" */ '@/views/FindGoods/FashionMuseum.vue') 
+        },
+        {
+            path:'/findGoodsHome/homeApplianceMuseum',
+            name:' HomeApplianceMuseum',
+            meta:{
+                title:'家电馆'
+            },
+            component: () => import(/*webpackChunkName:" homeApplianceMuseum" */ '@/views/FindGoods/HomeApplianceMuseum.vue') 
+        },
+        {
+            path:'/findGoodsHome/homeOfficer',
+            name:' HomeOfficer',
+            meta:{
+                title:'居家馆'
+            },
+            component: () => import(/*webpackChunkName:" homeOfficer" */ '@/views/FindGoods/HomeOfficer.vue') 
+        },
+        {
+            path:'/findGoodsHome/digitalControl',
+            name:' DigitalControl',
+            meta:{
+                title:'数码控'
+            },
+            component: () => import(/*webpackChunkName:" digitalControl" */ '@/views/FindGoods/DigitalControl.vue') 
+        },
+        {
+            path:'/findGoodsHome/sportsHall',
+            name:' SportsHall',
+            meta:{
+                title:'运动馆'
+            },
+            component: () => import(/*webpackChunkName:" sportsHall" */ '@/views/FindGoods/SportsHall.vue') 
+        },
+        {
+            path:'/findGoodsHome/mobileControl',
+            name:' MobileControl',
+            meta:{
+                title:'手机控'
+            },
+            component: () => import(/*webpackChunkName:" mobileControl" */ '@/views/FindGoods/MobileControl.vue') 
+        },
+        {
+            path:'/findGoodsHome/parentChildHall',
+            name:' ParentChildHall',
+            meta:{
+                title:'亲子馆'
+            },
+            component: () => import(/*webpackChunkName:" parentChildHall" */ '@/views/FindGoods/ParentChildHall.vue') 
+        },
+        {
+            path:'/findGoodsHome/epicure',
+            name:' Epicure',
+            meta:{
+                title:'美食家'
+            },
+            component: () => import(/*webpackChunkName:" epicure" */ '@/views/FindGoods/Epicure.vue') 
+        },
+    ],
+    component: () => import(/*webpackChunkName:"findGoodsHome" */ '@/views/FindGoods/FindGoodsHome.vue')   
 }
 ]
 const router = new VueRouter({

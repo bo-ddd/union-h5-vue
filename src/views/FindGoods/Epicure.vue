@@ -1,6 +1,6 @@
 <template>
   <div>
-     <van-empty description="描述文字" />
+      Epicure(美食家)
   </div>
 </template>
 
@@ -10,6 +10,6 @@ export default {
 }
 </script>
 
-<style lang="less" scoped>
+<style>
 
 </style>

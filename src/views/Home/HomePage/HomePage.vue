@@ -10,7 +10,7 @@
           <van-icon name="chat-o" badge="9" />
         </div>
       </div>
-      <div>
+      <div class="search">
         <van-search
           v-model="value"
           shape="round"
@@ -72,6 +72,7 @@ export default {
 
 <style lang="less" scoped>
 .box {
+  width: 375px;
   & .header {
     background-color: #fb4633;
     & .header_header {
@@ -94,11 +95,12 @@ export default {
         }
       }
     }
-    & .van-search {
+      & .van-search {
       padding: 5px 15px;
+    
     }
     & .nav {
-      width: 100%;
+      width: 375px;
       height: 30px;
       display: flex;
       padding: 0 15px;

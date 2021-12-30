@@ -1,6 +1,6 @@
 <template>
   <div>
-     <van-empty description="描述文字" />
+      FashionMuseum(时尚馆)
   </div>
 </template>
 
@@ -10,6 +10,6 @@ export default {
 }
 </script>
 
-<style lang="less" scoped>
+<style>
 
 </style>
