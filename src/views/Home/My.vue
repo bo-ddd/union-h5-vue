@@ -272,9 +272,6 @@ export default {
 };
 </script>
 <style lang="less" scoped>
-::-webkit-scrollbar {
-  width: 0;
-}
 .ft-10 {
   font-size: 10px;
 }
