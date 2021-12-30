@@ -78,12 +78,13 @@ export const routes = [{
         }],
     },
     {
-        path: '/newproducts',
+        path: '/newproducts/select',
         name: 'NewProducts',
         meta: {
             title: '实时数据',
             icon: 'search'
         },
+        // redirect:"/newproducts/select",
         component: () =>
             import( /* webpackChunkName: "newproducts" */ '../views/Home/NewProducts/NewProducts'),
         children:[
