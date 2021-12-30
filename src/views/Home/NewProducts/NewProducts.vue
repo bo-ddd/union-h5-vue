@@ -32,17 +32,17 @@
     </div>
     <div @scroll="changeOpacity" ref="content" class="content">
       <van-swipe class="my-swipe" :autoplay="3000" indicator-color="white">
-        <van-swipe-item><img :src="Url[0].url" alt=""></van-swipe-item>
-        <van-swipe-item><img :src="Url[1].url" alt=""></van-swipe-item>
-        <van-swipe-item><img :src="Url[2].url" alt=""></van-swipe-item>
-        <van-swipe-item><img :src="Url[3].url" alt=""></van-swipe-item>
-        <van-swipe-item><img :src="Url[4].url" alt=""></van-swipe-item>
+        <van-swipe-item v-for="item in Url" :key="item.id">
+          <img :src="item.url" alt="">
+        </van-swipe-item>
       </van-swipe>
-      <van-tabs>
-        <van-tab v-for="item in this.routes[0].children[1].children" :title="item.meta.title" :key="item.id" :to="item.path">
-          <router-view></router-view>
-        </van-tab>
-      </van-tabs>
+      <div class="nav" ref="nav">
+        <van-tabs>
+          <van-tab ref="ceshi" v-for="item in this.routes[0].children[1].children" :title="item.meta.title" :key="item.id" :to="item.path">
+            <router-view></router-view>
+          </van-tab>
+        </van-tabs>
+      </div>
     </div>
   </div>
 </template>
@@ -63,186 +63,17 @@ export default {
       ],
       flag:false,
       showPopover: false,
-      // 通过 actions 属性来定义菜单选项
       actions: [{ text: '消息', icon: 'chat-o' }, { text: '分享', icon: 'share-o' }, { text: '功能反馈', icon: 'edit' }],
       active: 0,
-      commodity: [
-        {
-          id: 1,
-          num: "3",
-          price: "20.00",
-          desc: "描述信息1",
-          title: "精选1",
-          class: "goods-card",
-          thumb: "https://img01.yzcdn.cn/vant/cat.jpeg",
-        },
-        {
-          id: 2,
-          num: "30",
-          price: "12.00",
-          desc: "描述信息2",
-          title: "精选2",
-          class: "goods-card",
-          thumb: "https://img01.yzcdn.cn/vant/cat.jpeg",
-        },
-        {
-          id: 3,
-          num: "5",
-          price: "22.00",
-          desc: "描述信息3",
-          title: "精选3",
-          class: "goods-card",
-          thumb: "https://img01.yzcdn.cn/vant/cat.jpeg",
-        },
-        {
-          id: 4,
-          num: "7",
-          price: "32.00",
-          desc: "描述信息4",
-          title: "精选4",
-          class: "goods-card",
-          thumb: "https://img01.yzcdn.cn/vant/cat.jpeg",
-        },
-        {
-          id: 5,
-          num: "13",
-          price: "17.00",
-          desc: "描述信息5",
-          title: "精选5",
-          class: "goods-card",
-          thumb: "https://img01.yzcdn.cn/vant/cat.jpeg",
-        },
-        {
-          id: 6,
-          num: "35",
-          price: "15.00",
-          desc: "描述信息6",
-          title: "精选6",
-          class: "goods-card",
-          thumb: "https://img01.yzcdn.cn/vant/cat.jpeg",
-        },
-        {
-          id: 7,
-          num: "23",
-          price: "7.00",
-          desc: "描述信息7",
-          title: "精选7",
-          class: "goods-card",
-          thumb: "https://img01.yzcdn.cn/vant/cat.jpeg",
-        },
-        {
-          id: 8,
-          num: "21",
-          price: "3.00",
-          desc: "描述信息8",
-          title: "精选8",
-          class: "goods-card",
-          thumb: "https://img01.yzcdn.cn/vant/cat.jpeg",
-        },
-        {
-          id: 9,
-          num: "25",
-          price: "13.00",
-          desc: "描述信息9",
-          title: "精选9",
-          class: "goods-card",
-          thumb: "https://img01.yzcdn.cn/vant/cat.jpeg",
-        },
-        {
-          id: 11,
-          num: "3",
-          price: "20.00",
-          desc: "描述信息11",
-          title: "精选11",
-          class: "goods-card",
-          thumb: "https://img01.yzcdn.cn/vant/cat.jpeg",
-        },
-        {
-          id: 12,
-          num: "30",
-          price: "12.00",
-          desc: "描述信息12",
-          title: "精选12",
-          class: "goods-card",
-          thumb: "https://img01.yzcdn.cn/vant/cat.jpeg",
-        },
-        {
-          id: 13,
-          num: "5",
-          price: "22.00",
-          desc: "描述信息13",
-          title: "精选13",
-          class: "goods-card",
-          thumb: "https://img01.yzcdn.cn/vant/cat.jpeg",
-        },
-        {
-          id: 14,
-          num: "7",
-          price: "32.00",
-          desc: "描述信息14",
-          title: "精选14",
-          class: "goods-card",
-          thumb: "https://img01.yzcdn.cn/vant/cat.jpeg",
-        },
-        {
-          id: 15,
-          num: "13",
-          price: "17.00",
-          desc: "描述信息15",
-          title: "精选15",
-          class: "goods-card",
-          thumb: "https://img01.yzcdn.cn/vant/cat.jpeg",
-        },
-        {
-          id: 16,
-          num: "35",
-          price: "15.00",
-          desc: "描述信息16",
-          title: "精选16",
-          class: "goods-card",
-          thumb: "https://img01.yzcdn.cn/vant/cat.jpeg",
-        },
-        {
-          id: 17,
-          num: "23",
-          price: "7.00",
-          desc: "描述信息17",
-          title: "精选17",
-          class: "goods-card",
-          thumb: "https://img01.yzcdn.cn/vant/cat.jpeg",
-        },
-        {
-          id: 18,
-          num: "21",
-          price: "3.00",
-          desc: "描述信息18",
-          title: "精选18",
-          class: "goods-card",
-          thumb: "https://img01.yzcdn.cn/vant/cat.jpeg",
-        },
-        {
-          id: 19,
-          num: "25",
-          price: "13.00",
-          desc: "描述信息19",
-          title: "精选19",
-          class: "goods-card",
-          thumb: "https://img01.yzcdn.cn/vant/cat.jpeg",
-        },
-      ],
     };
   },
   created(){
-      console.log(this.routes[0].children[1].children);
+      
   },
   computed:{
     ...mapGetters(['routes']),
   },
   methods: {
-    // 
-    togle(){
-      console.log(1);
-    },
     // 关注切换
     follow(){
       this.flag = !this.flag;
@@ -274,6 +105,7 @@ export default {
   },
   mounted() {
     this.select();
+    
   },
 };
 </script>
@@ -323,6 +155,9 @@ export default {
   & .van-tabs__track div {
     width: 100%;
   }
+  & .nav{
+    position: relative;
+  }
 }
 ::v-deep .van-tabs--line .van-tabs__wrap {
   position: -webkit-sticky;
@@ -342,5 +177,11 @@ export default {
 .van-swipe img{
   width: 100%;
   height: 35vh;
+}
+.ding{
+  position: -webkit-sticky;
+  position: sticky;
+  right: 0;
+  z-index: 9;
 }
 </style>

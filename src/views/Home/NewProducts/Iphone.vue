@@ -1,7 +1,7 @@
 <template>
   <div class="select">
     <div v-for="item in selectnumber" :key="item.id">
-      <img :src="item.url" alt="">
+      <img :src="item.url" alt="" v-lazy="item.url">
       <div class="title">
         <span>{{item.from}}</span>
         <h6>{{item.title}}</h6>
@@ -32,6 +32,13 @@
 </template>
 
 <script>
+import Vue from 'vue';
+import { Lazyload } from 'vant';
+
+Vue.use(Lazyload);
+Vue.use(Lazyload, {
+  lazyComponent: true,
+});
 export default {
   data(){
     return{
@@ -64,7 +71,7 @@ export default {
     flex-direction: column;
     align-items: center;
     padding: 10px 0;
-    margin: 5px 1px;
+    margin: 5px 5px;
     background: #dddcdc;
     border-radius: 5px;
     &>img{

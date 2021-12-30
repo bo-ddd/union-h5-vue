@@ -78,9 +78,6 @@ export default {
 </script>
  
 <style scoped lang="less">
-::-webkit-scrollbar {
-  width: 0;
-}
 .product_info {
   margin-top: 20px;
 }
