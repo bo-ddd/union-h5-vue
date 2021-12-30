@@ -77,7 +77,7 @@
         </div>
         <div class="status_main">
           <div
-            v-for="statu in routes[1].children"
+            v-for="statu in routes[2].children"
             :key="statu.text"
             @click="toLink(statu.name)"
           >
