@@ -8,8 +8,18 @@
         <van-swipe-item>4</van-swipe-item>
       </van-swipe>
       <div class="trend">
-        <div class="left"></div>
+        <div class="left">
+          <div>趋势周榜</div>
+          <div>每周更新</div>
+        </div>
         <div class="right"></div>
+      </div>
+      <div class="label">
+        <van-tabs>
+          <van-tab v-for="index in 8" :title="'标签 ' + index" :key='index'>
+            内容 {{ index }}
+          </van-tab>
+        </van-tabs>
       </div>
     </div>
   </div>
@@ -17,11 +27,22 @@
 
 <script>
 export default {
-
+    data(){
+      return{
+      }
+    }
 }
 </script>
 
 <style lang="less" scoped>
+::v-deep .van-tab {
+  font-size: 15px;
+  line-height: 15px;
+  color: #a8a2a2;
+}
+::v-deep .van-tabs__nav{
+  height: 20px;
+}
   .Rotation{
     width: 355px;
     height: 168px;
@@ -34,15 +55,28 @@ export default {
       background-color: #39a9ed;
     }
     & .trend{
-      width: 355px;
-      height: 60px;
-      margin: 20px auto;
-      border: 1px solid black;
+      width: 365px;
+      height: 55px;
+      margin: 20px 0 20px 0;
       display: flex;
+      background-color: yellowgreen;
       & .left{
-        width: 85px;
-        height: 60px;
+        width: 82px;
+        height: 55px;
+        background-color: turquoise;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        & div:nth-of-type(1){
+          font-size: 15px;
+          font-weight: 800;
+        }
       }
+    }
+    & .label{
+      width: 360px;
+      height: 15px;
     }
   }
 </style>
