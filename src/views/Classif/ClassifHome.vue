@@ -78,10 +78,37 @@ export default {
         title:'推荐分类'
       },
         {
-        title:'推荐分类'
+        title:'京东超市'
       },
         {
-        title:'推荐分类'
+        title:'家具厨具'
+      },
+        {
+        title:'钟表珠宝'
+      },
+        {
+        title:'内衣配饰'
+      },
+        {
+        title:'美妆护肤'
+      },
+        {
+        title:'食品酒饮'
+      },
+        {
+        title:'运动户外'
+      },
+        {
+        title:'母婴童装'
+      },
+        {
+        title:'京东国际'
+      },
+        {
+        title:'个护清洁'
+      },
+        {
+        title:'医疗保健'
       },
       ],
       defauluActive:this.onChange(),

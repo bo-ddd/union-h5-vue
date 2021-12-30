@@ -15,28 +15,47 @@
       </div>
     </div>
     <div class="tab">
-     <van-tabs v-model="defauluActive" animated background="#00ccbb" 
-     color="#e5726c" title-inactive-color="#eeffff" title-active-color="white"
-     line-width="16px"
-     >
-  <van-tab v-for="(item,index) in list" :title="item.title" :key="index"></van-tab>
-  </van-tabs>
+      <van-tabs
+      
+        v-model="defauluActive"
+        animated
+        background="#00ccbb"
+        color="#e5726c"
+        title-inactive-color="#eeffff"
+        title-active-color="white"
+        line-width="16px"
+      >
+        <van-tab
+          v-for="(item, index) in list"
+          :title="item"
+          :key="index"
+        >
+        {{item}}
+        </van-tab>
+      </van-tabs>
     </div>
-
-         <div class="banner">
-              <img src="@/assets/findGoodsimg/xiaomi.png" alt="">
-         </div>
-    <div class="main">
-    
+    <!-- <div class="banner">
+      <img src="@/assets/findGoodsimg/xiaomi.png" alt="" />
     </div>
+    <div class="main"></div> -->
   </div>
 </template>
 
 <script>
 export default {
-      data() {
+  data() {
     return {
-      list: [],
+      list: [
+        "口碑",
+        "推荐",
+        "型男志",
+        "珠宝馆",
+        "美妆馆",
+        "生活家",
+        "时尚馆",
+        "数码控",
+        "手机馆",
+      ],
       defauluActive: this.onChange(),
     };
   },
@@ -56,7 +75,7 @@ export default {
 <style lang="less" scoped>
 .wrap {
   & .header {
-     padding: 25px 0px;  
+    padding: 25px 0px;
     display: flex;
     justify-content: space-between;
     align-content: center;
@@ -70,56 +89,54 @@ export default {
         font-size: 30px;
         color: white;
       }
-      & > div{
-      
-           font-size: 15px;
-           color: white;
+      & > div {
+        font-size: 15px;
+        color: white;
       }
-      & .follow{
-      padding: 2px 10px;
-      background-color: #47dbcb;
-      opacity: 0.8;
-      color: #d8f7fa;
-      border-radius: 20px;
-      margin: 0;
+      & .follow {
+        padding: 2px 10px;
+        background-color: #47dbcb;
+        opacity: 0.8;
+        color: #d8f7fa;
+        border-radius: 20px;
+        margin: 0;
       }
     }
-    & .right{
-        width: 76px; 
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        color: white;
-       & .icon-right{
-          //  margin-top: 10px;
+    & .right {
+      width: 76px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: white;
+      & .icon-right {
+        //  margin-top: 10px;
         margin-left: 10px;
         font-size: 30px;
-        color: white;  
-       } 
+        color: white;
+      }
     }
   }
-& .banner{
-            height: 95px;
-            background-color: #00ccbb;
-            display: flex;
-            justify-content: center;
-            padding-top: 18px;
-            padding-bottom:10px ;
-         & > img{
-              width: 355px;
-              height: 95px;
-         }   
-       }
-  & .main{
-       padding:0px 10px 10px 10px; 
-       background-color: #eeeeed;
-              
+  & .banner {
+    height: 95px;
+    background-color: #00ccbb;
+    display: flex;
+    justify-content: center;
+    padding-top: 18px;
+    padding-bottom: 10px;
+    & > img {
+      width: 355px;
+      height: 95px;
+    }
+  }
+  & .main {
+    padding: 0px 10px 10px 10px;
+    background-color: #eeeeed;
+  }
 }
+::v-deep .van-icon {
+  font-size: 20px;
 }
-::v-deep .van-icon{
-       font-size: 20px;
-}
-::v-deep .van-tabs--line .van-tabs__wrap{
- background-color: #00ccbb; 
+::v-deep .van-tabs--line .van-tabs__wrap {
+  background-color: #00ccbb;
 }
 </style>
