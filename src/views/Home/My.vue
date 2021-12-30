@@ -121,7 +121,7 @@
           <van-image
             width="25"
             height="25"
-            :src="require('../../assets/images/' + game.icon + '.png')"
+            :src="loadImg(game.icon)"
           /><span>{{ game.text }}</span>
         </div>
       </div>
@@ -130,7 +130,7 @@
           <van-image
             width="25"
             height="25"
-            :src="require('../../assets/images/' + serve.icon + '.png')"
+            :src="loadImg(serve.icon)"
           />
           <span>{{ serve.text }}</span>
         </div>
@@ -265,6 +265,9 @@ export default {
     toSetting() {
       this.$router.push({ name: "Setting" });
     },
+    loadImg(url){
+     return require('../../assets/images/' + url + '.png')
+    }
   },
 };
 </script>
@@ -311,7 +314,7 @@ nav {
   }
 }
 .home {
-  background-image: linear-gradient(#eca641, #f1f1f1 30%);
+  background-image: linear-gradient(#fde7e9, #f1f1f1 30%);
   padding: 12px;
   text-align: center;
   height: 90vh;

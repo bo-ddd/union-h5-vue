@@ -1,6 +1,6 @@
 <template>
   <div>
-      Obligation
+     <van-empty description="描述文字" />
   </div>
 </template>
 

@@ -1,15 +1,12 @@
 <template>
   <div>
-      myorder
+    <van-empty description="描述文字" />
   </div>
 </template>
 
 <script>
-export default {
-
-}
+export default {};
 </script>
 
 <style>
-
 </style>
