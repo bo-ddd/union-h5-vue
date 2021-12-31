@@ -131,11 +131,13 @@ export const routes = [{
     ]
 
 },
+//我的钱包
 {
     path:'/wallet',
     name:'Wallet',
     component:()=>import (/*webpackChunkName:'Wallet' */ '../views/Wallet')
 },
+//订单状态
 {
     path: '/payment',
     name: 'Payment',
