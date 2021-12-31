@@ -247,6 +247,11 @@ export const routes = [{
     name: 'selected',
     component: () => import(/*webpackChunkName:"Selected" */ '@/views/RankList/Selected.vue')
 },
+{
+    path: 'FindGoods',
+    name: 'FindGoods',
+    component: () => import(/*webpackChunkName:"FindGoods" */ '@/views/FindGoods/FindGoodsHome.vue')
+},
 //分类
 {
     path: '/classifHome',
