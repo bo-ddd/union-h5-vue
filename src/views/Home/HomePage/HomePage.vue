@@ -21,22 +21,19 @@
       <nav class="nav">
         <nav class="nav-left">
           <van-tabs animated background="#fb4633" line-width="0">
-              <van-tab
-            v-for="(item, index) in routes[0].children[0].children"
-            :key="index"
-            :title="item.meta.title"
-            @click="nav(item.path)"
-            >{{ item.meta.title }}
-          </van-tab>
-            </van-tabs>
-        
+            <van-tab
+              v-for="(item, index) in routes[0].children[0].children"
+              :key="index"
+              :title="item.meta.title"
+              :to="item.path">
+            </van-tab>
+          </van-tabs>
         </nav>
         <nav class="nav-right" @click="toSetting">
           <van-icon name="bars" />
           <span>分类</span>
         </nav>
       </nav>
-    
     </header>
     <section class="content">
       <router-view></router-view>
@@ -54,12 +51,6 @@ export default {
   },
   created() {},
   methods: {
-    nav(path) {
-      if (this.$route.path == path) return;
-      this.$router.push({
-        path,
-      });
-    },
     toSetting() {
       this.$router.push({ name: "ClassifHome" });
     },
@@ -95,7 +86,7 @@ export default {
         }
       }
     }
-      & .van-search {
+    & .van-search {
       padding: 5px 15px;
     }
     & .nav {
@@ -111,9 +102,9 @@ export default {
         line-height: 30px;
         font-size: 18px;
         color: #fff;
-        & ::v-deep .van-tab{
-           color: #fff;
-           font-size: 18px;
+        & ::v-deep .van-tab {
+          color: #fff;
+          font-size: 18px;
         }
       }
       & .nav-right {
@@ -135,7 +126,6 @@ export default {
         }
       }
     }
-   
   }
 }
 ::v-deep .van-tabbar--fixed {
@@ -146,9 +136,8 @@ export default {
 ::v-deep .van-hairline--top-bottom::after {
   border: none;
 }
-::v-deep .van-tabs--line .van-tabs__wrap{
+::v-deep .van-tabs--line .van-tabs__wrap {
   height: 30px;
   color: #fff;
 }
-
 </style>

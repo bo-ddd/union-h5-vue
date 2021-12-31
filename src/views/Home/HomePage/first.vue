@@ -46,7 +46,7 @@
           </section>
         </section>
         <section class="find">
-          <section class="find_header">
+          <section class="find_header" @click="toFindGoods">
             <h2>发现好货</h2>
             <h4>美好新生活</h4>
           </section>
@@ -115,6 +115,9 @@ export default {
   methods: {
     toSelected(){
       this.$router.push({name:"Selected"})
+    },
+    toFindGoods(){
+      this.$router.push({name:"FindGoods"})
     }
   },
 };
