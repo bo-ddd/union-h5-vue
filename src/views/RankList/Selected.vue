@@ -1,11 +1,10 @@
 <template>
   <div>
     <div class="Rotation">
-      <van-swipe class="my-swipe" :autoplay="3000" indicator-color="white">
-        <van-swipe-item>1</van-swipe-item>
-        <van-swipe-item>2</van-swipe-item>
-        <van-swipe-item>3</van-swipe-item>
-        <van-swipe-item>4</van-swipe-item>
+      <van-swipe :autoplay="3000">
+        <van-swipe-item v-for="image in images" :key="image">
+          <img v-lazy="image" />
+        </van-swipe-item>
       </van-swipe>
       <div class="trend">
         <div class="left">
@@ -27,6 +26,10 @@
 </template>
 
 <script>
+import Vue from 'vue';
+import { Lazyload } from 'vant';
+
+Vue.use(Lazyload);
 export default {
     data(){
       return{
@@ -35,7 +38,13 @@ export default {
           '超市','居家','母婴','电脑','运动','进口',
           '美妆','家电','洗护','健康','数码','宠物',
           '图书','汽车','园艺','旅行'
-        ]
+        ],
+        images: [
+         '../../../assets/recommendedClassif/lunbo1.png', 
+         '@/assets/recommendedClassif/lunbo2.png',      
+         '@/assets/recommendedClassif/lunbo3.png',      
+         '@/assets/recommendedClassif/lunbo4.png',      
+        ],
       }
     }
 }
@@ -49,6 +58,10 @@ export default {
 }
 ::v-deep .van-tabs__nav{
   height: 20px;
+}
+::v-deep .van-swipe{
+  width: 355px;
+  height: 168px;
 }
   .Rotation{
     width: 355px;
