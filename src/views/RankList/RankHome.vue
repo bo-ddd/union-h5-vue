@@ -53,7 +53,7 @@ export default {
     ...mapGetters(["routes"]),
   },
   created() {
-    this.list = this.routes[4].children;
+    this.list = this.routes[6].children;
   },
 };
 </script>

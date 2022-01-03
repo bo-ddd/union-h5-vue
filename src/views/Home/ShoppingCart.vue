@@ -6,7 +6,7 @@
       <van-cell-group class="input">
         <van-field v-model="value" label="配送至" />
       </van-cell-group>
-      <h3>编辑</h3>
+      <h3 @click="edit">编辑</h3>
       <van-badge :content="5" class="a">
         <div>···</div>
       </van-badge>
@@ -21,7 +21,7 @@
           </div>
           <div class="title">
             <h3>降价</h3>
-            <van-badge :content="20" class="price" />
+            <van-badge :content="0" class="price" />
           </div>
           <div class="title">
             <h3>筛选</h3>
@@ -70,10 +70,17 @@
         </van-pull-refresh>
       </div>
       <div>
-        <van-submit-bar :price="total" button-text="提交订单">
+        <van-submit-bar
+          class="submit"
+          :button-text="butName"
+          @submit="subanddel"
+        >
           <van-checkbox v-model="checkedAll" @click="onchange"
             >全选</van-checkbox
           >
+          <div class="total" v-show="fiag">
+            合计：<span>￥{{ aPlus }}</span>
+          </div>
           <template #tip>
             你的收货地址不支持同城送, <span>修改地址</span>
           </template>
@@ -86,6 +93,7 @@
 </template>
 
 <script>
+import { Dialog } from "vant";
 export default {
   data() {
     return {
@@ -96,6 +104,12 @@ export default {
       refreshing: false,
       checkedAll: true,
       ab: true,
+      fiag: true,
+      butName: "提交订单",
+      total: 0,
+      components: {
+        [Dialog.Component.name]: Dialog.Component,
+      },
     };
   },
   created() {
@@ -104,16 +118,22 @@ export default {
     }, 1000);
   },
   computed: {
-    total: function () {
-      var total = 0;
+    totals() {
       this.list.forEach((el) => {
         if (el.check) {
-          total = Number(total) + Number(el.price) * Number(el.count);
+          this.total =
+            this.total + Number(el.price).toFixed(0) * Number(el.count);
         }
       });
-
-      total += "00";
-      return Number(total);
+      return Number(this.total);
+    },
+    aPlus: {
+      get: function () {
+        return this.totals;
+      },
+      set: function () {
+        this.total = this.totals;
+      },
     },
   },
   methods: {
@@ -151,11 +171,12 @@ export default {
       this.onLoad();
     },
     onplus(item) {
-      console.log(item);
       this.list[item.index].count = this.list[item.index].count + 1;
+      this.total = 0;
     },
     onminus(item) {
       this.list[item.index].count = this.list[item.index].count - 1;
+      this.total = 0;
     },
     onchange() {
       // // 全选按钮被选中时，选中所有的子按钮
@@ -163,13 +184,50 @@ export default {
     },
     chage() {
       this.checkedAll = this.list.some((item) => !item.check) ? false : true;
+      this.total = 0;
     },
     del(item) {
       this.list.splice(item.index, 1);
       this.list.forEach((e, index) => {
         e.index = index;
       });
-      console.log(this.list);
+    },
+    edit() {
+      this.butName = "提交订单";
+      if (this.fiag) {
+        this.butName = "移除购物车";
+        this.total = null;
+        this.fiag = false;
+      } else {
+        this.fiag = true;
+      }
+    },
+    subanddel() {
+      if (this.fiag) {
+        console.log(1);
+      } else {
+        var arr = [];
+        this.list.forEach((e) => {
+          if (e.check) {
+            arr.push(e);
+          }
+        });
+        if (arr.length) {
+          Dialog.alert({
+            message: "是否要将这些商品移除",
+          }).then(() => {
+            this.list.forEach((e, index) => {
+              console.log(e.check)
+              if (e.check) {
+                this.list.splice(index, 1);
+              }
+            });
+            this.list.forEach((e,index) => {
+              e.index = index;
+            });
+          });
+        }
+      }
     },
   },
 };
@@ -206,6 +264,7 @@ h3 {
 .top {
   display: flex;
   padding: 0px 10px;
+  overflow-y: auto;
   overflow-y: auto;
 }
 .aa {
@@ -304,5 +363,19 @@ h3 {
   background-color: #fff;
   top: 0;
   overflow: hidden;
+}
+.remove {
+  display: none;
+}
+::v-deep .van-submit-bar__bar {
+  justify-content: space-between;
+}
+.total {
+  font-size: 15px;
+}
+.total > span {
+  font-size: 18px;
+  font-weight: 600;
+  color: #ef2124;
 }
 </style>

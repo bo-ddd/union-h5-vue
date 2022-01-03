@@ -1,6 +1,6 @@
 <template>
   <div>
-      FoodWine(食品酒饮)
+      Wallet
   </div>
 </template>
 
