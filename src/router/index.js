@@ -75,6 +75,56 @@ export const routes = [{
             component: () =>
                 import( /* webpackChunkName: "backList" */ '../views/Home/HomePage/fifth.vue')
 
+        },
+        {
+            path: "/home/fifth",
+            name: 'fifth',
+            meta: {
+                title: '数码'
+            },
+            component: () =>
+                import( /* webpackChunkName: "backList" */ '../views/Home/HomePage/fifth.vue')
+
+        },
+        {
+            path: "/home/fifth",
+            name: 'fifth',
+            meta: {
+                title: '数码'
+            },
+            component: () =>
+                import( /* webpackChunkName: "backList" */ '../views/Home/HomePage/fifth.vue')
+
+        },
+        {
+            path: "/home/fifth",
+            name: 'fifth',
+            meta: {
+                title: '数码'
+            },
+            component: () =>
+                import( /* webpackChunkName: "backList" */ '../views/Home/HomePage/fifth.vue')
+
+        },
+        {
+            path: "/home/fifth",
+            name: 'fifth',
+            meta: {
+                title: '数码'
+            },
+            component: () =>
+                import( /* webpackChunkName: "backList" */ '../views/Home/HomePage/fifth.vue')
+
+        },
+        {
+            path: "/home/fifth",
+            name: 'fifth',
+            meta: {
+                title: '数码'
+            },
+            component: () =>
+                import( /* webpackChunkName: "backList" */ '../views/Home/HomePage/fifth.vue')
+
         }],
     },
     {
@@ -131,11 +181,13 @@ export const routes = [{
     ]
 
 },
+//我的钱包
 {
     path:'/wallet',
     name:'Wallet',
     component:()=>import (/*webpackChunkName:'Wallet' */ '../views/Wallet')
 },
+//订单状态
 {
     path: '/payment',
     name: 'Payment',
@@ -196,6 +248,11 @@ export const routes = [{
     path: 'selected',
     name: 'selected',
     component: () => import(/*webpackChunkName:"Selected" */ '@/views/RankList/Selected.vue')
+},
+{
+    path: 'FindGoods',
+    name: 'FindGoods',
+    component: () => import(/*webpackChunkName:"FindGoods" */ '@/views/FindGoods/FindGoodsHome.vue')
 },
 //分类
 {

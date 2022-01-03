@@ -76,7 +76,8 @@ export default {
         "生活家",
         "时尚馆",
         "数码控",
-        "手机馆",
+        "手机馆"
+        
       ],
       defauluActive: this.onChange(),
     };
