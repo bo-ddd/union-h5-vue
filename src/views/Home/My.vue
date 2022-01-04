@@ -77,13 +77,13 @@
         </div>
         <div class="status_main">
           <div
-            v-for="statu in routes[2].children"
+            v-for="statu in statuData"
             :key="statu.text"
-            @click="toLink(statu.name)"
+            @click="toLink(statu.pathName)"
           >
             <van-badge :content="statu.num" v-if="statu.num" />
-            <van-icon :name="statu.meta.icon" size="25" />
-            <span>{{ statu.meta.title }}</span>
+            <van-icon :name="statu.icon" size="25" />
+            <span>{{ statu.text }}</span>
           </div>
         </div>
         <div class="status_footer ft-10 gary">
@@ -168,27 +168,31 @@ export default {
           icon: "credit-pay",
           text: "待付款",
           num: 0,
-          path: "Payment",
+          pathName: "Payment",
         },
         {
           icon: "logistics",
           text: "待收货",
           num: 1,
+          pathName:'Waitreceiving'
         },
         {
           icon: "edit",
           text: "待评价",
           num: 2,
+          pathName:'Remainevaluated'
         },
         {
           icon: "after-sale",
           text: "退换/售后",
           num: 3,
+          pathName:'Aftersale'
         },
         {
           icon: "records",
           text: "我的订单",
           num: 4,
+          pathName:'Myorder'
         },
       ],
       walletData: [

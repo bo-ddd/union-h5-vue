@@ -1,13 +1,13 @@
 <template>
   <div class="wrap">
-    <!-- <van-nav-bar
+    <van-nav-bar
       title="退换/售后"
       left-text="返回"
       right-text="按钮"
       left-arrow
       @click-left="onClickLeft"
       @click-right="onClickRight"
-    /> -->
+    />
     <van-tabs>
       <van-tab title="售后申请" class="tab_card">
         <div>
@@ -76,7 +76,9 @@ export default {
   },
   methods: {
     onClickLeft() {
-      console.log("onClickLeft");
+      this.$router.push({
+        name:'My'
+      })
     },
     onClickRight() {
       console.log("onClickRight");

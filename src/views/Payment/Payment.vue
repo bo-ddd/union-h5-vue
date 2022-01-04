@@ -27,7 +27,7 @@
         v-for="item in statusList"
         :title="item.text"
         :key="item.text"
-        :name="item.text"
+        :name="item.name"
       >
         <router-view />
       </van-tab>
@@ -44,19 +44,22 @@ export default {
       active: 1,
       statusList: [
         {
+          text: "全部",
+          name:'Myorder'
+        },
+        {
           text: "待付款",
+          name:'Payment'
         },
         {
           text: "待收货",
+          name:'Waitreceiving'
         },
         {
           text: "已完成",
         },
         {
           text: "已取消",
-        },
-        {
-          text: "我的订单",
         },
       ],
     };

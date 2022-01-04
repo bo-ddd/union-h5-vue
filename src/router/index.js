@@ -392,7 +392,18 @@ export const routes = [{
             title: '我的订单'
         },
         component: () => import(/* webpackChunkName :'Myorder' */ '../views/Payment/Myorder.vue')
-    }]
+    },
+    {
+        path: '/payment/completed',
+        name: 'Completed',
+        meta: {
+            icon: "records",
+            title: '已完成'
+        },
+        component: () => import(/* webpackChunkName :'Myorder' */ '../views/Payment/Myorder.vue')
+    },
+    
+]
 },
 // 待评价
 {
