@@ -277,8 +277,14 @@ export default {
 };
 </script>
 <style lang="less" scoped>
+:root{
+  --ftsz:10px;
+}
 .ft-10 {
-  font-size: 10px;
+  font-size: var(--ftsz);
+  & > div {
+    transform: scale(.9);
+  }
 }
 .ft-15 {
   font-size: 15px;
@@ -323,6 +329,7 @@ nav {
   overflow-y: auto;
   & > .avator {
     display: flex;
+    margin-top:15px;
     & > .userinfo {
       margin-left: 12px;
       text-align: left;
@@ -439,8 +446,8 @@ nav {
       }
       & > .wallet_footer {
         margin-top: 6px;
-        width: 242px;
         display: flex;
+        width: 242px;
         justify-content: space-between;
       }
     }
