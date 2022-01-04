@@ -383,25 +383,7 @@ export const routes = [{
         },
         component: () => import(/* webpackChunkName :'Waitreceiving' */ '../views/Payment/Waitreceiving.vue')
     },
-    {
-        path: '/payment/remainevaluated',
-        name: 'Remainevaluated',
-        meta: {
-            icon: "edit",
-            title: '待评价'
-        },
-        component: () => import(/* webpackChunkName :'Remainevaluated' */ '../views/Payment/Remainevaluated.vue')
-    },
-    {
-        path: '/payment/aftersale',
-        name: 'Aftersale',
-        meta: {
-            icon: "after-sale",
-            title: '退换/售后'
-        },
-        component: () => import(/* webpackChunkName :'Aftersale' */ '../views/Payment/Aftersale.vue')
-
-    },
+    //我的订单
     {
         path: '/payment/myorder',
         name: 'Myorder',
@@ -412,18 +394,39 @@ export const routes = [{
         component: () => import(/* webpackChunkName :'Myorder' */ '../views/Payment/Myorder.vue')
     }]
 },
+// 待评价
 {
-    path: 'setting',
+    path: '/payment/remainevaluated',
+    name: 'Remainevaluated',
+    meta: {
+        icon: "edit",
+        title: '待评价'
+    },
+    component: () => import(/* webpackChunkName :'Remainevaluated' */ '../views/Payment/Remainevaluated.vue')
+},
+//设置
+{
+    path: '/setting',
     name: 'Setting',
     component: () => import(/*webpackChunkName:"Setting" */ '@/views/Setting.vue')
 },
+// 退换/售后
 {
-    path: 'selected',
+    path: '/payment/aftersale',
+    name: 'Aftersale',
+    meta: {
+        icon: "after-sale",
+        title: '退换/售后'
+    },
+    component: () => import(/* webpackChunkName :'Aftersale' */ '../views/Payment/Aftersale.vue')
+},
+{
+    path: '/selected',
     name: 'selected',
     component: () => import(/*webpackChunkName:"Selected" */ '@/views/RankList/Selected.vue')
 },
 {
-    path: 'FindGoods',
+    path: '/FindGoods',
     name: 'FindGoods',
     component: () => import(/*webpackChunkName:"FindGoods" */ '@/views/FindGoods/FindGoodsHome.vue')
 },
