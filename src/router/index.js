@@ -178,11 +178,10 @@ export const routes = [{
         },
         component: () => import( /* webpackChunkName: "my" */ '../views/Home/My'),
     },
-  
+    
     ]
 
 },
-
 //我的钱包
 {
     path:'/wallet',
