@@ -297,7 +297,7 @@ export const routes = [{
     path:'/my/selfCenter',
     name:'SelfCenter',
     component: () => import( /* webpackChunkName: "selfCenter" */ '../views/Home/SelfCenter.vue'),
-}
+},
 ]
 const router = new VueRouter({
     mode: 'history',
