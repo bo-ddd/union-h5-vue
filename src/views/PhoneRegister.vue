@@ -16,7 +16,7 @@
                     <p>如您对以上协议内容有任何疑问，您可随时与京东客服联系。</p>
                     <p>如您对以上协议内容有任何疑问，您可随时与京东客服联系。</p>
                 </div>
-                <van-button type="default" class="l-b-r">不同意</van-button>
+                <van-button type="default" class="l-b-r" @click="noagree">不同意</van-button>
                 <van-button type="danger" class="r-b-r" @click="agree" >同意</van-button>
             </div>
         </div>
@@ -56,6 +56,11 @@ export default {
         // 同意按钮的点击事件
         agree(){
             this.show = false;
+        },
+        noagree(){
+            this.$router.push({
+                path : '/login',
+            })
         }
     }
 }

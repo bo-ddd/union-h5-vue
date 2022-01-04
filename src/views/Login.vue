@@ -20,7 +20,7 @@
     <div class="input-container">
         <div class="title">
             <input :type="captchaType" :placeholder="captchaPlaceHolder" maxlength="6" class="w-70" v-model="form.captcha" >
-            <span class="w-30">{{getcaptcha}}</span>
+            <span class="w-30" @click="getcaptcha">{{captcha}}</span>
         </div>
     </div>
 
@@ -85,7 +85,7 @@ export default {
             phonePlaceHolder : '请输入手机号',
             captchaPlaceHolder : '请输入收到的验证码',
             captchaType : 'text',
-            getcaptcha : '获取验证码',
+            captcha : '获取验证码',
             footerTitle : '若您输入的手机号未注册，将为您直接注册，注册即视为同意'
         }
     },
@@ -106,7 +106,7 @@ export default {
                 this.phonePlaceHolder = '用户名/邮箱/手机号';
                 this.captchaPlaceHolder = '请输入密码';
                 this.captchaType = 'password';
-                this.getcaptcha = '忘记密码?';
+                this.captcha = '忘记密码?';
                 this.footerTitle = '登录即代表您已同意'
                 this.form.phone = '';
                 this.form.captcha = '';
@@ -116,7 +116,7 @@ export default {
                 this.phonePlaceHolder = '请输入手机号';
                 this.captchaPlaceHolder = '请输入收到的验证码';
                 this.captchaType = 'text';
-                this.getcaptcha = '获取验证码';
+                this.captcha = '获取验证码';
                 this.footerTitle = '若您输入的手机号未注册，将为您直接注册，注册即视为同意';
                 this.form.phone = '';
                 this.form.captcha = '';
@@ -126,7 +126,21 @@ export default {
 
         // 手机快速注册的点击事件
         phoneBtn(){
-            console.log('手机');
+            this.$router.push({
+                path : '/phoneregister',
+            })
+        },
+
+        // 验证码的点击事件
+        getcaptcha(){
+            if(!this.circuit){
+                // 进入这里是忘记密码
+                this.$router.push({
+                    path : '/forgetpass',
+                })
+            }else{
+                console.log('获取验证码');
+            }
         }
 
     },
