@@ -18,7 +18,7 @@
       <h1>品牌精选</h1>
       <van-grid :column-num="4" :border="false">
         <van-grid-item
-          v-for="(value, index) in pinpai"
+          v-for="(value, index) in brand"
           :key="index"
           :icon="value.icon"
           :text="value.text"
@@ -47,23 +47,38 @@
           </section>
         </section>
         <section class="hot-f w">
-          <h3>huawei</h3>
+          <h3>iPhone</h3>
           <br />
-          <span>19.2万人买过</span>
+          <span>29.2万人买过</span>
         </section>
       </section>
       <section>
-        <section class="hot-t h">
+        <section class="hot-t">
           <h4>热卖榜</h4>
           <section class="hot-img">
             <img src="../../../assets/images/phone.png" alt="" srcset="" />
           </section>
         </section>
-        <section class="hot-f">
-          <h3>huawei</h3>
-          <br />
-          <span>19.2万人买过</span>
+        <section class="hot-f h">
+          <h3>HONOR</h3><br />
+          <span>16.2万人买过</span>
         </section>
+      </section>
+    </section>
+    <section>
+      <h1>京挑会选</h1>
+    </section>
+    <section>
+      <section class="goods">
+        <section class="goods-upper">
+          <section class="goods-img">
+            <img src="../../../assets/images/phone.png" alt="" srcset="">
+          </section>
+        </section>
+        <section class="goods-lower">
+          <span>自营</span>
+        </section>
+        
       </section>
     </section>
     <section class="footer"></section>
@@ -115,7 +130,7 @@ export default {
           text: "手机",
         },
       ],
-      pinpai: [
+      brand: [
         {
           icon: "photo-o",
           text: "手机",
@@ -160,10 +175,10 @@ h4 {
   padding: 0;
 }
 .wrap {
-  width: 375px;
   padding: 15px;
   background-color: #f1f3f2;
   box-sizing: border-box;
+  text-align: center;
   & .nav {
     background-color: #fff;
     border-radius: 10px;
@@ -209,17 +224,52 @@ h4 {
       }
       & .hot-f {
         display: flex;
+        flex-wrap: wrap;
         justify-content: center;
-        align-items: center;
-        height: 50px;
+        align-content: center;
+        height: 45px;
+        margin-top: 5px;
         background-color: rgb(237, 233, 234);
         border-radius: 0 0 10px 10px;
         color: #fff;
       }
       & .w{
-        background-color: #B8860B;
+        background-color: rgb(255, 215, 0);
+      }
+      & .h{
+        background-color: rgb(186, 170, 64);
       }
     }
+  }
+  & .goods{
+    width: 45%;
+    & .goods-upper{
+      height: 121px;
+      padding: 15px 0;
+      background-color: white;
+      & .goods-img{
+        width: 100px;
+        height: 121px;
+        background-color: beige;
+        margin: 0 auto;
+        &>img{
+          width: 100%;
+        }
+      }
+    }
+    & .goods-lower{
+      height: 60px;
+      text-align: left;
+      &>span{
+        display: inline-block;
+        background-color: rgb(234, 111, 54);
+        color: #fff;
+        border-radius: 2px;
+        padding: 1px 3px;
+      }
+
+    }
+
   }
   & .footer {
     height: 120px;
