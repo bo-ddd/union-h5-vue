@@ -3,6 +3,18 @@
     <!-- 刘青松 -->
     <div ref="title" class="title">
       <van-nav-bar>
+        <template #left>
+          <div class="title-left">
+            <van-icon name="like-o" v-if="flag" @click="follow">关注</van-icon>
+            <span v-else @click="follow">已关注</span>
+          </div>
+        </template>
+        <template #title>
+          <div class="title-middle">
+            <span class="select" @click="toggleselect" ref="se">精选</span>
+            <span class="trend" @click="toggletrend" ref="tr">趋势</span>
+          </div>
+        </template>
         <template #right>
           <van-popover
             v-model="showPopover"
@@ -16,59 +28,26 @@
             </template>
           </van-popover>
         </template>
-        <template #title>
-          <div class="title-middle">
-            <span class="select" @click="select" ref="se">精选</span>
-            <span class="trend" @click="trend" ref="tr">趋势</span>
-          </div>
-        </template>
-        <template #left>
-          <div class="title-left">
-            <van-icon name="like-o" v-if="flag" @click="follow">关注</van-icon>
-            <span v-else @click="follow">已关注</span>
-          </div>
-        </template>
       </van-nav-bar>
     </div>
-    <div @scroll="changeOpacity" ref="content" class="content">
-      <van-swipe class="my-swipe" :autoplay="3000" indicator-color="white">
-        <van-swipe-item v-for="item in Url" :key="item.id">
-          <img :src="item.url" alt="">
-        </van-swipe-item>
-      </van-swipe>
-      <div class="nav" ref="nav">
-        <van-tabs>
-          <van-tab ref="ceshi" v-for="item in this.routes[0].children[1].children" :title="item.meta.title" :key="item.id" :to="item.path">
-            <router-view></router-view>
-          </van-tab>
-        </van-tabs>
-      </div>
-    </div>
+    <router-view></router-view>
   </div>
 </template>
 
 <script>
 import { mapGetters } from 'vuex';
 import { Toast } from 'vant';
-
+import "@/assets/color.less"
 export default {
   data() {
     return {
-      Url:[
-        {id:1, url:require("@/assets/images/nav1.jpg")},
-        {id:2, url:require("@/assets/images/nav2.jpg")},
-        {id:3, url:require("@/assets/images/nav3.jpg")},
-        {id:4, url:require("@/assets/images/nav4.jpg")},
-        {id:5, url:require("@/assets/images/nav5.jpg")},
-      ],
       flag:false,
       showPopover: false,
       actions: [{ text: '消息', icon: 'chat-o' }, { text: '分享', icon: 'share-o' }, { text: '功能反馈', icon: 'edit' }],
-      active: 0,
     };
   },
   created(){
-      
+    // console.log(this.routes[0].children[1].children)
   },
   computed:{
     ...mapGetters(['routes']),
@@ -77,36 +56,35 @@ export default {
     // 关注切换
     follow(){
       this.flag = !this.flag;
+      // this.$nextTick(()=>{
+      //   console.log(this.$store.state.offsettop)
+      // })
     },
     onSelect(action) {
       Toast(action.text);
     },
-    // 头部的透明度
-    changeOpacity() {
-      if (this.$refs.content.scrollTop < 200) {
-        this.$refs.title.style.opacity = 0.5;
-      } else {
-        this.$refs.title.style.opacity = 1;
-      }
-    },
     // 头部标题切换
-    select() {
+    init(){
       this.$refs.se.style.backgroundColor = "white";
       this.$refs.se.style.color = "black";
       this.$refs.tr.style.backgroundColor = "black";
       this.$refs.tr.style.color = "white";
     },
-    trend() {
+    toggleselect() {
+      this.init();
+      this.$router.push({name:"Sselect"});
+    },
+    toggletrend() {
       this.$refs.se.style.backgroundColor = "black";
       this.$refs.se.style.color = "white";
       this.$refs.tr.style.backgroundColor = "white";
       this.$refs.tr.style.color = "black";
+      this.$router.push({name:"Trend"});
     },
   },
-  mounted() {
-    this.select();
-    
-  },
+  mounted(){
+    this.init();
+  }
 };
 </script>
 
@@ -120,7 +98,7 @@ export default {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background: white;
+  background: var(--color) !important;
   height: 46px;
   & > .van-nav-bar {
     width: 100%;
@@ -149,16 +127,7 @@ export default {
     }
   }
 }
-.content {
-  height: 91vh;
-  overflow-y: scroll;
-  & .van-tabs__track div {
-    width: 100%;
-  }
-  & .nav{
-    position: relative;
-  }
-}
+
 ::v-deep .van-tabs--line .van-tabs__wrap {
   position: -webkit-sticky;
   position: sticky;

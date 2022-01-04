@@ -71,8 +71,8 @@ export default {
     flex-direction: column;
     align-items: center;
     padding: 10px 0;
-    margin: 5px 5px;
-    background: #dddcdc;
+    margin: 5px auto;
+    background: #f7f5f5;
     border-radius: 5px;
     &>img{
       width: 90%;
