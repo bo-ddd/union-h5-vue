@@ -241,17 +241,17 @@ export const routes = [{
     }]
 },
 {
-    path: 'setting',
+    path: '/setting',
     name: 'Setting',
     component: () => import(/*webpackChunkName:"Setting" */ '@/views/Setting.vue')
 },
 {
-    path: 'selected',
+    path: '/selected',
     name: 'selected',
     component: () => import(/*webpackChunkName:"Selected" */ '@/views/RankList/Selected.vue')
 },
 {
-    path: 'FindGoods',
+    path: '/FindGoods',
     name: 'FindGoods',
     component: () => import(/*webpackChunkName:"FindGoods" */ '@/views/FindGoods/FindGoodsHome.vue')
 },
