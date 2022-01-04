@@ -38,7 +38,7 @@
         </div>
         <div>
           <van-image
-            src="https://img01.yzcdn.cn/vant/cat.jpeg"
+            :src="loadImg('haier')"
             width="35px"
             height="35px"
             radius="10px"
@@ -51,7 +51,7 @@
         </div>
         <div>
           <van-image
-            src="https://img01.yzcdn.cn/vant/cat.jpeg"
+            :src="loadImg('select')"
             width="35px"
             height="35px"
             radius="10px"
@@ -77,7 +77,7 @@
         </div>
         <div class="status_main">
           <div
-            v-for="statu in routes[1].children"
+            v-for="statu in routes[2].children"
             :key="statu.text"
             @click="toLink(statu.name)"
           >
@@ -106,7 +106,7 @@
           </div>
           <div>
             <van-icon name="pending-payment" size="25" />
-            <span>我的钱包</span>
+            <span @click="toWallet">我的钱包</span>
           </div>
         </div>
         <div class="wallet_footer ft-10 gary">
@@ -259,6 +259,11 @@ export default {
     ...mapGetters(["routes"]),
   },
   methods: {
+    toWallet(){
+     this.$router.push({
+       name:'Wallet',
+     })
+    },
     toLink(name) {
       this.$router.push({ name: name });
     },
@@ -272,8 +277,14 @@ export default {
 };
 </script>
 <style lang="less" scoped>
+:root{
+  --ftsz:10px;
+}
 .ft-10 {
-  font-size: 10px;
+  font-size: var(--ftsz);
+  & > div {
+    transform: scale(.9);
+  }
 }
 .ft-15 {
   font-size: 15px;
@@ -318,6 +329,7 @@ nav {
   overflow-y: auto;
   & > .avator {
     display: flex;
+    margin-top:15px;
     & > .userinfo {
       margin-left: 12px;
       text-align: left;
@@ -434,8 +446,8 @@ nav {
       }
       & > .wallet_footer {
         margin-top: 6px;
-        width: 242px;
         display: flex;
+        width: 242px;
         justify-content: space-between;
       }
     }

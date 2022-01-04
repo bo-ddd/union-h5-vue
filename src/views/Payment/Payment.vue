@@ -24,7 +24,7 @@
     </van-nav-bar>
     <van-tabs v-model="defaultTag">
       <van-tab
-        v-for="item in routes[1].children"
+        v-for="item in routes[2].children"
         :title="item.meta.title"
         :key="item.path"
         :name="item.name"
