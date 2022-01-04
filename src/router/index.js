@@ -178,6 +178,11 @@ export const routes = [{
         },
         component: () => import( /* webpackChunkName: "my" */ '../views/Home/My'),
     },
+    {
+        path:'/my/selfCenter',
+        name:'SelfCenter',
+        component: () => import( /* webpackChunkName: "selfCenter" */ '../views/Home/SelfCenter.vue'),
+    }
     ]
 
 },
