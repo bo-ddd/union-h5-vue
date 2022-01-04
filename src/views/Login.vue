@@ -1,7 +1,9 @@
 <template>
   <div id="wrap">
     <div class="header">
-        <i class="el-icon-arrow-left"></i>
+        <div class="leftArrwo">
+
+        </div>
         <span>xx登录注册</span>
         <span></span>
     </div>
@@ -11,27 +13,24 @@
         <div class="title">
             <span>+86</span>
             <span class="rightArrow"></span>
-            <input type="text" placeholder="请输入手机号"  >
+            <input type="text" placeholder="请输入手机号" maxlength="11" v-model="form.phone" >
         </div>
     </div>
 
-    <!-- 验证码 -->
     <div class="input-container">
         <div class="title">
-            <input type="text" placeholder="请输入手机号" maxlength="6" class="w-70" >
+            <input type="text" placeholder="请输入收到的验证码" maxlength="6" class="w-70" v-model="form.captcha" >
             <span class="w-30">获取验证码</span>
         </div>
     </div>
 
-    <!-- 登录 -->
-    <div class="btn">
+    <div class="btn" @click="btn">
         登&nbsp;&nbsp;&nbsp;录
     </div>
 
-    <!-- 快捷 -->
     <div class="quick-btn">
-        <span class="left">账号密码登录</span>
-        <span class="right">手机快速注册</span>
+        <span class="left" @click="accountBtn">账号密码登录</span>
+        <span class="right" @click="phoneBtn">手机快速注册</span>
     </div>
 
 
@@ -42,13 +41,14 @@
     </div>
 
     <div class="quick-type">
-        <span>QQ</span>
-        <span>微信</span>
-        <span>苹果</span>
+        <div v-for="key in img" :key="key.title">
+            <img :src="key.url" alt="">
+            <span>{{key.title}}</span>
+        </div>
     </div>
 
     <div class="policy_tip">
-        <input type="checkbox" name="" id="">
+        <input type="checkbox" name="" id="" v-model="form.checked" >
         <span>若您输入的手机号未注册，将为您直接注册，注册即视为同意</span>
         <span class="color-blue">京东用户注册协议，</span>
         <span class="color-blue">用户隐私政策</span>
@@ -61,34 +61,93 @@
 export default {
     data(){
         return {
-            
+            form : {
+                phone : '',
+                captcha : '',
+                checked : false,
+            },
+            img : [
+                {
+                    title : 'QQ',
+                    url : require('../../src/assets/loginImg/QQ.png')
+                },
+                {
+                    title : '微信',
+                    url : require('../../src/assets/loginImg/wechat.png')
+                },
+                {
+                    title : '苹果',
+                    url : require('../../src/assets/loginImg/apple.png')
+                }
+            ],
         }
+    },
+    methods : {
+
+        btn(){
+            if(this.form.checked){
+                console.log('选中了');
+            }else{
+                console.log('没有选中');
+            }
+        },
+
+        accountBtn(){
+            console.log('快速');
+        },
+
+        phoneBtn(){
+            console.log('手机');
+        }
+
+    },
+    created(){
+        
     }
 }
 </script>
 
 <style lang='less' scoped>
-
+input::-webkit-input-placeholder{
+    font-size: 14px;
+    color: #ccc;
+}
+// 左箭头
+.leftArrwo{
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    margin-top: 15px;
+}
+.leftArrwo::after{
+    content: '';
+    width: 10px;
+    height: 10px;
+    border-width: 0 0 3px 3px;
+    border-color: #ccc;
+    border-style: solid;
+    transform:matrix(0.71,0.71,-0.71,0.71,0,0);
+    position: absolute;
+}
 #wrap{
     padding: 0 25px 0 25px;
     // 标题信息
     & .header{
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
+        text-align: center;
+        line-height: 44px;
         height: 44px;
         font-size: 17px;
     }
     // 用户输入信息地方
     & .input-container{
         margin-top: 20px;
-        border-bottom: 1px solid #ccc;
+        border-bottom: 1px solid #f3f3f3;
         & .title{
             height: 50px;
             font-size: 18px;
             display: flex;
             align-items: center;
-            // 右箭头
+            // 下箭头
             & .rightArrow{
                 width: 20px;
                 height: 20px;
@@ -100,7 +159,7 @@ export default {
                 content: '';
                 width: 10px;
                 height: 10px;
-                border-width: 3px 3px 0 0;
+                border-width: 0 3px 3px 0;
                 border-color: #ccc;
                 border-style: solid;
                 transform:matrix(0.71,0.71,-0.71,0.71,0,0);
@@ -122,6 +181,7 @@ export default {
                 justify-content: center;
                 border-left: 1px solid #ccc;
                 font-size: 12px;
+                color: #848689;
             }
         }
 
@@ -181,15 +241,28 @@ export default {
         display: flex;
         align-items: center;
         justify-content: space-around;
+        & div{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-wrap: wrap;
+            width: 50px;
+            & img{
+                width: 50px;
+                height: 50px;
+            }
+        }
     }
 
     & .policy_tip{
         margin-top: 15px;
         color: #ccc;
-
+        text-align: center;
         & .color-blue{
             color: #4a90e2;
         }
+
+        
     }
 
 
