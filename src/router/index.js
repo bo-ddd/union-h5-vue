@@ -178,14 +178,11 @@ export const routes = [{
         },
         component: () => import( /* webpackChunkName: "my" */ '../views/Home/My'),
     },
-    {
-        path:'/my/selfCenter',
-        name:'SelfCenter',
-        component: () => import( /* webpackChunkName: "selfCenter" */ '../views/Home/SelfCenter.vue'),
-    }
+  
     ]
 
 },
+
 //我的钱包
 {
     path:'/wallet',
@@ -295,6 +292,11 @@ export const routes = [{
     path:'/findGoodsHome',
     name:'FindGoodsHome',
     component: () => import(/*webpackChunkName:"findGoodsHome" */ '@/views/FindGoods/FindGoodsHome.vue')   
+},
+{
+    path:'/my/selfCenter',
+    name:'SelfCenter',
+    component: () => import( /* webpackChunkName: "selfCenter" */ '../views/Home/SelfCenter.vue'),
 }
 ]
 const router = new VueRouter({
