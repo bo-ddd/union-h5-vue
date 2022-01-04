@@ -17,12 +17,15 @@ let getRoutes = function() {
 
 export default new Vuex.Store({
     state: {
-        routes: getRoutes()
+        routes: getRoutes(),
+        offsettop:0
     },
     getters: {
         routes: state => state.routes,
     },
-    mutations: {},
+    mutations: {
+        OFFSETTOP:(state,payload)=> state.offsettop = payload,
+    },
     actions: {},
     modules: {}
 })
