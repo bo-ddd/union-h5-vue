@@ -5,31 +5,29 @@
 
         </div>
         <span>xx登录注册</span>
-        <span></span>
     </div>
 
-    <!-- 手机号 -->
     <div class="input-container">
         <div class="title">
-            <span>+86</span>
-            <span class="rightArrow"></span>
-            <input type="text" placeholder="请输入手机号" maxlength="11" v-model="form.phone" >
+            <span v-show="circuit">+86</span>
+            <span class="rightArrow" v-show="circuit"></span>
+            <input type="text" :placeholder="phonePlaceHolder" maxlength="11" v-model="form.phone" >
         </div>
     </div>
 
     <div class="input-container">
         <div class="title">
-            <input type="text" placeholder="请输入收到的验证码" maxlength="6" class="w-70" v-model="form.captcha" >
-            <span class="w-30">获取验证码</span>
+            <input :type="captchaType" :placeholder="captchaPlaceHolder" maxlength="6" class="w-70" v-model="form.captcha" >
+            <span class="w-30" @click="getcaptcha">{{captcha}}</span>
         </div>
     </div>
 
     <div class="btn" @click="btn">
-        登&nbsp;&nbsp;&nbsp;录
+        登&nbsp;&nbsp;录
     </div>
 
     <div class="quick-btn">
-        <span class="left" @click="accountBtn">账号密码登录</span>
+        <span class="left" @click="accountBtn">{{quickAccout}}</span>
         <span class="right" @click="phoneBtn">手机快速注册</span>
     </div>
 
@@ -49,8 +47,8 @@
 
     <div class="policy_tip">
         <input type="checkbox" name="" id="" v-model="form.checked" >
-        <span>若您输入的手机号未注册，将为您直接注册，注册即视为同意</span>
-        <span class="color-blue">京东用户注册协议，</span>
+        <span>{{footerTitle}}</span>
+        <span class="color-blue" v-show="circuit">京东用户注册协议，</span>
         <span class="color-blue">用户隐私政策</span>
     </div>
 
@@ -58,6 +56,7 @@
 </template>
 
 <script>
+import { Toast } from 'vant';
 export default {
     data(){
         return {
@@ -80,10 +79,17 @@ export default {
                     url : require('../../src/assets/loginImg/apple.png')
                 }
             ],
+            circuit : true,
+            quickAccout : '账号密码登录',
+            phonePlaceHolder : '请输入手机号',
+            captchaPlaceHolder : '请输入收到的验证码',
+            captchaType : 'text',
+            captcha : '获取验证码',
+            footerTitle : '若您输入的手机号未注册，将为您直接注册，注册即视为同意'
         }
     },
     methods : {
-
+        // 登录的点击事件
         btn(){
             if(this.form.checked){
                 console.log('选中了');
@@ -92,12 +98,52 @@ export default {
             }
         },
 
+        // 账号密码登录的点击事件
         accountBtn(){
-            console.log('快速');
+            if(this.circuit){
+                this.quickAccout = '短信验证码登录';
+                this.phonePlaceHolder = '用户名/邮箱/手机号';
+                this.captchaPlaceHolder = '请输入密码';
+                this.captchaType = 'password';
+                this.captcha = '忘记密码?';
+                this.footerTitle = '登录即代表您已同意';
+                this.form.phone = '';
+                this.form.captcha = '';
+                this.circuit = false;
+            }else{
+                this.quickAccout = '账号密码登录';
+                this.phonePlaceHolder = '请输入手机号';
+                this.captchaPlaceHolder = '请输入收到的验证码';
+                this.captchaType = 'text';
+                this.captcha = '获取验证码';
+                this.footerTitle = '若您输入的手机号未注册，将为您直接注册，注册即视为同意';
+                this.form.phone = '';
+                this.form.captcha = '';
+                this.circuit = true;
+            }
         },
 
+        // 手机快速注册的点击事件
         phoneBtn(){
-            console.log('手机');
+            this.$router.push({
+                path : '/phoneregister',
+            })
+        },
+
+        // 验证码的点击事件
+        getcaptcha(){
+            if(!this.circuit){
+                // 进入这里是忘记密码
+                this.$router.push({
+                    path : '/forgetpass',
+                })
+            }else{
+                if(/^1[0-9]{10}$/.test(this.form.phone)){
+                    Toast('手机号格式正确');
+                }else{
+                    Toast('手机号格式不正确');
+                }
+            }
         }
 
     },
@@ -238,6 +284,7 @@ input::-webkit-input-placeholder{
 
     & .quick-type{
         margin-top: 30px;
+        padding: 0 30px;
         display: flex;
         align-items: center;
         justify-content: space-around;

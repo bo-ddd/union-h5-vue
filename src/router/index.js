@@ -127,26 +127,198 @@ export const routes = [{
 
         }],
     },
+    //新品推荐
     {
-        path: '/newproducts/select',
+        path: '/newproducts',
         name: 'NewProducts',
         meta: {
-            title: '实时数据',
+            title: '精选',
             icon: 'search'
         },
-        // redirect:"/newproducts/select",
-        component: () =>
-            import( /* webpackChunkName: "newproducts" */ '../views/Home/NewProducts/NewProducts'),
-        children:[
-            {path:"/newproducts/select",name:"Select",meta:{title:"精选"},component:()=>import(/*webpackChunkName:"Select" */ '@/views/Home/NewProducts/Select.vue')},
-            {path:"/newproducts/iphone",name:"Iphone",meta:{title:"手机"},component:()=>import(/*webpackChunkName:"Iphone" */ '@/views/Home/NewProducts/Iphone.vue')},
-            {path:"/newproducts/computer",name:"Computer",meta:{title:"电脑数码"},component:()=>import(/*webpackChunkName:"Computer" */ '@/views/Home/NewProducts/Computer.vue')},
-            {path:"/newproducts/play",name:"Play",meta:{title:"潮玩"},component:()=>import(/*webpackChunkName:"Play" */ '@/views/Home/NewProducts/Play.vue')},
-            {path:"/newproducts/electrical",name:"Electrical",meta:{title:"家电"},component:()=>import(/*webpackChunkName:"Electrical" */ '@/views/Home/NewProducts/Electrical.vue')},
-            {path:"/newproducts/beauty",name:"Beauty",meta:{title:"美妆"},component:()=>import(/*webpackChunkName:"Beauty" */ '@/views/Home/NewProducts/Beauty.vue')},
-            {path:"/newproducts/clothes",name:"Clothes",meta:{title:"服饰"},component:()=>import(/*webpackChunkName:"Clothes" */ '@/views/Home/NewProducts/Clothes.vue')},
-            {path:"/newproducts/supermk",name:"Supermk",meta:{title:"超市"},component:()=>import(/*webpackChunkName:"Supermk" */ '@/views/Home/NewProducts/Supermk.vue')},
-            {path:"/newproducts/outdoorsports",name:"Outdoorsports",meta:{title:"运动户外"},component:()=>import(/*webpackChunkName:"Outdoorsports" */ '@/views/Home/NewProducts/Outdoorsports.vue')},
+        redirect: "/newproducts/select",
+        component: () => import( /* webpackChunkName: "newproducts" */ '../views/Home/NewProducts/NewProducts.vue'),
+        children: [
+            {
+                path: "/newproducts/select",
+                name: "Sselect",
+                meta: { title: "精选" },
+                component: () => import(/*webpackChunkName:"Sselect" */ '@/views/Home/NewProducts/Select/Sselect.vue'),
+                redirect: "/newproducts/select/select",
+                children: [
+                    {
+                        path: "/newproducts/select/select",
+                        name: "Select",
+                        meta: {
+                            title: "精选"
+                        },
+                        component: () => import(/*webpackChunkName:"Select" */ '@/views/Home/NewProducts/Select/Select.vue')
+                    },
+                    {
+                        path: "/newproducts/select/iphone",
+                        name: "Iphone",
+                        meta: {
+                            title: "手机"
+                        },
+                        component: () => import(/*webpackChunkName:"Iphone" */ '@/views/Home/NewProducts/Select/Iphone.vue')
+                    },
+                    {
+                        path: "/newproducts/select/computer",
+                        name: "Computer",
+                        meta: {
+                            title: "电脑数码"
+                        },
+                        component: () => import(/*webpackChunkName:"Computer" */ '@/views/Home/NewProducts/Select/Computer.vue')
+                    },
+                    {
+                        path: "/newproducts/select/play",
+                        name: "Play",
+                        meta: {
+                            title: "潮玩"
+                        },
+                        component: () => import(/*webpackChunkName:"Play" */ '@/views/Home/NewProducts/Select/Play.vue')
+                    },
+                    {
+                        path: "/newproducts/select/electrical",
+                        name: "Electrical",
+                        meta: {
+                            title: "家电"
+                        },
+                        component: () => import(/*webpackChunkName:"Electrical" */ '@/views/Home/NewProducts/Select/Electrical.vue')
+                    },
+                    {
+                        path: "/newproducts/select/beauty",
+                        name: "Beauty",
+                        meta: {
+                            title: "美妆"
+                        },
+                        component: () => import(/*webpackChunkName:"Beauty" */ '@/views/Home/NewProducts/Select/Beauty.vue')
+                    },
+                    {
+                        path: "/newproducts/select/clothes",
+                        name: "Clothes",
+                        meta: {
+                            title: "服饰"
+                        },
+                        component: () => import(/*webpackChunkName:"Clothes" */ '@/views/Home/NewProducts/Select/Clothes.vue')
+                    },
+                    {
+                        path: "/newproducts/select/supermk",
+                        name: "Supermk",
+                        meta: {
+                            title: "超市"
+                        },
+                        component: () => import(/*webpackChunkName:"Supermk" */ '@/views/Home/NewProducts/Select/Supermk.vue')
+                    },
+                    {
+                        path: "/newproducts/select/outdoorsports",
+                        name: "Outdoorsports",
+                        meta: {
+                            title: "运动户外"
+                        },
+                        component: () => import(/*webpackChunkName:"Outdoorsports" */ '@/views/Home/NewProducts/Select/Outdoorsports.vue')
+                    },
+                ]
+            },
+            {
+                path: "/newproducts/trend",
+                name: "Trend",
+                meta: {
+                    title: "趋势"
+                },
+                component: () => import(/*webpackChunkName:"Trend" */ '@/views/Home/NewProducts/Trend/Trend.vue'),
+                children: [
+                    {
+                        path: "/newproducts/trend/atmosphere",
+                        name: "Atmosphere",
+                        meta: { title: "气氛美学" },
+                        component: () => import(/*webpackChunkName:"Atmosphere" */ '@/views/Home/NewProducts/Trend/Atmosphere.vue')
+                    },
+                    {
+                        path: "/newproducts/trend/blindbox",
+                        name: "Blindbox",
+                        meta: { title: "盲盒式惊喜" },
+                        component: () => import(/*webpackChunkName:"Blindbox" */ '@/views/Home/NewProducts/Trend/Blindbox.vue')
+                    },
+                    {
+                        path: "/newproducts/trend/care",
+                        name: "Care",
+                        meta: { title: "专属呵护" },
+                        component: () => import(/*webpackChunkName:"Care" */ '@/views/Home/NewProducts/Trend/Care.vue')
+                    },
+                    {
+                        path: "/newproducts/trend/diet",
+                        name: "Diet",
+                        meta: { title: "膳食改善" },
+                        component: () => import(/*webpackChunkName:"Diet" */ '@/views/Home/NewProducts/Trend/Diet.vue')
+                    },
+                    {
+                        path: "/newproducts/trend/dressing",
+                        name: "Dressing",
+                        meta: { title: "穿衣革新" },
+                        component: () => import(/*webpackChunkName:"Dressing" */ '@/views/Home/NewProducts/Trend/Dressing.vue')
+                    },
+                    {
+                        path: "/newproducts/trend/green",
+                        name: "Green",
+                        meta: { title: "绿色时尚" },
+                        component: () => import(/*webpackChunkName:"Green" */ '@/views/Home/NewProducts/Trend/Green.vue')
+                    },
+                    {
+                        path: "/newproducts/trend/homestead",
+                        name: "Homestead",
+                        meta: { title: "宅家运动" },
+                        component: () => import(/*webpackChunkName:"Homestead" */ '@/views/Home/NewProducts/Trend/Homestead.vue')
+                    },
+                    {
+                        path: "/newproducts/trend/housework",
+                        name: "Housework",
+                        meta: { title: "高效家务" },
+                        component: () => import(/*webpackChunkName:"Housework" */ '@/views/Home/NewProducts/Trend/Housework.vue')
+                    },
+                    {
+                        path: "/newproducts/trend/luxury",
+                        name: "Luxury",
+                        meta: { title: "奢侈精致" },
+                        component: () => import(/*webpackChunkName:"Luxury" */ '@/views/Home/NewProducts/Trend/Luxury.vue')
+                    },
+                    {
+                        path: "/newproducts/trend/organicorigin",
+                        name: "Organicorigin",
+                        meta: { title: "有机原产" },
+                        component: () => import(/*webpackChunkName:"Organicorigin" */ '@/views/Home/NewProducts/Trend/Organicorigin.vue')
+                    },
+                    {
+                        path: "/newproducts/trend/pets",
+                        name: "Pets",
+                        meta: { title: "家人化养宠" },
+                        component: () => import(/*webpackChunkName:"Pets" */ '@/views/Home/NewProducts/Trend/Pets.vue')
+                    },
+                    {
+                        path: "/newproducts/trend/skincare",
+                        name: "Skincare",
+                        meta: { title: "专效养肤" },
+                        component: () => import(/*webpackChunkName:"Skincare" */ '@/views/Home/NewProducts/Trend/Skincare.vue')
+                    },
+                    {
+                        path: "/newproducts/trend/slowlife",
+                        name: "Slowlife",
+                        meta: { title: "微醺慢生活" },
+                        component: () => import(/*webpackChunkName:"Slowlife" */ '@/views/Home/NewProducts/Trend/Slowlife.vue')
+                    },
+                    {
+                        path: "/newproducts/trend/space",
+                        name: "Space",
+                        meta: { title: "专属空间" },
+                        component: () => import(/*webpackChunkName:"Space" */ '@/views/Home/NewProducts/Trend/Space.vue')
+                    },
+                    {
+                        path: "/newproducts/trend/threedimensional",
+                        name: "Threedimensional",
+                        meta: { title: "立体精致感" },
+                        component: () => import(/*webpackChunkName:"Threedimensional" */ '@/views/Home/NewProducts/Trend/Threedimensional.vue')
+                    },
+                ]
+            },
         ]
     },
     {
@@ -178,11 +350,10 @@ export const routes = [{
         },
         component: () => import( /* webpackChunkName: "my" */ '../views/Home/My'),
     },
-  
+    
     ]
 
 },
-
 //我的钱包
 {
     path:'/wallet',
@@ -212,25 +383,7 @@ export const routes = [{
         },
         component: () => import(/* webpackChunkName :'Waitreceiving' */ '../views/Payment/Waitreceiving.vue')
     },
-    {
-        path: '/payment/remainevaluated',
-        name: 'Remainevaluated',
-        meta: {
-            icon: "edit",
-            title: '待评价'
-        },
-        component: () => import(/* webpackChunkName :'Remainevaluated' */ '../views/Payment/Remainevaluated.vue')
-    },
-    {
-        path: '/payment/aftersale',
-        name: 'Aftersale',
-        meta: {
-            icon: "after-sale",
-            title: '退换/售后'
-        },
-        component: () => import(/* webpackChunkName :'Aftersale' */ '../views/Payment/Aftersale.vue')
-
-    },
+    //我的订单
     {
         path: '/payment/myorder',
         name: 'Myorder',
@@ -239,20 +392,52 @@ export const routes = [{
             title: '我的订单'
         },
         component: () => import(/* webpackChunkName :'Myorder' */ '../views/Payment/Myorder.vue')
-    }]
+    },
+    {
+        path: '/payment/completed',
+        name: 'Completed',
+        meta: {
+            icon: "records",
+            title: '已完成'
+        },
+        component: () => import(/* webpackChunkName :'Myorder' */ '../views/Payment/Myorder.vue')
+    },
+    
+]
 },
+// 待评价
 {
-    path: 'setting',
+    path: '/payment/remainevaluated',
+    name: 'Remainevaluated',
+    meta: {
+        icon: "edit",
+        title: '待评价'
+    },
+    component: () => import(/* webpackChunkName :'Remainevaluated' */ '../views/Payment/Remainevaluated.vue')
+},
+//设置
+{
+    path: '/setting',
     name: 'Setting',
     component: () => import(/*webpackChunkName:"Setting" */ '@/views/Setting.vue')
 },
+// 退换/售后
 {
-    path: 'selected',
+    path: '/payment/aftersale',
+    name: 'Aftersale',
+    meta: {
+        icon: "after-sale",
+        title: '退换/售后'
+    },
+    component: () => import(/* webpackChunkName :'Aftersale' */ '../views/Payment/Aftersale.vue')
+},
+{
+    path: '/selected',
     name: 'selected',
     component: () => import(/*webpackChunkName:"Selected" */ '@/views/RankList/Selected.vue')
 },
 {
-    path: 'FindGoods',
+    path: '/FindGoods',
     name: 'FindGoods',
     component: () => import(/*webpackChunkName:"FindGoods" */ '@/views/FindGoods/FindGoodsHome.vue')
 },
@@ -264,24 +449,24 @@ export const routes = [{
 },
 //排行榜
 {
-    path:'/rankHome',
-    name:'RankHome',
-    children:[
+    path: '/rankHome',
+    name: 'RankHome',
+    children: [
         {
-            path:'/rankHome/selected',
-            name:'Selected',
-            meta:{
-                title:'精选'
+            path: '/rankHome/selected',
+            name: 'Selected',
+            meta: {
+                title: '精选'
             },
-            component: () => import(/*webpackChunkName:"selected" */ '@/views/RankList/Selected.vue') 
+            component: () => import(/*webpackChunkName:"selected" */ '@/views/RankList/Selected.vue')
         },
         {
-            path:'/rankHome/jinbang',
-            name:'Jinbang',
-            meta:{
-                title:'金榜'
+            path: '/rankHome/jinbang',
+            name: 'Jinbang',
+            meta: {
+                title: '金榜'
             },
-            component: () => import(/*webpackChunkName:"jinbang" */ '@/views/RankList/Jinbang.vue') 
+            component: () => import(/*webpackChunkName:"jinbang" */ '@/views/RankList/Jinbang.vue')
         },
 
     ],
@@ -297,6 +482,12 @@ export const routes = [{
     path:'/my/selfCenter',
     name:'SelfCenter',
     component: () => import( /* webpackChunkName: "selfCenter" */ '../views/Home/SelfCenter.vue'),
+},
+//拍拍二手
+{
+    path:'/PaiHome',
+    name:'PaiHome',
+    component: () => import(/*webpackChunkName:"PaiHome" */ '@/views/PaiUsed/PaiHome.vue')
 }
 ]
 const router = new VueRouter({

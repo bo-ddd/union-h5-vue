@@ -1,13 +1,13 @@
 <template>
   <div class="wrap">
-    <!-- <van-nav-bar
+    <van-nav-bar
       title="退换/售后"
       left-text="返回"
       right-text="按钮"
       left-arrow
       @click-left="onClickLeft"
       @click-right="onClickRight"
-    /> -->
+    />
     <van-tabs>
       <van-tab title="售后申请" class="tab_card">
         <div>
@@ -40,6 +40,7 @@
             >
               <template #footer>
                 <van-button round size="small" type="danger"
+                @click="submit"
                   >申请售后</van-button
                 >
               </template>
@@ -76,7 +77,9 @@ export default {
   },
   methods: {
     onClickLeft() {
-      console.log("onClickLeft");
+      this.$router.push({
+        name:'My'
+      })
     },
     onClickRight() {
       console.log("onClickRight");
@@ -84,6 +87,9 @@ export default {
     onSearch() {
       console.log("onSearch");
     },
+    submit(){
+      console.log('售后提交')
+    }
   },
 };
 </script>

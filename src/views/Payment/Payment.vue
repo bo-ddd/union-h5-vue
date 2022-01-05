@@ -24,11 +24,10 @@
     </van-nav-bar>
     <van-tabs v-model="defaultTag">
       <van-tab
-        v-for="item in routes[2].children"
-        :title="item.meta.title"
-        :key="item.path"
+        v-for="item in statusList"
+        :title="item.text"
+        :key="item.text"
         :name="item.name"
-        :to="item.path"
       >
         <router-view />
       </van-tab>
@@ -43,6 +42,26 @@ export default {
       value: 2,
       search: "",
       active: 1,
+      statusList: [
+        {
+          text: "全部",
+          name:'Myorder'
+        },
+        {
+          text: "待付款",
+          name:'Payment'
+        },
+        {
+          text: "待收货",
+          name:'Waitreceiving'
+        },
+        {
+          text: "已完成",
+        },
+        {
+          text: "已取消",
+        },
+      ],
     };
   },
   computed: {
