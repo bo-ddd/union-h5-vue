@@ -483,6 +483,12 @@ export const routes = [{
     name:'SelfCenter',
     component: () => import( /* webpackChunkName: "selfCenter" */ '../views/Home/SelfCenter.vue'),
 },
+//拍拍二手
+{
+    path:'/PaiHome',
+    name:'PaiHome',
+    component: () => import(/*webpackChunkName:"PaiHome" */ '@/views/PaiUsed/PaiHome.vue')
+}
 ]
 const router = new VueRouter({
     mode: 'history',

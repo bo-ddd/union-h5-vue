@@ -40,6 +40,7 @@
             >
               <template #footer>
                 <van-button round size="small" type="danger"
+                @click="submit"
                   >申请售后</van-button
                 >
               </template>
@@ -86,6 +87,9 @@ export default {
     onSearch() {
       console.log("onSearch");
     },
+    submit(){
+      console.log('售后提交')
+    }
   },
 };
 </script>
