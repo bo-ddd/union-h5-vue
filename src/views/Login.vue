@@ -5,10 +5,8 @@
 
         </div>
         <span>xx登录注册</span>
-        <span></span>
     </div>
 
-    <!-- 手机号 -->
     <div class="input-container">
         <div class="title">
             <span v-show="circuit">+86</span>
@@ -25,7 +23,7 @@
     </div>
 
     <div class="btn" @click="btn">
-        登&nbsp;&nbsp;&nbsp;录
+        登&nbsp;&nbsp;录
     </div>
 
     <div class="quick-btn">
@@ -58,6 +56,7 @@
 </template>
 
 <script>
+import { Toast } from 'vant';
 export default {
     data(){
         return {
@@ -102,12 +101,12 @@ export default {
         // 账号密码登录的点击事件
         accountBtn(){
             if(this.circuit){
-                this.quickAccout = '短信验证码登录'
+                this.quickAccout = '短信验证码登录';
                 this.phonePlaceHolder = '用户名/邮箱/手机号';
                 this.captchaPlaceHolder = '请输入密码';
                 this.captchaType = 'password';
                 this.captcha = '忘记密码?';
-                this.footerTitle = '登录即代表您已同意'
+                this.footerTitle = '登录即代表您已同意';
                 this.form.phone = '';
                 this.form.captcha = '';
                 this.circuit = false;
@@ -139,7 +138,11 @@ export default {
                     path : '/forgetpass',
                 })
             }else{
-                console.log('获取验证码');
+                if(/^1[0-9]{10}$/.test(this.form.phone)){
+                    Toast('手机号格式正确');
+                }else{
+                    Toast('手机号格式不正确');
+                }
             }
         }
 
@@ -281,6 +284,7 @@ input::-webkit-input-placeholder{
 
     & .quick-type{
         margin-top: 30px;
+        padding: 0 30px;
         display: flex;
         align-items: center;
         justify-content: space-around;
