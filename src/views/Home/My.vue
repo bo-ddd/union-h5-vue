@@ -19,6 +19,7 @@
           width="50px"
           height="50px"
           :src="require('../../assets/images/9.png')"
+          @click="selfC"
         />
       </div>
       <div class="userinfo">
@@ -276,6 +277,9 @@ export default {
     },
     loadImg(url){
      return require('../../assets/images/' + url + '.png')
+    },
+    selfC(){
+      this.$router.push({name: "SelfCenter"})
     }
   },
 };

@@ -478,6 +478,7 @@ export const routes = [{
     name:'FindGoodsHome',
     component: () => import(/*webpackChunkName:"findGoodsHome" */ '@/views/FindGoods/FindGoodsHome.vue')   
 },
+//个人中心
 {
     path:'/my/selfCenter',
     name:'SelfCenter',
@@ -488,7 +489,8 @@ export const routes = [{
     path:'/PaiHome',
     name:'PaiHome',
     component: () => import(/*webpackChunkName:"PaiHome" */ '@/views/PaiUsed/PaiHome.vue')
-}
+},
+
 ]
 const router = new VueRouter({
     mode: 'history',
