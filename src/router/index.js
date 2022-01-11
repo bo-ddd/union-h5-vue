@@ -490,7 +490,12 @@ export const routes = [{
     name:'PaiHome',
     component: () => import(/*webpackChunkName:"PaiHome" */ '@/views/PaiUsed/PaiHome.vue')
 },
-
+//男装馆
+{
+    path:'/mensClothing',
+    name:'MensClothing',
+    component: () => import(/*webpackChunkName:"MensClothing" */ '@/views/MensClothing/MensClothing.vue')
+}
 ]
 const router = new VueRouter({
     mode: 'history',
