@@ -490,7 +490,24 @@ export const routes = [{
     name:'PaiHome',
     component: () => import(/*webpackChunkName:"PaiHome" */ '@/views/PaiUsed/PaiHome.vue')
 },
-
+//隐私设置
+{
+    path:'/selfCenter/PrivacySettings',
+    name:'PrivacySettings',
+    component: () => import(/* webpackChunkName: "PrivacySettings" */ '../views/Home/PrivacySettings.vue'),
+  },
+  //账户设置
+  {
+    path:'/selfCenter/AccountSettings',
+    name:'AccountSettings',
+    component: () => import(/* webpackChunkName: "AccountSettings" */ '../views/Home/AccountSettings.vue'),
+  },
+  //月度账单
+  {
+    path:'/selfCenter/MonthlyBill',
+    name:'MonthlyBill',
+    component: () => import(/* webpackChunkName: "MonthlyBill" */ '../views/Home/MonthlyBill.vue'),
+  },
 ]
 const router = new VueRouter({
     mode: 'history',
