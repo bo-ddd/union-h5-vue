@@ -3,16 +3,22 @@
     <div class="auto">
       <div class="header">
         <div class="left">
-          <van-icon  @click="back" name="arrow-left" />
+          <van-icon name="arrow-left" />
           <div class="left-right">
             <van-image round width="50px" height="50px" :src="require('../../assets/selfCenter/head.png')" />
             <span>个人空间</span>
           </div>
         </div>
         <div class="right">
-            <van-image round width="50px" height="50px" :src="require('../../assets/selfCenter/liubian.png')" />
-            <van-image round width="50px" height="50px" :src="require('../../assets/selfCenter/fenxiang.png')" />
-            <button>隐私设置</button>
+            <van-image @click="AccountSettings" round width="50px" height="50px" :src="require('../../assets/selfCenter/liubian.png')" />
+            <van-image @click="showShare = true" round width="50px" height="50px" :src="require('../../assets/selfCenter/fenxiang.png')" />
+            <van-share-sheet
+              v-model="showShare"
+              title="分享到"
+              :options="options"
+              @select="onSelect"
+            />
+            <button @click="PrivacySettings">隐私设置</button>
         </div>
       </div>
         <div class="main">
@@ -28,7 +34,7 @@
               </div>
             </div>
           </div>
-          <div class="bill">
+          <div class="bill" @click="MonthlyBill">
             <div>月度账单</div>
             <img src="../../assets/selfCenter/rightr.png" alt="">
           </div>
@@ -40,11 +46,11 @@
           </div>
           <div class="specific">
             <div>总共消费</div>
-            <div>0元</div>
+            <div>0笔</div>
           </div>
           <div class="specific">
             <div>累计节省</div>
-            <div>0元</div>
+            <div>0笔</div>
           </div>
         </div>
     </div>
@@ -106,7 +112,9 @@
             <div class="Jingdou">
               <div>评价官“赚钱”攻略</div>
               <div>两倍京豆奖励了解一下？</div>
-              <div>去看看</div>
+              <div class="btn_look">
+                <div class="look_item">去看看</div>
+              </div>
             </div>
           </div>
           <div class="publish">你还未发表过评价，快去发表吧</div>
@@ -118,18 +126,42 @@
 </template>
 
 <script>
+import { Toast } from 'vant';
 export default {
    data() {
     return {
-      active:'1'
-    };
+      active:'1',
+      showShare: false,
+      options: [
+        { name: '微信好友', icon: 'wechat' },
+        { name: '朋友圈', icon: 'wechat-moments' },
+        { name: 'QQ好友', icon: 'qq' },
+        // { name: 'QQ空间', icon: 'qq-zone' },
+        { name: '新浪微博', icon: 'weibo' },
+        { name: '复制链接', icon: 'link' },
+      ]
+    }
   },
   methods:{
-    back(){
+    PrivacySettings(){
       this.$router.push({
-        name:'My'
+        name:'PrivacySettings'
+       })
+    },
+    AccountSettings(){
+      this.$router.push({
+        name:'AccountSettings'
       })
-    }
+    },
+    MonthlyBill(){
+      this.$router.push({
+        name:'MonthlyBill'
+      })
+    },
+    onSelect(option) {
+      Toast(option.name);
+      this.showShare = false;
+    },
   }
 };
 </script>
@@ -267,7 +299,7 @@ export default {
 }
 .big{
   background-color: #f2f2f2;
-  margin-top: -3px;
+  margin-top: -28px;
   padding: 5px 0;
     & .evaluate{
     width: 348px;
@@ -281,7 +313,7 @@ export default {
     background-size: 100%;
     & .exclusive{
       height: 50px;
-      margin: 25px 45px 20px 80px;
+      margin: 25px 40px 20px 80px;
       & .top{
         width: 180px;
         height: 21px;
@@ -362,9 +394,10 @@ export default {
         font-weight: 600;
         display: flex;
         justify-content: space-between;
+        align-items: center;
         & img{
-          width: 20px;
-          height: 20px;
+          width: 15px;
+          height: 15px;
         }
       }
       & .bottom{
@@ -383,7 +416,7 @@ export default {
   & .makeMoney{
     width: 350px;
     height: 95px;
-    background-image: linear-gradient(to right, #ffc952 , #ffa531);
+    background-image: linear-gradient(to right, #f1e67c , #ffb662);
     border-radius: 10px;
     display: flex;
     align-items: center;
@@ -395,20 +428,24 @@ export default {
       align-items: center;
       flex-direction: column;
       & :nth-of-type(1){
-        font-size: 20px;
+        font-size: 17px;
         font-weight: 600;
       }
       & :nth-of-type(2){
-        font-size: 17px;
+        font-size: 13px;
         margin: 5px;
       }
-      & :nth-of-type(3){
-        font-size: 15px;
+      & .btn_look{
         border: 1px solid black;
-        border-radius: 10px;
-        width: 69px;
-        height: 24px;
+        border-radius: 20px;
+        width: 66px;
+        height: 22px;
         text-align: center;
+        & .look_item{
+        font-size: 12px;
+        transform: scale(0.9);
+        line-height: 22px;
+        }
       }
     }
   }
@@ -428,5 +465,8 @@ export default {
   margin: 10px 0 0 0;
   flex-direction: column;
   align-items: center;
+}
+::v-deep .van-tab--active{
+  font-weight: 700;
 }
 </style>
