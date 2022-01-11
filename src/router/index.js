@@ -490,14 +490,12 @@ export const routes = [{
     name:'PaiHome',
     component: () => import(/*webpackChunkName:"PaiHome" */ '@/views/PaiUsed/PaiHome.vue')
 },
-<<<<<<< HEAD
 //男装馆
 {
     path:'/mensClothing',
     name:'MensClothing',
     component: () => import(/*webpackChunkName:"MensClothing" */ '@/views/MensClothing/MensClothing.vue')
-}
-=======
+},
 //隐私设置
 {
     path:'/selfCenter/PrivacySettings',
@@ -516,7 +514,6 @@ export const routes = [{
     name:'MonthlyBill',
     component: () => import(/* webpackChunkName: "MonthlyBill" */ '../views/Home/MonthlyBill.vue'),
   },
->>>>>>> e0465fc927a8a93070a961d06a3041bfc7f247f5
 ]
 const router = new VueRouter({
     mode: 'history',

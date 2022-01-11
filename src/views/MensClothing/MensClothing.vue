@@ -211,9 +211,7 @@ export default{
                         }
                     }
                     & .option-btm{
-                        & .text-content{
-    
-                        }
+                      
                     }
                 }
             }
