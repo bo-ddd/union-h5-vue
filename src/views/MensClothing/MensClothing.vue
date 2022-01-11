@@ -49,21 +49,43 @@
 
                 <!-- 馆区选项 -->
                 <div class="shop-option">
-                    <div class="option">
-                        <div class="option-top">
-                            <div class="img-content"></div>
-                        </div>
-                        <div class="option-btm">
-                            <div class="text-content"></div>
+                   <div class="option" v-for="(item,index) in iconArr" :key="index">
+                       <div class="option-top">
+                           <div class="img-content">
+                               <img :src="item.img">
+                           </div>
+                       </div>
+                       <div class="option-btm">{{item.text}}</div>
+                   </div>
+                </div>
+
+                <!-- 爆款单品 -->
+                <h2>爆款单品</h2>
+                
+                <!-- 滚动广告 -->
+                <div class="banner-wrap" ref="bannerwrap">
+                    <div class="banner-content">
+                        <div class="banner" v-for="item in bannerArr" :key="item.id">
+                            <div class="img-out">
+                                <img :src="item.img">
+                            </div>
+                            <div class="text-content">
+                                {{item.text}}
+                            </div>
+                            <div class="price-content">
+                                ￥{{item.price}}
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
+
         </div>
     </div>
 </template>
 
 <script>
+import BScroll from '@better-scroll/core';
 
 export default{
     data() {
@@ -111,8 +133,76 @@ export default{
                     text:'工装裤',
                 },
             ],
+            iconArr:[
+                {
+                    img:require('../../assets/mensClothing/icon1.png'),
+                    text:'鞋靴馆',
+                },
+                {
+                    img:require('../../assets/mensClothing/icon2.png'),
+                    text:'箱包馆',
+                },
+                {
+                    img:require('../../assets/mensClothing/icon3.png'),
+                    text:'内衣馆',
+                },
+                {
+                    img:require('../../assets/mensClothing/icon4.png'),
+                    text:'计生情趣',
+                },
+            ],
+            bannerArr:[
+                {
+                    id:1,
+                    img:require('../../assets/mensClothing/banner1.png'),
+                    text:'GxG男装【斯文系列】21年冬季新装',
+                    price:'279',
+                },
+                {
+                    id:2,
+                    img:require('../../assets/mensClothing/banner2.png'),
+                    text:'HLA海澜之家圆领半高领休闲服装',
+                    price:'279',
+                },
+                {
+                    id:3,
+                    img:require('../../assets/mensClothing/banner3.png'),
+                    text:'【吃豆人联名】A21秋冬季2021新装',
+                    price:'279',
+                },
+                {
+                    id:4,
+                    img:require('../../assets/mensClothing/banner1.png'),
+                    text:'GxG男装【斯文系列】21年冬季新装',
+                    price:'279',
+                },
+                {
+                    id:5,
+                    img:require('../../assets/mensClothing/banner2.png'),
+                    text:'HLA海澜之家圆领半高领休闲服装',
+                    price:'279',
+                },
+                {
+                    id:6,
+                    img:require('../../assets/mensClothing/banner3.png'),
+                    text:'【吃豆人联名】A21秋冬季2021新装',
+                    price:'279',
+                },
+            ],
         }
     },
+    created(){
+        this.$nextTick(()=>{
+            let bannerWrap = document.querySelector('.banner-content');
+            bannerWrap.style.cssText=`
+                width:${(this.bannerArr.length)*107+5*(this.bannerArr.length)}px;
+            `;
+            new BScroll(this.$refs.bannerwrap,{
+                startX:0,
+                scrollX:true,
+            })
+        })
+    }
 }
 </script>
 
@@ -161,8 +251,76 @@ export default{
                 }
             }
         }
-        h2{
-            padding: 10px;
+        & .shop-wrap{
+            padding: 0 10px;
+            & .shop-option{
+                display: grid;
+                margin-top: 25px;
+                grid-template-columns: repeat(4,1fr);
+                background: #fff;
+                margin-bottom: 8px;
+                & .option{
+                    & .option-top{
+                        height: 65px;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        & .img-content{
+                            width: 52px;
+                            height: 52px;
+                            border-radius: 5px;
+                            overflow: hidden;
+                            background: red;
+                            & img{
+                                width: 100%;
+                                height: 100%;
+                            }
+                        }
+                    }
+                    & .option-btm{
+                        height: 22px;
+                        font-size: 14px;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                    }
+                }
+            }
+            & .banner-wrap{
+                margin-top: 10px;
+                overflow: hidden;
+                & .banner-content{
+                    & .banner{
+                        display: inline-block;
+                        height: 186px;
+                        width:  107px;
+                        background: #fff;
+                        margin-right: 5px;
+                        & .img-out{
+                            width: 107px;
+                            height: 105px;
+                            & img{
+                                width: 100%;
+                                height: 100%;
+                            }
+                        }
+                        & .text-content{
+                            font-size: 12px;
+                            margin:10px;
+                            display: -webkit-box;
+                            -webkit-box-orient: vertical;
+                            -webkit-line-clamp: 2;
+                            overflow: hidden;
+                        }
+                        & .price-content{
+                            padding: 0 10px;
+                            font-size: 18px;
+                            font-weight: 600;
+                            color: #d82e1f;
+                        }
+                    }
+                }
+            }
         }
         & .main-btm{
             background: #940000;
@@ -197,25 +355,6 @@ export default{
                 }
             }
         }
-        & .show-wrap{
-            padding: 0 10px;
-            & .shop-option{
-                display: grid;
-                grid-template-columns: repeat(4,1fr);
-                & .option{
-                    background: #fff;
-                    & .option-top{
-                        & .img-content{
-                            height: 52px;
-                            width: 52px;
-                        }
-                    }
-                    & .option-btm{
-                      
-                    }
-                }
-            }
-        }
     }
      .arcbottom{
         width: 100%;
@@ -225,7 +364,7 @@ export default{
         border-bottom-left-radius: 150%;
         border-bottom-right-radius: 150%;
         }
-       body,h2{
+       body,h2,p{
            margin: 0;
            padding: 0;
        } 
